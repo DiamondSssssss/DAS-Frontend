@@ -28,7 +28,7 @@ function AssessmentBooking() {
               <td><button>Xem chi tiết</button></td>
             </tr>
             <tr>
-              <td>Yêu Cầu Giám Định </td>
+              <td>#002</td>
               <td>Giám Định 3h</td>
               <td>1</td>
               <td>30/5/2024</td>

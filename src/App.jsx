@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Content from "./Component/AssessmentBooking";
+import Content from "./Component/AssessmentBookingPage/AssessmentBooking";
 import HeaderAs from "./Component/HeaderAs";
 import SideBar from "./Component/SideBar";
 
