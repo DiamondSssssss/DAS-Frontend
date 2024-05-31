@@ -1,6 +1,8 @@
 import "./AssessmentPaper.css";
+import { useNavigate } from "react-router-dom";
 
 function AssessmentBooking() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="stepper">
@@ -23,14 +25,14 @@ function AssessmentBooking() {
               <td>Đặng Quang Huy</td>
               <td>1/6/2024</td>
               <td>Đã hoàn tất</td>
-              <td><button>Xem chi tiết</button></td>
+              <td><button onClick={() => navigate("/")}>Xem chi tiết</button></td>
             </tr>
             <tr>
               <td>#002</td>
               <td>Đặng Quang Huy</td>
               <td>2/6/2024</td>
               <td>Đã duyệt</td>
-              <td><button>Xem chi tiết</button></td>
+              <td><button onClick={() => navigate("/")}>Xem chi tiết</button></td>
             </tr>
           </tbody>
         </table>

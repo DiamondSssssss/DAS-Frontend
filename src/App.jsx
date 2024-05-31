@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Content from "./Component/AssessmentBookingPage/AssessmentBooking";
-import HeaderAs from "./Component/HeaderAs";
-import SideBar from "./Component/SideBar";
+import HeaderAs from "./Component/Header/HeaderAs";
+import SideBar from "./Component/SideBar/SideBar";
 
 function App() {
   return (
