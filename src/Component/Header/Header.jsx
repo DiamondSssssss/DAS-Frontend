@@ -1,31 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logodas.png'; // Đường dẫn đến logo
 import { AccountCircle } from '@mui/icons-material'; // Import icon người dùng từ Material-UI
 import './Header.scss';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="header">
-      <div className="logo">
-        <Link to="/">
-          <img src={logo} alt="DAS Logo" />
-        </Link>
+      <div className="logo" onClick={() => navigate('/')}>
+        <img src={logo} alt="DAS Logo" />
       </div>
       <nav>
         <ul className="nav-links">
-          <li><Link to="/about">Về DAS</Link></li>
-          <li><Link to="/diamonds">Kim Cương</Link></li>
-          <li><Link to="/services">Dịch Vụ Giám Định</Link></li>
-          <li><Link to="/lookup">Tra Cứu</Link></li>
+          <li onClick={() => navigate('/about')}>Về DAS</li>
+          <li onClick={() => navigate('/diamonds')}>Kim Cương</li>
+          <li onClick={() => navigate('/services')}>Dịch Vụ Giám Định</li>
+          <li onClick={() => navigate('/lookup')}>Tra Cứu</li>
         </ul>
       </nav>
       <div className="actions">
-        <Link to="/appointment" className="appointment-btn">Đặt Hẹn</Link>
-        <div className="user-icon">
-          <Link to="/login">
-            <AccountCircle style={{ color: 'white', fontSize: 30 }} />
-          </Link>
+        <button onClick={() => navigate('/appointment')} className="appointment-btn">Đặt Hẹn</button>
+        <div className="user-icon" onClick={() => navigate('/login')}>
+          <AccountCircle style={{ color: 'white', fontSize: 30 }} />
         </div>
       </div>
     </header>
