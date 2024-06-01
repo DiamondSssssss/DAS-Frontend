@@ -1,4 +1,3 @@
-// src/components/Footer/Footer.js
 import React from 'react';
 import './Footer.scss';
 import logo from '../../assets/logodas.png'; // Đảm bảo đường dẫn tới logo là đúng

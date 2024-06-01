@@ -27,7 +27,7 @@ function AssessmentBooking() {
               <td>10</td>
               <td>1/6/2024</td>
               <td>Chưa hoàn tất</td>
-              <td><button onClick={() => navigate("/")} >Xem chi tiết</button></td>
+              <td><button onClick={() => navigate("/assessmentbooking")} >Xem chi tiết</button></td>
             </tr>
             <tr>
               <td>#002</td>
@@ -35,7 +35,7 @@ function AssessmentBooking() {
               <td>1</td>
               <td>30/5/2024</td>
               <td>Đang xử lý</td>
-              <td><button onClick={() => navigate("/")} >Xem chi tiết</button></td>
+              <td><button onClick={() => navigate("/assessmentbooking")} >Xem chi tiết</button></td>
             </tr>
           </tbody>
         </table>
