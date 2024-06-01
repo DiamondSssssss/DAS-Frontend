@@ -4,9 +4,9 @@ import "./SideBar.css";
 function SideBar() {
   return (
     <div className="sidenav">
-      <NavLink to="/">🏠︎Trang Chủ</NavLink>
-      <NavLink to="assessmentbooking">Đơn Hàng Dịch Vụ</NavLink>
-      <NavLink to="assessmentpaper">Đơn Giám Định</NavLink>
+      <NavLink to="/staff">🏠︎Trang Chủ</NavLink>
+      <NavLink to="/staff/assessmentbooking">Đơn Hàng Dịch Vụ</NavLink>
+      <NavLink to="/staff/assessmentpaper">Đơn Giám Định</NavLink>
     </div>
   );
 }
