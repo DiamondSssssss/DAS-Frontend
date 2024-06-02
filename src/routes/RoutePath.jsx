@@ -7,6 +7,7 @@ import AssessmentBookingSample from '../Component/AssessmentBookingSamplePage/As
 import CustomerLayout from '../layout/CustomerLayout'
 import HomePage from '../Component/HomePage/HomePage'
 import Login from '../Component/Login/Login'
+import ErrorPage from '../Component/ErrorPage/ErrorPage'
 
 const RoutePath = () => {
   return (
@@ -23,6 +24,7 @@ const RoutePath = () => {
           <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
         </Route>
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   )
