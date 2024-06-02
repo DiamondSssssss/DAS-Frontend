@@ -1,14 +1,9 @@
-.stepper{
-    margin-left: 180px;
-    font-size: 20px;
- 
-}
-.stepper h4 {
+
+.step h4 {
     border: 1px ;
     -webkit-box-shadow: 1px 1px 7px 4px rgba(0,0,0,0.3); 
     box-shadow: 1px 1px 7px 4px rgba(0,0,0,0.2);
     padding: 3px;
-    margin-right: 50px;
 }
 .table{
     margin-left: 130px;

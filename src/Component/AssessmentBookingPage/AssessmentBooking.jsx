@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./AssessmentBooking.css";
 
 function AssessmentBooking() {
   const navigate = useNavigate();
@@ -21,11 +22,11 @@ function AssessmentBooking() {
   }, []); // Empty dependency array to run effect only once on component mount
 
   return (
-    <>
-      <div className="stepper">
+    <div className="booking-container">
+      <div className="step text-4xl font-bold">
         <h4> Danh Sách Đặt Hẹn </h4>
       </div>
-      <div className="table">
+      <div>
         <table>
           <thead>
             <tr>
@@ -53,7 +54,7 @@ function AssessmentBooking() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 

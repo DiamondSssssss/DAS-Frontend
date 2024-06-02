@@ -5,10 +5,10 @@ function AssessmentBooking() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="stepper">
-        <h4> Danh Sách Đặt Hẹn </h4>
+      <div className="step text-4xl font-bold">
+        <h4> Danh Sách Đơn</h4>
       </div>
-      <div className="table">
+      <div>
         <table>
           <thead>
             <tr>

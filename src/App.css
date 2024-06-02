@@ -58,8 +58,8 @@ body{
   display: flex;
 }
 .sidebar{
-  width: 20%;
+  width: 10%;
 }
 .outlet{
-  width: 80%;
+  width: 90%;
 }
