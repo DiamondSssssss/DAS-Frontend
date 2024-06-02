@@ -1,8 +1,25 @@
-import "./AssessmentBooking.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AssessmentBooking() {
   const navigate = useNavigate();
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the backend API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/assessmentbookings");
+        setBookings(response.data);
+      } catch (error) {
+        console.error("Error fetching the bookings:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to run effect only once on component mount
+
   return (
     <>
       <div className="stepper">
@@ -13,7 +30,7 @@ function AssessmentBooking() {
           <thead>
             <tr>
               <th>Mã đơn hàng</th>
-              <th>Loại dịch vụ</th>
+              {/* <th>Loại dịch vụ</th> */}
               <th>Số Lượng Kim Cương</th>
               <th>Ngày tạo</th>
               <th>Trạng Thái</th>
@@ -21,22 +38,18 @@ function AssessmentBooking() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>#001</td>
-              <td>Giám Định Kim Cương</td>
-              <td>10</td>
-              <td>1/6/2024</td>
-              <td>Chưa hoàn tất</td>
-              <td><button onClick={() => navigate("/assessmentbooking")} >Xem chi tiết</button></td>
-            </tr>
-            <tr>
-              <td>#002</td>
-              <td>Giám Định 3h</td>
-              <td>1</td>
-              <td>30/5/2024</td>
-              <td>Đang xử lý</td>
-              <td><button onClick={() => navigate("/assessmentbooking")} >Xem chi tiết</button></td>
-            </tr>
+            {bookings.map((booking) => (
+              <tr key={booking.bookingId}>
+                <td>{booking.bookingId}</td>
+                {/* <td>{booking.serviceType}</td> */}
+                <td>{booking.quantity}</td>
+                <td>{booking.dateCreated}</td>
+                <td>{booking.status}</td>
+                <td>
+                  <button onClick={() => navigate(`/assessmentbooking/${booking.id}`)}>Xem chi tiết</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
