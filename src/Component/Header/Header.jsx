@@ -22,7 +22,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className="actions">
-        <button onClick={() => navigate('/appointment')} className="appointment-btn">Đặt Hẹn</button>
+        <button onClick={() => navigate('/makerequest')} className="appointment-btn">Đặt Hẹn</button>
         <div className="user-icon" onClick={() => navigate('/login')}>
           <AccountCircle style={{ color: 'white', fontSize: 30 }} />
         </div>

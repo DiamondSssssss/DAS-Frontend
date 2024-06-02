@@ -12,7 +12,7 @@ import CutForm from '../Component/ConsultingStaffPage/CutForm'
 import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
 import ErrorPage from '../Component/ErrorPage/ErrorPage'
 import SelectionForm from '../Component/ConsultingStaffPage/SelectionForm'
-
+import AssessmentRequestCustomer from '../Component/AssessmentRequestCustomer/AssessmentRequestCustomer'
 
 
 const RoutePath = () => {
@@ -23,6 +23,7 @@ const RoutePath = () => {
         <Route path='/' element={<CustomerLayout />} >
           <Route index element={<HomePage />} />
           <Route path='homepage' element={<HomePage />} />
+          <Route path='makerequest' element={<AssessmentRequestCustomer />} />
         </Route>
         <Route path='/assessmentstaff' element={<App />}>
           <Route index element={<AssessmentBooking />} />

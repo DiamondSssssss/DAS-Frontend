@@ -1,8 +1,8 @@
 import { Button, Form, Input, InputNumber, Select } from "antd";
 import { Option } from "antd/es/mentions";
-import "../BookingAs/BookingAs.css";
+import "./AssessmentRequestCustomer.css";
 
-function BookingAs() {
+function AssessmentRequestCustomer() {
   const formItemLayout = {
     labelCol: {
       xs: {
@@ -148,4 +148,4 @@ function BookingAs() {
   );
 }
 
-export default BookingAs;
+export default AssessmentRequestCustomer;
