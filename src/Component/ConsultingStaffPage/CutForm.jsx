@@ -37,7 +37,7 @@ function CutForm() {
             symmetry,
         };
 
-        navigate.to({
+        navigate({
             pathname: "/summary",
             state: cutData,
         });

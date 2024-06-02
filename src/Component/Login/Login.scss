@@ -8,12 +8,12 @@ $background-color: #2e3b4e;
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background: url('../../assets/diamond_background_horizontal.png') no-repeat center center fixed;
+  // background: url('../../assets/diamond_background_horizontal.png') no-repeat center center fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .login-page {

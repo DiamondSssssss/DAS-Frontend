@@ -5,11 +5,11 @@ import "./CustomerLayout.css";
 
 function CustomerLayout() {
   return (
-    <>
+    <div className="customerlayout">
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }
 

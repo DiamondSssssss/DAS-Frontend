@@ -5,11 +5,10 @@
     justify-content: space-between;
     align-items: center; /* Align items vertically center */
     background-color: black; /* Added background color for visibility */
-    padding: 10px 20px; /* Added padding for some spacing */
 }
 
 .logo {
-    width: 30%; /* Ensure this width is appropriate for your design */
+    width: 15%; /* Ensure this width is appropriate for your design */
     max-width: 200px; /* Optional: Set a max width to prevent it from getting too large */
 }
 
@@ -51,5 +50,6 @@
 
 .user-icon {
     cursor: pointer;
-    margin-left: 20px; /* Space between button and icon */
+    margin-left: 20px;
+    margin-right: 20px;
 }

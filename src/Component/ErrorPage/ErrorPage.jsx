@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import errorImage from '../../assets/error_page_icon.png';
-import './ErrorPage.scss'; // Import file SCSS
+// import './ErrorPage.scss'; // Import file SCSS
 
 const ErrorPage = () => {
   return (

@@ -24,7 +24,7 @@ function InfoForm() {
             cutGrade,
         };
 
-        navigate.to({
+        navigate({
             pathname: "/cut",
             state: reportData,
         });

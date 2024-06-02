@@ -11,7 +11,7 @@ function SelectionForm() {
         e.preventDefault();
         if (loai && trangThai && xuatXu) {
             const selectedOptions = { loai, trangThai, xuatXu };
-            navigate.to({
+            navigate({
                 pathname: "/info",
                 state: selectedOptions,
             });

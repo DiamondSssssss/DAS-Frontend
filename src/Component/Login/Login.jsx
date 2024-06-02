@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import diamondIcon from '../../assets/logodas.png';
 import signInWithGoogle from '../../utils/authUtils';
-import './Login.scss';
+// import './Login.scss';
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
