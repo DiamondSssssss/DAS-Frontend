@@ -26,15 +26,22 @@ function AssessmentRequest() {
     },
   };
 
+  const formatDateToLocalDateTime = (date) => {
+    return date.toISOString().split('.')[0]; // "yyyy-MM-ddTHH:mm:ss"
+  };
+
   const handleFormSubmit = (values) => {
+    const now = new Date();
+    const meetingDate = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000);
+
     const data = {
       requestId: -1,
       ...values,
       serviceId: parseInt(values.serviceId),
       accountId: 1,
       status: 1,
-      dateCreated: new Date().toISOString(),
-      meetingDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
+      dateCreated: formatDateToLocalDateTime(now),
+      meetingDate: formatDateToLocalDateTime(meetingDate),
     };
 
     axios.post('http://localhost:8080/api/assessmentrequests', data)
@@ -84,7 +91,7 @@ function AssessmentRequest() {
           rules={[{ required: true, message: "Please choose one!" }]}
         >
           <Select placeholder="Chọn Dịch Vụ">
-            <Option value={1}>Giám Định Kim Cương 72H</Option>
+            <Option value={1}>Giám Định Kim Cương 24H</Option>
             <Option value={2}>Giám Định Kim Cương 48H</Option>
           </Select>
         </Form.Item>
