@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import App from '../App'
+import AssessmentStaffLayout from '../layout/AssessmentStaffLayout'
 import AssessmentBooking from '../Component/AssessmentBookingPage/AssessmentBooking'
 import AssessmentPaper from '../Component/AssessmentPaperPage/AssessmentPaper'
 import AssessmentBookingSample from '../Component/AssessmentBookingSamplePage/AssessmentBookingSample'
@@ -13,6 +13,9 @@ import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
 import ErrorPage from '../Component/ErrorPage/ErrorPage'
 import SelectionForm from '../Component/ConsultingStaffPage/SelectionForm'
 import AssessmentRequestCustomer from '../Component/AssessmentRequestCustomer/AssessmentRequestCustomer'
+import ConsultingStaffLayout from '../layout/ConsultingStaffLayout'
+import AssessmentRequestConsulting from '../Component/AssessmentRequestPage/AssessmentRequestConsulting'
+import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/AssessmentRequestDetail'
 
 
 const RoutePath = () => {
@@ -25,7 +28,7 @@ const RoutePath = () => {
           <Route path='homepage' element={<HomePage />} />
           <Route path='makerequest' element={<AssessmentRequestCustomer />} />
         </Route>
-        <Route path='/assessmentstaff' element={<App />}>
+        <Route path='/assessmentstaff' element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
           <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
@@ -34,6 +37,11 @@ const RoutePath = () => {
           <Route path="info" element={<InfoForm/>} />
           <Route path="cut" element={<CutForm/>} />
           <Route path="summary" element={<SummaryPage/>} />
+        </Route>
+        <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
+        <Route index element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest' element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
         </Route>
         <Route path='*' element={<ErrorPage />} />
       </Routes>
