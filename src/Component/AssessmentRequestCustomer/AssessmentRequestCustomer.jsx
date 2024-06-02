@@ -2,9 +2,10 @@ import { Button, Form, Input, InputNumber, Select } from "antd";
 import { Option } from "antd/es/mentions";
 import "./AssessmentRequestCustomer.css";
 import axios from "axios";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AssessmentRequest() {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
   const formItemLayout = {
@@ -47,6 +48,7 @@ function AssessmentRequest() {
     axios.post('http://localhost:8080/api/assessmentrequests', data)
       .then(response => {
         console.log('Success:', response.data);
+        navigate('/');
       })
       .catch(error => {
         console.error('Error:', error);

@@ -65,7 +65,7 @@ function AssessmentRequestConsulting() {
             {request.map((request) => (
               <tr key={request.requestId}>
                 <td>#{request.requestId}</td>
-                <td>{getServiceText(request.serviceType)}</td>
+                <td>{getServiceText(request.serviceId)}</td>
                 <td>{request.numberOfSamples}</td>
                 <td>{request.dateCreated}</td>
                 <td>{getStatusText(request.status)}</td>
