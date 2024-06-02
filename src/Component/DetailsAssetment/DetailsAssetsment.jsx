@@ -1,82 +1,119 @@
 import React, { useState } from "react";
-import "../DetailsAssetment/DetailsAssetsment.css";
-function DetailsAssetsment() {
-  const [diamonds, setDiamonds] = useState([
-    { id: Date.now(), name: "", size: "" },
-  ]);
+import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
+import DetailsAssetsment from "./DetailsAssetsment"; // Đường dẫn đúng với file của bạn
 
-  const handleAddDiamond = () => {
-    setDiamonds([...diamonds, { id: Date.now(), name: "", size: "" }]);
+function Receipt() {
+  const [diamonds, setDiamonds] = useState([]);
+  const { RangePicker } = DatePicker;
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 6 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 14 },
+    },
   };
 
-  const handleRemoveDiamond = (id) => {
-    setDiamonds(diamonds.filter((diamond) => diamond.id !== id));
-  };
-
-  const handleDiamondChange = (id, field, value) => {
-    const updatedDiamonds = diamonds.map((diamond) =>
-      diamond.id === id ? { ...diamond, [field]: value } : diamond
-    );
+  const handleDiamondsChange = (updatedDiamonds) => {
     setDiamonds(updatedDiamonds);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Xử lý dữ liệu khi người dùng gửi form
-    console.log(diamonds);
+  const handleSubmit = (values) => {
+    const fullData = {
+      ...values,
+      diamonds: diamonds,
+    };
+    const jsonData = JSON.stringify(fullData);
+    console.log(jsonData);
+    // Gửi jsonData tới server hoặc xử lý theo nhu cầu của bạn
   };
 
   return (
-    <div className="diamond-order-form">
-      <h1>Chi Tiết Đơn Giám Định</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Tạo trường nhập liệu cho mỗi viên kim cương */}
-        {diamonds.map((diamond, index) => (
-          <div key={diamond.id} className="diamond-field">
-            <label htmlFor={`diamondName${index}`}>
-              Tên viên kim cương {index + 1}:
-            </label>
-            <input
-              type="text"
-              id={`diamondName${index}`}
-              value={diamond.name}
-              onChange={(e) =>
-                handleDiamondChange(diamond.id, "name", e.target.value)
-              }
-              required
-            />
-            <label htmlFor={`diamondSize${index}`}>
-              Kích thước viên kim cương {index + 1}:
-            </label>
-            <input
-              type="text"
-              id={`diamondSize${index}`}
-              value={diamond.size}
-              onChange={(e) =>
-                handleDiamondChange(diamond.id, "size", e.target.value)
-              }
-              required
-            />
-            {index > 0 && (
-              <button
-                type="button"
-                onClick={() => handleRemoveDiamond(diamond.id)}
-              >
-                Xoá
-              </button>
-            )}
-          </div>
-        ))}
+    <>
+      <Form
+        {...formItemLayout}
+        onFinish={handleSubmit}
+        style={{ maxWidth: 600 }}
+      >
+        <div className="container-requestbooking">
+          <h2>Mã Giao Dịch</h2>
 
-        <div className="addButtonContainer">
-          <button type="button" onClick={handleAddDiamond}>
-            Thêm viên kim cương
-          </button>
-          <button type="submit">Gửi Đơn Hàng</button>
+          <Form.Item
+            label="Tên Khách Hàng"
+            name="name"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Số Điện Thoại"
+            name="phonenumber"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <InputNumber style={{ width: "100%" }} />
+          </Form.Item>
+
+          <Form.Item
+            label="Dịch Vụ"
+            name="service"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Số Lượng(Viên)"
+            name="amount"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <InputNumber style={{ width: "100%" }} />
+          </Form.Item>
+
+          <Form.Item
+            label="Địa Chỉ Giao Dịch"
+            name="address"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Ngày Hẹn"
+            name="date"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <DatePicker />
+          </Form.Item>
+
+          <Form.Item
+            label="Thanh Toán"
+            name="payment"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <TreeSelect />
+          </Form.Item>
+
+          <Form.Item
+            label="Ngày Trả Dự Kiến"
+            name="estimatedReturnDate"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <RangePicker />
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Tiếp Tục
+            </Button>
+          </Form.Item>
         </div>
-      </form>
-    </div>
+      </Form>
+      <DetailsAssetsment onDiamondsChange={handleDiamondsChange} />
+    </>
   );
 }
 
-export default DetailsAssetsment;
+export default Receipt;
