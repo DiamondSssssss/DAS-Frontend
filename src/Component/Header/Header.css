@@ -1,0 +1,55 @@
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically center */
+    background-color: black; /* Added background color for visibility */
+    padding: 10px 20px; /* Added padding for some spacing */
+}
+
+.logo {
+    width: 30%; /* Ensure this width is appropriate for your design */
+    max-width: 200px; /* Optional: Set a max width to prevent it from getting too large */
+}
+
+.logoimg {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any inline gaps */
+}
+
+.nav-links {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1; /* Make it take the available space */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.nav-links li {
+    margin: 0 15px; /* Space between nav items */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically center */
+    color: white;
+}
+
+.appointment-btn {
+    background-color: #ff4500; /* Example button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.user-icon {
+    cursor: pointer;
+    margin-left: 20px; /* Space between button and icon */
+}
