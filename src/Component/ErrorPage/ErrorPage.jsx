@@ -1,8 +1,9 @@
 // src/components/ErrorPage/ErrorPage.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import errorImage from '../../assets/error_page_icon.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import errorImage from "../../assets/error_page_icon.png";
 // import './ErrorPage.scss'; // Import file SCSS
+import "../ErrorPage/ErrorPage.css";
 
 const ErrorPage = () => {
   return (
@@ -10,7 +11,9 @@ const ErrorPage = () => {
       <img src={errorImage} alt="Error Icon" className="image" />
       <h1 className="title">404 - Page Not Found</h1>
       <p className="message">The page you are looking for does not exist.</p>
-      <Link to="/" className="link">Go to Home</Link>
+      <Link to="/" className="link">
+        Go to Home
+      </Link>
     </div>
   );
 };
