@@ -1,7 +1,21 @@
 import React from 'react';
 // import './SuccessPage.scss';
 import './SuccessPage.css';
+import { useNavigate } from 'react-router-dom';
 const SuccessPage = ({ data }) => {
+  const navigate = useNavigate();
+  const getServiceText = (service) => {
+    switch (service) {
+      case 1:
+        return "Giám định kim cương";
+      case 2:
+        return "Niêm phong kim cương";
+      case 3:
+        return "Cấp lại giấy giám định";
+      default:
+        return "Không xác định";
+    }
+  };
   return (
     <div className="success-page">
       <div className="success-message">
@@ -18,12 +32,12 @@ const SuccessPage = ({ data }) => {
           <div className="appointment-details">
             <p>Tên khách hàng: {data.name}</p>
             <p>Số điện thoại: {data.phone}</p>
-            <p>Dịch vụ: {data.service}</p>
-            <p>Số lượng(Viên): {data.quantity}</p>
+            <p>Dịch vụ: {getServiceText(request.serviceId)}</p>
+            <p>Số lượng(Viên): {data.numberOfSamples}</p>
             <p>Ngày hẹn: {data.date}</p>
             <p>Địa chỉ giao dịch: {data.address}</p>
           </div>
-          <button>TẢI VỀ</button>
+          <button onClick={navigate('/')}>TẢI VỀ</button>
         </div>
       </div>
     </div>

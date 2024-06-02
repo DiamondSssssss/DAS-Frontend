@@ -16,6 +16,7 @@ import AssessmentRequestCustomer from '../Component/AssessmentRequestCustomer/As
 import ConsultingStaffLayout from '../layout/ConsultingStaffLayout'
 import AssessmentRequestConsulting from '../Component/AssessmentRequestPage/AssessmentRequestConsulting'
 import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/AssessmentRequestDetail'
+import SuccessPage from '../Component/SuccessPage/SuccessPage'
 
 
 const RoutePath = () => {
@@ -27,6 +28,7 @@ const RoutePath = () => {
           <Route index element={<HomePage />} />
           <Route path='homepage' element={<HomePage />} />
           <Route path='makerequest' element={<AssessmentRequestCustomer />} />
+          <Route path='sucess' element={<SuccessPage />} />
         </Route>
         <Route path='/assessmentstaff' element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />

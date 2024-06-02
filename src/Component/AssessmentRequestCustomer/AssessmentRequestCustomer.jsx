@@ -48,7 +48,7 @@ function AssessmentRequest() {
     axios.post('http://localhost:8080/api/assessmentrequests', data)
       .then(response => {
         console.log('Success:', response.data);
-        navigate('/');
+        navigate('/success', { state: response.data });
       })
       .catch(error => {
         console.error('Error:', error);
