@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function CutForm() {
     const [depthPercentage, setDepthPercentage] = useState("");
@@ -13,7 +13,7 @@ function CutForm() {
     const [pavilionDepth, setPavilionDepth] = useState("");
     const [symmetry, setSymmetry] = useState("");
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { carat, colorGrade, clarityGrade, cutGrade } = location.state || {};
 
@@ -37,7 +37,7 @@ function CutForm() {
             symmetry,
         };
 
-        history.push({
+        navigate.to({
             pathname: "/summary",
             state: cutData,
         });

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function InfoForm() {
     const [carat, setCarat] = useState("");
@@ -7,7 +7,7 @@ function InfoForm() {
     const [clarityGrade, setClarityGrade] = useState("");
     const [cutGrade, setCutGrade] = useState("");
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { loai, trangThai, xuatXu } = location.state || {};
 
@@ -24,7 +24,7 @@ function InfoForm() {
             cutGrade,
         };
 
-        history.push({
+        navigate.to({
             pathname: "/cut",
             state: reportData,
         });
