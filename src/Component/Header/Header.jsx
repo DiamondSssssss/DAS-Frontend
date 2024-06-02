@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logodas.png'; // Đường dẫn đến logo
 import { AccountCircle } from '@mui/icons-material'; // Import icon người dùng từ Material-UI
-import './Header.scss';
+// import './Header.scss';
+import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo" onClick={() => navigate('/')}>
-        <img src={logo} alt="DAS Logo" />
+        <img className='logoimg' src={logo} alt="DAS Logo" />
       </div>
       <nav>
         <ul className="nav-links">
