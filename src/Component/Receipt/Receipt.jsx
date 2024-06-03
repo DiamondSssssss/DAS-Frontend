@@ -61,7 +61,7 @@ function Receipt() {
             name="service"
             rules={[{ required: true, message: "Please input!" }]}
           >
-            <Input />
+            <TreeSelect />
           </Form.Item>
 
           <Form.Item
