@@ -12,7 +12,7 @@ function SelectionForm() {
         if (loai && trangThai && xuatXu) {
             const selectedOptions = { loai, trangThai, xuatXu };
             navigate({
-                pathname: "/info",
+                pathname: "/assessmentstaff/info",
                 state: selectedOptions,
             });
         } else {

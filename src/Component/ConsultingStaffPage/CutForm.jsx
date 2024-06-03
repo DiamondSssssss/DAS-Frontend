@@ -38,7 +38,7 @@ function CutForm() {
         };
 
         navigate({
-            pathname: "/summary",
+            pathname: "/assessmentstaff/summary",
             state: cutData,
         });
     };

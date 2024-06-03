@@ -25,7 +25,7 @@ function InfoForm() {
         };
 
         navigate({
-            pathname: "/cut",
+            pathname: "/assessmentstaff/cut",
             state: reportData,
         });
     };
