@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
 import DetailsAssetsment from "./DetailsAssetsment"; // Đường dẫn đúng với file của bạn
-
+import { useHistory } from "react-router-dom";
 function Receipt() {
   const [diamonds, setDiamonds] = useState([]);
   const { RangePicker } = DatePicker;
+  const history = useHistory();
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -29,7 +30,9 @@ function Receipt() {
     console.log(jsonData);
     // Gửi jsonData tới server hoặc xử lý theo nhu cầu của bạn
   };
-
+  const handleBack = () => {
+    history.goBack();
+  };
   return (
     <>
       <Form
@@ -107,6 +110,13 @@ function Receipt() {
           <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
             <Button type="primary" htmlType="submit">
               Tiếp Tục
+            </Button>
+            <Button
+              type="default"
+              onClick={handleBack}
+              style={{ marginLeft: 8 }}
+            >
+              Quay Về
             </Button>
           </Form.Item>
         </div>
