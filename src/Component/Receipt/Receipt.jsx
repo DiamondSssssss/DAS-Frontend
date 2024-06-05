@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form, InputNumber, TreeSelect } from "antd";
+import { Button, Form, InputNumber, TreeSelect, DatePicker } from "antd";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import moment from 'moment';
 
 function Receipt() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { numberOfSamples } = location.state || {};
+  const { numberOfSamples, requestId } = location.state || {};
   const [amount, setAmount] = useState(numberOfSamples || 0);
+  const [form] = Form.useForm();
   const { id } = useParams();
 
   const formItemLayout = {
@@ -23,10 +25,17 @@ function Receipt() {
   const handleSubmit = (values) => {
     const fullData = {
       ...values,
+      sampleReturnDate: values.sampleReturnDate.format('YYYY-MM-DDTHH:mm:ss'),
+      requestId: requestId,
+      dateCreated: moment().format('YYYY-MM-DDTHH:mm:ss'),
+      paymentStatus: 0,
+      status: 1,
+      accountId: 1,
+      quantity: amount,
     };
     console.log(fullData);
     navigate(`/consultingstaff/assessmentrequest/${id}/createbooking/inputdiamonds`, {
-      state: { data: fullData, numberOfSamples: amount },
+      state: { bookingData: fullData, numberOfSamples: amount },
     });
   };
 
@@ -54,7 +63,7 @@ function Receipt() {
 
   return (
     <>
-      <Form {...formItemLayout} onFinish={handleSubmit} style={{ maxWidth: 600 }}>
+      <Form {...formItemLayout} onFinish={handleSubmit} form={form} style={{ maxWidth: 600 }}>
         <div className="container-requestbooking">
           <Form.Item
             label="Dịch Vụ"
@@ -70,6 +79,13 @@ function Receipt() {
             rules={[{ required: true, message: "Please input!" }]}
           >
             <InputNumber style={{ width: "100%" }} onChange={(value) => setAmount(value)} />
+          </Form.Item>
+          <Form.Item
+            label="Ngày trả mẫu"
+            name="sampleReturnDate"
+            rules={[{ required: true, message: "Please input!" }]}
+          >
+            <DatePicker style={{ width: "100%" }} format="YYYY-MM-DDTHH:mm:ss" />
           </Form.Item>
           <Form.Item
             label="Thanh Toán"
