@@ -28,7 +28,7 @@ const RoutePath = () => {
           <Route index element={<HomePage />} />
           <Route path='homepage' element={<HomePage />} />
           <Route path='makerequest' element={<AssessmentRequestCustomer />} />
-          <Route path='sucess' element={<SuccessPage />} />
+          <Route path='success' element={<SuccessPage />} />
         </Route>
         <Route path='/assessmentstaff' element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
