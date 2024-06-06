@@ -14,7 +14,20 @@ function SummaryPage() {
         doc.text(`Trạng Thái: ${trangThai}`, 10, 40);
         doc.text(`Xuất Xứ: ${xuatXu}`, 10, 50);
         doc.text("Thông Tin Về Mặt Cắt:", 10, 60);
-        // Thêm các dòng văn bản khác vào tài liệu PDF ở đây
+        doc.text(`Trọng Lượng Carat: ${carat}`, 10, 70);
+        doc.text(`Lớp Màu: ${colorGrade}`, 10, 80);
+        doc.text(`Lớp Rõ Ràng: ${clarityGrade}`, 10, 90);
+        doc.text(`Cắt Lớp: ${cutGrade}`, 10, 100);
+        doc.text(`Tỷ Lệ Phần Trăm Độ Sâu: ${depthPercentage}`, 10, 110);
+        doc.text(`Tỷ Lệ Bảng: ${tablePercentage}`, 10, 120);
+        doc.text(`Góc Mặt Trên: ${crownAngle}`, 10, 130);
+        doc.text(`Góc Gian Hàng: ${pavilionAngle}`, 10, 140);
+        doc.text(`Kích Thước Culet: ${culetSize}`, 10, 150);
+        doc.text(`Độ Dày Của Đai: ${girdleThickness}`, 10, 160);
+        doc.text(`Chiều Cao Mặt Trên: ${crownHeight}`, 10, 170);
+        doc.text(`Tổng Độ Sâu: ${totalDepth}`, 10, 180);
+        doc.text(`Độ Sâu Gian Hàng: ${pavilionDepth}`, 10, 190);
+        doc.text(`Lớp Đối Xứng: ${symmetry}`, 10, 200);
         doc.save("summary.pdf");
     };
 
@@ -25,11 +38,11 @@ function SummaryPage() {
             <p>Loại: {loai}</p>
             <p>Trạng Thái: {trangThai}</p>
             <p>Xuất Xứ: {xuatXu}</p>
+            <h2 className="text-lg font-bold mt-4 mb-2">Thông Tin Về Mặt Cắt:</h2>
             <p>Trọng Lượng Carat: {carat}</p>
             <p>Lớp Màu: {colorGrade}</p>
             <p>Lớp Rõ Ràng: {clarityGrade}</p>
             <p>Cắt Lớp: {cutGrade}</p>
-            <h2 className="text-lg font-bold mt-4 mb-2">Thông Tin Về Mặt Cắt:</h2>
             <p>Tỷ Lệ Phần Trăm Độ Sâu: {depthPercentage}</p>
             <p>Tỷ Lệ Bảng: {tablePercentage}</p>
             <p>Góc Mặt Trên: {crownAngle}</p>
