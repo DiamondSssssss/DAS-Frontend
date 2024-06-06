@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AssessmentStaffLayout from '../layout/AssessmentStaffLayout'
@@ -18,6 +19,7 @@ import AssessmentRequestConsulting from '../Component/AssessmentRequestPage/Asse
 import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/AssessmentRequestDetail'
 import SuccessPage from '../Component/SuccessPage/SuccessPage'
 import Receipt from '../Component/Receipt/Receipt'
+import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
 
 const RoutePath = () => {
   return (
@@ -44,7 +46,8 @@ const RoutePath = () => {
         <Route index element={<AssessmentRequestConsulting/>} />
           <Route path='assessmentrequest' element={<AssessmentRequestConsulting/>} />
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
-          {/* <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} /> */}
+          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
+          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput/>}/>
         </Route>
         <Route path='*' element={<ErrorPage />} />
       </Routes>
