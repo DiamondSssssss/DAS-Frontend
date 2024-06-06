@@ -47,7 +47,7 @@ function AssessmentBooking() {
                 <td>{booking.dateCreated}</td>
                 <td>{booking.status}</td>
                 <td>
-                  <button onClick={() => navigate(`/assessmentbooking/${booking.id}`)}>Xem chi tiết</button>
+                  <button onClick={() => navigate(`assessmentbooking/${booking.bookingId}`)}>Xem chi tiết</button>
                 </td>
               </tr>
             ))}
