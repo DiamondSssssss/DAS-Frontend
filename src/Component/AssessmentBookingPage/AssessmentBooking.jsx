@@ -35,19 +35,19 @@ function AssessmentBooking() {
               <th>Số Lượng Kim Cương</th>
               <th>Ngày tạo</th>
               <th>Trạng Thái</th>
-              <th>Xem Chi Tiết</th>
+              <th>Chi Tiết</th>
             </tr>
           </thead>
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking.bookingId}>
-                <td>{booking.bookingId}</td>
+                <td>#{booking.bookingId}</td>
                 {/* <td>{booking.serviceType}</td> */}
                 <td>{booking.quantity}</td>
                 <td>{booking.dateCreated}</td>
                 <td>{booking.status}</td>
                 <td>
-                  <button onClick={() => navigate(`assessmentbooking/${booking.bookingId}`)}>Xem chi tiết</button>
+                  <button onClick={() => navigate(`assessmentbooking/${booking.bookingId}`)}>Xem Chi Tiết</button>
                 </td>
               </tr>
             ))}

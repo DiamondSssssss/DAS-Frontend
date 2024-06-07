@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 function CutForm() {
+    
     const [depthPercentage, setDepthPercentage] = useState("");
     const [tablePercentage, setTablePercentage] = useState("");
     const [crownAngle, setCrownAngle] = useState("");
@@ -14,7 +15,7 @@ function CutForm() {
     const [symmetry, setSymmetry] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
-
+    const { id, sampleId } = useParams();
     const { carat, colorGrade, clarityGrade, cutGrade } = location.state || {};
 
     const handleSubmit = (e) => {
@@ -38,7 +39,7 @@ function CutForm() {
         };
 
         navigate({
-            pathname: "/assessmentstaff/summary",
+            pathname: `/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut/summary`,
             state: cutData,
         });
     };
