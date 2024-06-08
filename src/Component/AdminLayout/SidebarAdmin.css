@@ -1,44 +1,33 @@
 aside {
-    width: 250px; 
-    background-color: #333; 
-    color: #fff; 
-    padding: 20px;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    height: 100vh; 
-    overflow-y: auto; 
-    z-index: 1; 
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav li {
-    margin-bottom: 20px;
-    font-size: 50px;
-  }
-  
-  nav Link {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  nav Link:hover {
-    color: #ccc; 
-  }
-  
-  nav Link.active {
-    color: #66d9ef; 
-    font-weight: bold;
-  }
-  
-  .ccc {
-    color: #ccc; 
-    font-size: 50px;
-    text-decoration: none
-  }
+  width: 250px; 
+  background-color: #efeaea; 
+  color: #fff; 
+  padding: 20px;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  height: 100vh; 
+  overflow-y: auto; 
+  z-index: 1; 
+}
+
+nav ul {
+  list-style-type: none; /* Remove default list style */
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 0; /* Space out list items */
+}
+
+.sidebarAdmin {
+  text-decoration: none; /* Remove underline from links */
+  color: #007bff; /* Example link color */
+  display: block;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.sidebarAdmin:hover {
+  background-color: #c7dcf4; /* Example hover effect */
+}
