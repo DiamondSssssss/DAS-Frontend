@@ -1,7 +1,7 @@
 import { auth, googleProvider } from '../config/firebase';
 import Cookies from 'js-cookie';
 
-const signInWithGoogle = async () => {
+const signInWithGoogle = async (onLoginSuccess) => {
   try {
     const result = await auth.signInWithPopup(googleProvider);
     const user = result.user;
@@ -28,6 +28,9 @@ const signInWithGoogle = async () => {
 
       console.log("Successfully authenticated");
       console.log("Account details:", account);
+
+      // Call the callback to update Header component
+      onLoginSuccess(account);
     } else {
       console.error("Authentication failed");
     }
@@ -36,20 +39,4 @@ const signInWithGoogle = async () => {
   }
 };
 
-const checkSession = () => {
-  const expirationTime = new Date(Cookies.get('expirationTime'));
-
-  if (Date.now() > expirationTime.getTime()) {
-    console.log("Session expired");
-    Cookies.remove('sessionId');
-    Cookies.remove('idToken');
-    Cookies.remove('expirationTime');
-    Cookies.remove('account');
-    return false;
-  } else {
-    console.log("Session is still valid");
-    return true;
-  }
-};
-
-export { signInWithGoogle, checkSession };
+export { signInWithGoogle };
