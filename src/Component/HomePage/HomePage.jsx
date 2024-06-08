@@ -1,12 +1,14 @@
 import * as React from "react";
+import sampleImage from "../../assets/backgrounddas.png"; // Đảm bảo đường dẫn đến ảnh là chính xác
 
 function MyComponent() {
   return (
     <>
-    <p className="text-center text-4xl">Trang chủ</p>
+      <div className="flex justify-center pt-20">
+        <img src={sampleImage} alt="Sample" className="h-full w-full" />
+      </div>
     </>
   );
 }
 
 export default MyComponent;
-
