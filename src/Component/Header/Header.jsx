@@ -9,12 +9,11 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const idToken = localStorage.getItem('idToken');
-    if (idToken) {
-      // Fetch user name from localStorage or API
-      const account = JSON.parse(localStorage.getItem('account'));
-      if (account && account.name) {
-        setUserName(account.name);
+    const account = localStorage.getItem('account');
+    if (account) {
+      const parsedAccount = JSON.parse(account);
+      if (parsedAccount.name) {
+        setUserName(parsedAccount.name);
       }
     }
   }, []);
@@ -41,8 +40,7 @@ const Header = () => {
         </div>
       </div>
       <nav
-        className={`md:flex ${isMobileMenuOpen ? "block" : "hidden"
-          } absolute md:relative top-16 md:top-auto left-0 md:left-auto bg-black md:bg-transparent w-full md:w-auto`}
+        className={`md:flex ${isMobileMenuOpen ? "block" : "hidden"} absolute md:relative top-16 md:top-auto left-0 md:left-auto bg-black md:bg-transparent w-full md:w-auto`}
       >
         <ul className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 items-center p-4 md:p-0">
           <li
