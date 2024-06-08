@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
+import Cookies from 'js-cookie';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const account = localStorage.getItem('account');
+    const account = Cookies.get('account');
     if (account) {
       const parsedAccount = JSON.parse(account);
       if (parsedAccount.name) {

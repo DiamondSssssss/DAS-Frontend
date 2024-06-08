@@ -1,4 +1,5 @@
 import { auth, googleProvider } from '../config/firebase';
+import Cookies from 'js-cookie';
 
 const signInWithGoogle = async () => {
   try {
@@ -18,11 +19,12 @@ const signInWithGoogle = async () => {
       const data = await response.json();
       const sessionId = data.sessionId;
       const account = data.account;
-      const expirationTime = Date.now() + 3600 * 1000; // Set expiration time to 1 hour from now
+      const expirationTime = new Date(Date.now() + 3600 * 1000); // Set expiration time to 1 hour from now
 
-      localStorage.setItem('sessionId', sessionId);
-      localStorage.setItem('idToken', idToken);
-      localStorage.setItem('expirationTime', expirationTime.toString());
+      Cookies.set('sessionId', sessionId, { expires: expirationTime });
+      Cookies.set('idToken', idToken, { expires: expirationTime });
+      Cookies.set('expirationTime', expirationTime.toISOString(), { expires: expirationTime });
+      Cookies.set('account', JSON.stringify(account), { expires: expirationTime });
 
       console.log("Successfully authenticated");
       console.log("Account details:", account);
@@ -35,13 +37,14 @@ const signInWithGoogle = async () => {
 };
 
 const checkSession = () => {
-  const expirationTime = parseInt(localStorage.getItem('expirationTime'), 10);
+  const expirationTime = new Date(Cookies.get('expirationTime'));
 
-  if (Date.now() > expirationTime) {
+  if (Date.now() > expirationTime.getTime()) {
     console.log("Session expired");
-    localStorage.removeItem('sessionId');
-    localStorage.removeItem('idToken');
-    localStorage.removeItem('expirationTime');
+    Cookies.remove('sessionId');
+    Cookies.remove('idToken');
+    Cookies.remove('expirationTime');
+    Cookies.remove('account');
     return false;
   } else {
     console.log("Session is still valid");
