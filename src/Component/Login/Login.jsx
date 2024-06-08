@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
-import diamondIcon from "../../assets/logodas.png";
-import signInWithGoogle from "../../utils/authUtils";
+import {signInWithGoogle} from "../../utils/authUtils";
 import illustration from "../../assets/loginbackground.png"; // Add your left-side illustration image here
 
 const GoogleLoginComponent = () => {
