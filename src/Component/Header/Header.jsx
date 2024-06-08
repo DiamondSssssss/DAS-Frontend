@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
 import Cookies from 'js-cookie';
-import { signInWithGoogle } from '../path/to/your/signInWithGoogle';
+import { signInWithGoogle } from '../../utils/authUtils';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -106,7 +106,10 @@ const Header = () => {
         ) : (
           <div
             className="cursor-pointer hidden md:block"
-            onClick={handleLogin}
+            onClick={() => {
+              navigate("/login");
+              setIsMobileMenuOpen(false);
+            }}
           >
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
           </div>

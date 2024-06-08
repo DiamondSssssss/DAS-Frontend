@@ -20,6 +20,7 @@ import SuccessPage from "../Component/SuccessPage/SuccessPage";
 import Receipt from "../Component/Receipt/Receipt";
 import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation";
 import CompanyInformation from "../Component/CompanyInformation/CompanyInformation";
+import AssessmentBookingDiamondInput from "../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput";
 const RoutePath = () => {
   return (
     <BrowserRouter>
@@ -43,17 +44,12 @@ const RoutePath = () => {
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
         </Route>
-        <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
-          <Route index element={<AssessmentRequestConsulting />} />
-          <Route
-            path="assessmentrequest"
-            element={<AssessmentRequestConsulting />}
-          />
-          <Route
-            path="assessmentrequest/:id"
-            element={<AssessmentRequestDetail />}
-          />
-          {/* <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} /> */}
+        <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
+        <Route index element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest' element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
+          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
+          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput/>}/>
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
