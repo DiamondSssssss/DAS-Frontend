@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logodas.png"; // Path to logo
-import { AccountCircle, Menu, Close } from "@mui/icons-material"; // Import icons from Material-UI
+import logo from "../../assets/logodas.png";
+import { AccountCircle, Menu, Close } from "@mui/icons-material";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const idToken = localStorage.getItem('idToken');
+    if (idToken) {
+      // Fetch user name from localStorage or API
+      const account = JSON.parse(localStorage.getItem('account'));
+      if (account && account.name) {
+        setUserName(account.name);
+      }
+    }
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -29,9 +41,8 @@ const Header = () => {
         </div>
       </div>
       <nav
-        className={`md:flex ${
-          isMobileMenuOpen ? "block" : "hidden"
-        } absolute md:relative top-16 md:top-auto left-0 md:left-auto bg-black md:bg-transparent w-full md:w-auto`}
+        className={`md:flex ${isMobileMenuOpen ? "block" : "hidden"
+          } absolute md:relative top-16 md:top-auto left-0 md:left-auto bg-black md:bg-transparent w-full md:w-auto`}
       >
         <ul className="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 items-center p-4 md:p-0">
           <li
@@ -79,12 +90,19 @@ const Header = () => {
         >
           Đặt Hẹn
         </button>
-        <div
-          className="cursor-pointer hidden md:block"
-          onClick={() => navigate("/login")}
-        >
-          <AccountCircle style={{ color: "white", fontSize: 30 }} />
-        </div>
+        {userName ? (
+          <div className="flex items-center space-x-2">
+            <span>Xin chào, {userName}!</span>
+            <AccountCircle style={{ color: "white", fontSize: 30 }} />
+          </div>
+        ) : (
+          <div
+            className="cursor-pointer hidden md:block"
+            onClick={() => navigate("/login")}
+          >
+            <AccountCircle style={{ color: "white", fontSize: 30 }} />
+          </div>
+        )}
       </div>
     </header>
   );
