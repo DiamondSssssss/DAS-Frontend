@@ -26,10 +26,7 @@ function InfoForm() {
             cutGrade,
         };
 
-        navigate({
-            pathname: `/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut/`,
-            state: reportData,
-        });
+        navigate(`/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut`, { state: reportData });
     };
 
     return (

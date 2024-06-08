@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 function CutForm() {
-    
     const [depthPercentage, setDepthPercentage] = useState("");
     const [tablePercentage, setTablePercentage] = useState("");
     const [crownAngle, setCrownAngle] = useState("");
@@ -16,12 +15,15 @@ function CutForm() {
     const location = useLocation();
     const navigate = useNavigate();
     const { id, sampleId } = useParams();
-    const { carat, colorGrade, clarityGrade, cutGrade } = location.state || {};
+    const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade } = location.state || {};
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const cutData = {
+            loai,
+            trangThai,
+            xuatXu,
             carat,
             colorGrade,
             clarityGrade,
@@ -38,10 +40,7 @@ function CutForm() {
             symmetry,
         };
 
-        navigate({
-            pathname: `/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut/summary`,
-            state: cutData,
-        });
+        navigate(`/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut/summary`, { state: cutData });
     };
 
     return (
@@ -57,7 +56,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Tỷ Lệ Bảng:</label>
+                <label className="block text-lg font-medium mb-2">Tỷ Lệ Bàn:</label>
                 <input
                     type="text"
                     value={tablePercentage}
@@ -66,7 +65,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Góc Mặt Trên:</label>
+                <label className="block text-lg font-medium mb-2">Góc Vương Miện:</label>
                 <input
                     type="text"
                     value={crownAngle}
@@ -75,7 +74,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Góc Gian Hàng:</label>
+                <label className="block text-lg font-medium mb-2">Góc Mái:</label>
                 <input
                     type="text"
                     value={pavilionAngle}
@@ -93,7 +92,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Độ Dày Của Đai:</label>
+                <label className="block text-lg font-medium mb-2">Độ Dày Girdle:</label>
                 <input
                     type="text"
                     value={girdleThickness}
@@ -102,7 +101,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Chiều Cao Mặt Trên:</label>
+                <label className="block text-lg font-medium mb-2">Chiều Cao Vương Miện:</label>
                 <input
                     type="text"
                     value={crownHeight}
@@ -111,7 +110,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Tổng Độ Sâu:</label>
+                <label className="block text-lg font-medium mb-2">Tổng Chiều Sâu:</label>
                 <input
                     type="text"
                     value={totalDepth}
@@ -120,7 +119,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Độ Sâu Gian Hàng:</label>
+                <label className="block text-lg font-medium mb-2">Chiều Sâu Pavilion:</label>
                 <input
                     type="text"
                     value={pavilionDepth}
@@ -129,7 +128,7 @@ function CutForm() {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-lg font-medium mb-2">Lớp Đối Xứng:</label>
+                <label className="block text-lg font-medium mb-2">Độ Đối Xứng:</label>
                 <input
                     type="text"
                     value={symmetry}
@@ -137,7 +136,9 @@ function CutForm() {
                     className="p-2 border border-gray-300 rounded-md w-full"
                 />
             </div>
-            <button type="submit" className="p-3 bg-orange-500 text-white font-bold rounded-md mt-4">Tiếp theo</button>
+            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4">
+                Tiếp theo
+            </button>
         </form>
     );
 }
