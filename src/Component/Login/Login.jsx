@@ -63,38 +63,3 @@ const GoogleLoginComponent = () => {
 };
 
 export default GoogleLoginComponent;
-
-//import React from "react";
-//
-// import "./.css";
-
-// export const SignUpSignIn = () => {
-//   return (
-//     <div className="sign-up-sign-in">
-//       <div className="div">
-//         <div className="overlap">
-//           <div className="signup-form">
-//             <div className="overlap-group">
-//               <img className="signup-gg" alt="Signup gg" src="signup-gg.png" />
-//               <img className="line" alt="Line" src="line-1.svg" />
-//               <img className="removebg" alt="Removebg" src="logo2-removebg-preview-2.png" />
-//             </div>
-//             <div className="login-nav">
-//               <div className="login">
-//                 <div className="text-wrapper">Đăng nhập</div>
-//               </div>
-//               <div className="signup">
-//                 <div className="rectangle" />
-//                 <div className="text-wrapper-2">Đăng ký</div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="navbar">
-//           <img className="logo-removebg" alt="Removebg" src="logo2-removebg-preview-1.png" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-//

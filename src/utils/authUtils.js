@@ -1,4 +1,4 @@
-import {auth, googleProvider} from '../config/firebase'
+import { auth, googleProvider } from '../config/firebase';
 
 const signInWithGoogle = async () => {
   try {
@@ -18,9 +18,11 @@ const signInWithGoogle = async () => {
       const data = await response.json();
       const sessionId = data.sessionId;
       const account = data.account;
+      const expirationTime = Date.now() + 3600 * 1000; // Set expiration time to 1 hour from now
 
       localStorage.setItem('sessionId', sessionId);
       localStorage.setItem('idToken', idToken);
+      localStorage.setItem('expirationTime', expirationTime.toString());
 
       console.log("Successfully authenticated");
       console.log("Account details:", account);
@@ -31,4 +33,20 @@ const signInWithGoogle = async () => {
     console.error("Error during Google Sign-In: ", error);
   }
 };
-export default signInWithGoogle
+
+const checkSession = () => {
+  const expirationTime = parseInt(localStorage.getItem('expirationTime'), 10);
+
+  if (Date.now() > expirationTime) {
+    console.log("Session expired");
+    localStorage.removeItem('sessionId');
+    localStorage.removeItem('idToken');
+    localStorage.removeItem('expirationTime');
+    return false;
+  } else {
+    console.log("Session is still valid");
+    return true;
+  }
+};
+
+export { signInWithGoogle, checkSession };
