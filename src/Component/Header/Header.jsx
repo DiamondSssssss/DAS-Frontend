@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
-import Cookies from 'js-cookie';
 import { signInWithGoogle } from '../../utils/authUtils';
+import { handleSession, clearSession } from '../../utils/sessionUtils';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,14 +11,11 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const account = Cookies.get('account');
-    if (account) {
-      const parsedAccount = JSON.parse(account);
-      if (parsedAccount.name) {
-        setUserName(parsedAccount.name);
-      }
+    const account = handleSession(navigate);
+    if (account && account.displayName) {
+      setUserName(account.displayName);
     }
-  }, []);
+  }, [navigate]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -26,10 +23,16 @@ const Header = () => {
 
   const handleLogin = async () => {
     await signInWithGoogle((account) => {
-      if (account && account.name) {
-        setUserName(account.name);
+      if (account && account.displayName) {
+        setUserName(account.displayName);
       }
     });
+  };
+
+  const handleLogout = () => {
+    clearSession();
+    setUserName(null);
+    navigate('/login');
   };
 
   return (
@@ -102,14 +105,17 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             <span>Xin chào, {userName}!</span>
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
+            <button
+              onClick={handleLogout}
+              className="bg-transparent border border-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Đăng xuất
+            </button>
           </div>
         ) : (
           <div
             className="cursor-pointer hidden md:block"
-            onClick={() => {
-              navigate("/login");
-              setIsMobileMenuOpen(false);
-            }}
+            onClick={handleLogin}
           >
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
           </div>
