@@ -110,11 +110,18 @@ function InfoForm() {
         name="cutGrade"
         rules={[{ required: true, message: "Vui lòng điền cắt lớp!" }]}
       >
-        <Input
+        {/* <Input
           value={cutGrade}
           onChange={(e) => setCutGrade(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
-        />
+        /> */}
+        <Select>
+          <Select.Option value="demo">Excellent</Select.Option>
+          <Select.Option value="demo">Very Good</Select.Option>
+          <Select.Option value="demo">Good</Select.Option>
+          <Select.Option value="demo">Fair</Select.Option>
+          <Select.Option value="demo">Poor</Select.Option>
+        </Select>
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="mt-4">
