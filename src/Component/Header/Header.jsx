@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
-import { signInWithGoogle } from '../../utils/authUtils';
-import { handleSession, clearSession } from '../../utils/sessionUtils';
+import { handleSession, clearSession, checkSession } from '../../utils/sessionUtils';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,22 +10,14 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const account = handleSession(navigate);
+    const account = checkSession();
     if (account && account.displayName) {
       setUserName(account.displayName);
     }
-  }, [navigate]);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const handleLogin = async () => {
-    await signInWithGoogle((account) => {
-      if (account && account.displayName) {
-        setUserName(account.displayName);
-      }
-    });
   };
 
   const handleLogout = () => {
@@ -115,7 +106,7 @@ const Header = () => {
         ) : (
           <div
             className="cursor-pointer hidden md:block"
-            onClick={handleLogin}
+            onClick={() => navigate("/login")}
           >
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
           </div>

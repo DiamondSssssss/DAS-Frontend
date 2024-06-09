@@ -27,30 +27,33 @@ const RoutePath = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
         <Route path='/' element={<CustomerLayout />} >
           <Route index element={<HomePage />} />
           <Route path='homepage' element={<HomePage />} />
           <Route path='makerequest' element={<AssessmentRequestCustomer />} />
           <Route path='success' element={<SuccessPage />} />
         </Route>
+
+        <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
+          <Route index element={<AssessmentRequestConsulting />} />
+          <Route path='assessmentrequest' element={<AssessmentRequestConsulting />} />
+          <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
+          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
+          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
+        </Route>
+
         <Route path='/assessmentstaff' element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
           <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
+          <Route path="selection" element={<SelectionForm />} />
+          <Route path="info" element={<InfoForm />} />
+          <Route path="cut" element={<CutForm />} />
+          <Route path="summary" element={<SummaryPage />} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
-          <Route path="selection" element={<SelectionForm/>} />
-          <Route path="info" element={<InfoForm/>} />
-          <Route path="cut" element={<CutForm/>} />
-          <Route path="summary" element={<SummaryPage/>} />
         </Route>
-        <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
-        <Route index element={<AssessmentRequestConsulting/>} />
-          <Route path='assessmentrequest' element={<AssessmentRequestConsulting/>} />
-          <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
-          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
-          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput/>}/>
-        </Route>
+
+        <Route path='/login' element={<Login />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

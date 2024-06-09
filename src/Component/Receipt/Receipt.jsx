@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import moment from 'moment';
+import { handleSession } from "../../utils/sessionUtils";
   function Receipt() {
     const [diamonds, setDiamonds] = useState([]);
     const { RangePicker } = DatePicker;
@@ -11,6 +12,13 @@ import moment from 'moment';
     const [amount, setAmount] = useState(numberOfSamples || 0);
     const [form] = Form.useForm();
     const { id } = useParams();
+
+    const [loggedAccount, setLoggedAccount] = useState({});
+    useEffect(() => {
+      const account = handleSession(navigate);
+      setLoggedAccount(account);
+    }, [])
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -30,7 +38,7 @@ import moment from 'moment';
         dateCreated: moment().format('YYYY-MM-DDTHH:mm:ss'),
         paymentStatus: 0,
         status: 1,
-        accountId: 1,
+        accountId: loggedAccount.accountId,
         quantity: amount,
       };
       console.log(fullData);
