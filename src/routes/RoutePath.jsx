@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import App from '../App'
+import AssessmentStaffLayout from '../layout/AssessmentStaffLayout'
 import AssessmentBooking from '../Component/AssessmentBookingPage/AssessmentBooking'
 import AssessmentPaper from '../Component/AssessmentPaperPage/AssessmentPaper'
 import AssessmentBookingSample from '../Component/AssessmentBookingSamplePage/AssessmentBookingSample'
@@ -13,32 +14,48 @@ import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
 import ErrorPage from '../Component/ErrorPage/ErrorPage'
 import SelectionForm from '../Component/ConsultingStaffPage/SelectionForm'
 import AssessmentRequestCustomer from '../Component/AssessmentRequestCustomer/AssessmentRequestCustomer'
-
-
+import ConsultingStaffLayout from '../layout/ConsultingStaffLayout'
+import AssessmentRequestConsulting from '../Component/AssessmentRequestPage/AssessmentRequestConsulting'
+import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/AssessmentRequestDetail'
+import SuccessPage from '../Component/SuccessPage/SuccessPage'
+import Receipt from '../Component/Receipt/Receipt'
+import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
+import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation";
+import CompanyInformation from "../Component/CompanyInformation/CompanyInformation";
 const RoutePath = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<CustomerLayout />} >
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<CustomerLayout />}>
           <Route index element={<HomePage />} />
-          <Route path='homepage' element={<HomePage />} />
-          <Route path='makerequest' element={<AssessmentRequestCustomer />} />
+          <Route path="homepage" element={<HomePage />} />
+          <Route path="makerequest" element={<AssessmentRequestCustomer />} />
+          <Route path="success" element={<SuccessPage />} />
+          <Route path="diamonds" element={<DiamondInformation />} />
+          <Route path="about" element={<CompanyInformation />} />
         </Route>
-        <Route path='/assessmentstaff' element={<App />}>
+        <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
           <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
+          <Route path='assessmentbooking/:id/:sampleId/selection' element={<SelectionForm />} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info" element={<InfoForm/>} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut" element={<CutForm/>} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
-          <Route path="selection" element={<SelectionForm/>} />
-          <Route path="info" element={<InfoForm/>} />
-          <Route path="cut" element={<CutForm/>} />
-          <Route path="summary" element={<SummaryPage/>} />
         </Route>
-        <Route path='*' element={<ErrorPage />} />
+        <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
+        <Route index element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest' element={<AssessmentRequestConsulting/>} />
+          <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
+          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
+          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput/>}/>
+        </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default RoutePath
+export default RoutePath;

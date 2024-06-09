@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import "./SideBar.css";
+import "./SideBarAs.css";
 
-function SideBar() {
+function SideBarAs() {
   return (
     <div className="sidenav">
       <NavLink to="/assessmentstaff">🏠︎Trang Chủ</NavLink>
@@ -10,4 +10,4 @@ function SideBar() {
     </div>
   );
 }
-export default SideBar;
+export default SideBarAs;

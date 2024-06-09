@@ -1,69 +1,29 @@
 import * as React from "react";
 
 function DiamondInformation() {
-    return (
-        <div className="flex flex-col bg-white">
-
-            <div className="flex flex-col mt-28 ml-56 max-w-full w-[665px] max-md:mt-10">
-                <div className="max-md:max-w-full">
-                    <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                        <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
-                            <div className="shrink-0 mx-auto max-w-full bg-zinc-300 h-[300px] w-[400px] max-md:mt-7" />
-                        </div>
-                        <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
-                            <div className="flex flex-col self-stretch my-auto text-3xl font-bold text-center max-md:mt-10">
-                                <div className="text-black">Tên Kim Cương</div>
-                                <div className="flex flex-col px-5 mt-12 max-md:mt-10">
-                                    <div className="text-yellow-300">Mô Tả</div>
-                                    <div className="mt-16 text-amber-300 max-md:mt-10">
-                                        Xem Chi Tiết
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="mt-28 max-md:mt-10 max-md:max-w-full">
-                    <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                        <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
-                            <div className="shrink-0 mx-auto max-w-full bg-zinc-300 h-[300px] w-[400px] max-md:mt-7" />
-                        </div>
-                        <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
-                            <div className="flex flex-col self-stretch my-auto text-3xl font-bold text-center max-md:mt-10">
-                                <div className="text-black">Tên Kim Cương</div>
-                                <div className="flex flex-col px-5 mt-12 max-md:mt-10">
-                                    <div className="text-yellow-300">Mô Tả</div>
-                                    <div className="mt-16 text-amber-300 max-md:mt-10">
-                                        Xem Chi Tiết
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="mt-24 max-md:mt-10 max-md:max-w-full">
-                    <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                        <div className="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
-                            <div className="shrink-0 mx-auto max-w-full bg-zinc-300 h-[300px] w-[400px] max-md:mt-7" />
-                        </div>
-                        <div className="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
-                            <div className="flex flex-col self-stretch my-auto text-3xl font-bold text-center max-md:mt-10">
-                                <div className="text-black">Tên Kim Cương</div>
-                                <div className="flex flex-col px-5 mt-12 max-md:mt-10">
-                                    <div className="text-yellow-300">Mô Tả</div>
-                                    <div className="mt-16 text-amber-300 max-md:mt-10">
-                                        Xem Chi Tiết
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="flex flex-col bg-white min-h-screen">
+      <div className="flex flex-col mt-28 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full space-y-16">
+        {[1, 2, 3].map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col md:flex-row gap-8 md:gap-16 items-center"
+          >
+            <div className="w-full md:w-1/2 flex justify-center">
+              <div className="bg-zinc-300 h-64 w-full max-w-sm rounded-lg shadow-md"></div>
             </div>
-        </div>
-    );
+            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+              <h2 className="text-3xl font-bold text-black">Tên Kim Cương</h2>
+              <p className="text-lg text-yellow-600 mt-4">Mô Tả</p>
+              <button className="mt-8 py-2 px-4 bg-amber-300 text-black font-semibold rounded-md shadow hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2">
+                Xem Chi Tiết
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default DiamondInformation;
-
-

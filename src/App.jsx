@@ -1,19 +1,10 @@
-import { Outlet } from "react-router-dom";
-import HeaderAs from "./Component/HeaderAs/HeaderAs";
-import SideBar from "./Component/SideBar/SideBar";
-import "./App.css";
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 
-function App() {
+const App = () => {
   return (
-    <div className="staffLayout">
-      <HeaderAs />
-      <div className="staffbody">
-        <div className="sidebar"><SideBar/></div>
-        <div className="outlet"><Outlet/></div>
-      </div>
-    </div>
-  );
+    <Outlet/>
+  )
 }
 
-export default App;
-
+export default App

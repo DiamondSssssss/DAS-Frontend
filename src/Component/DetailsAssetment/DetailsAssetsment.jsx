@@ -3,6 +3,8 @@ import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
 import DetailsAssetsment from "./DetailsAssetsment"; // Đường dẫn đúng với file của bạn
 import { useHistory } from "react-router-dom";
 function Receipt() {
+
+function DetailsAssetsment() {
   const [diamonds, setDiamonds] = useState([]);
   const { RangePicker } = DatePicker;
   const history = useHistory();
@@ -126,4 +128,4 @@ function Receipt() {
   );
 }
 
-export default Receipt;
+export default DetailsAssetsment;
