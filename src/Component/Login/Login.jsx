@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import diamondIcon from "../../assets/logodas.png";
-import signInWithGoogle from "../../utils/authUtils";
+import {signInWithGoogle} from "../../utils/authUtils";
 // import './Login.scss';
 import "../Login/Login.css";
 import illustration from "../../assets/loginbackground.png";
+import { useCookies } from "react-cookie";
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
