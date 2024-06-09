@@ -5,7 +5,7 @@ import diamondIcon from "../../assets/logodas.png";
 import signInWithGoogle from "../../utils/authUtils";
 // import './Login.scss';
 import "../Login/Login.css";
-import { useCookies } from "react-cookie";
+import illustration from "../../assets/loginbackground.png";
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
@@ -31,72 +31,46 @@ const GoogleLoginComponent = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-header">
-          <Avatar className="avatar" sx={{ width: 100, height: 100 }}>
-            <img
-              src={diamondIcon}
-              alt="Diamond Icon"
-              style={{ width: "100%", height: "100%" }}
-            />
-          </Avatar>
-          <h1>DAS</h1>
-          <h2>We Valued Your Diamond!</h2>
+    <div className="flex items-center justify-center min-h-screen w-full bg-gray-100">
+      <div className="bg-white rounded-lg shadow-lg flex max-w-4xl w-full overflow-hidden">
+        <div className="hidden md:flex w-1/2 bg-blue-800 items-center justify-center">
+          <img
+            src={illustration}
+            alt="Illustration"
+            className="object-cover h-full w-full"
+          />
         </div>
-        {user ? (
-          <div className="user-info">
-            <h3>Welcome, {user.name}</h3>
-            <Avatar
-              src={user.picture}
-              alt={user.name}
-              sx={{ width: 56, height: 56, margin: "auto" }}
-            />
-            <p>Email: {user.email}</p>
+        <div className="w-full md:w-1/2 p-12">
+          <div className="flex flex-col items-center mb-8">
+            <h1 className="text-4xl font-bold mt-4 text-gray-900">DAS</h1>
+            <h2 className="text-xl text-gray-800 mt-2">
+              We Valued Your Diamond!
+            </h2>
           </div>
-        ) : (
-          <button className="login-button" onClick={login}>
-            Dùng tài khoản Google
-          </button>
-        )}
+          {user ? (
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Welcome, {user.name}
+              </h3>
+              <Avatar
+                src={user.picture}
+                alt={user.name}
+                className="w-20 h-20 mx-auto my-4"
+              />
+              <p className="text-xl text-gray-700">Email: {user.email}</p>
+            </div>
+          ) : (
+            <button
+              className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
+              onClick={login}
+            >
+              Dùng tài khoản Google
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
 export default GoogleLoginComponent;
-
-//import React from "react";
-//
-// import "./.css";
-
-// export const SignUpSignIn = () => {
-//   return (
-//     <div className="sign-up-sign-in">
-//       <div className="div">
-//         <div className="overlap">
-//           <div className="signup-form">
-//             <div className="overlap-group">
-//               <img className="signup-gg" alt="Signup gg" src="signup-gg.png" />
-//               <img className="line" alt="Line" src="line-1.svg" />
-//               <img className="removebg" alt="Removebg" src="logo2-removebg-preview-2.png" />
-//             </div>
-//             <div className="login-nav">
-//               <div className="login">
-//                 <div className="text-wrapper">Đăng nhập</div>
-//               </div>
-//               <div className="signup">
-//                 <div className="rectangle" />
-//                 <div className="text-wrapper-2">Đăng ký</div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="navbar">
-//           <img className="logo-removebg" alt="Removebg" src="logo2-removebg-preview-1.png" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-//

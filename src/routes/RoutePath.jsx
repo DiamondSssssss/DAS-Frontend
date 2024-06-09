@@ -20,29 +20,31 @@ import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/Assess
 import SuccessPage from '../Component/SuccessPage/SuccessPage'
 import Receipt from '../Component/Receipt/Receipt'
 import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
-import { useCookies } from 'react-cookie'
-
+import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation";
+import CompanyInformation from "../Component/CompanyInformation/CompanyInformation";
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<CustomerLayout />} >
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<CustomerLayout />}>
           <Route index element={<HomePage />} />
-          <Route path='homepage' element={<HomePage />} />
-          <Route path='makerequest' element={<AssessmentRequestCustomer />} />
-          <Route path='success' element={<SuccessPage />} />
+          <Route path="homepage" element={<HomePage />} />
+          <Route path="makerequest" element={<AssessmentRequestCustomer />} />
+          <Route path="success" element={<SuccessPage />} />
+          <Route path="diamonds" element={<DiamondInformation />} />
+          <Route path="about" element={<CompanyInformation />} />
         </Route>
-        <Route path='/assessmentstaff' element={<AssessmentStaffLayout />}>
+        <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
           <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
+          <Route path='assessmentbooking/:id/:sampleId/selection' element={<SelectionForm />} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info" element={<InfoForm/>} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut" element={<CutForm/>} />
+          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
-          <Route path="selection" element={<SelectionForm/>} />
-          <Route path="info" element={<InfoForm/>} />
-          <Route path="cut" element={<CutForm/>} />
-          <Route path="summary" element={<SummaryPage/>} />
         </Route>
         <Route path='/consultingstaff' element={<ConsultingStaffLayout />}>
         <Route index element={<AssessmentRequestConsulting/>} />
@@ -51,10 +53,10 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
           <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput/>}/>
         </Route>
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default RoutePath
+export default RoutePath;

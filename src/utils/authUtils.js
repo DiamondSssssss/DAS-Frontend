@@ -1,6 +1,7 @@
-import {auth, googleProvider} from '../config/firebase'
+import { auth, googleProvider } from '../config/firebase';
+import Cookies from 'js-cookie';
 
-const signInWithGoogle = async () => {
+const signInWithGoogle = async (onLoginSuccess) => {
   try {
     const result = await auth.signInWithPopup(googleProvider);
     const user = result.user;
@@ -18,12 +19,18 @@ const signInWithGoogle = async () => {
       const data = await response.json();
       const sessionId = data.sessionId;
       const account = data.account;
+      const expirationTime = new Date(Date.now() + 3600 * 1000); // Set expiration time to 1 hour from now
 
-      localStorage.setItem('sessionId', sessionId);
-      localStorage.setItem('idToken', idToken);
+      Cookies.set('sessionId', sessionId, { expires: expirationTime });
+      Cookies.set('idToken', idToken, { expires: expirationTime });
+      Cookies.set('expirationTime', expirationTime.toISOString(), { expires: expirationTime });
+      Cookies.set('account', JSON.stringify(account), { expires: expirationTime });
 
       console.log("Successfully authenticated");
       console.log("Account details:", account);
+
+      // Call the callback to update Header component
+      onLoginSuccess(account);
     } else {
       console.error("Authentication failed");
     }
@@ -31,4 +38,5 @@ const signInWithGoogle = async () => {
     console.error("Error during Google Sign-In: ", error);
   }
 };
-export default signInWithGoogle
+
+export { signInWithGoogle };
