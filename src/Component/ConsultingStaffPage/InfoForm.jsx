@@ -86,11 +86,24 @@ function InfoForm() {
         name="clarityGrade"
         rules={[{ required: true, message: "Vui lòng điền lớp rõ ràng!" }]}
       >
-        <Input
+        {/* <Input
           value={clarityGrade}
           onChange={(e) => setClarityGrade(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
-        />
+        /> */}
+        <Select>
+          <Select.Option value="demo">Flawless</Select.Option>
+          <Select.Option value="demo">Internally Flawless</Select.Option>
+          <Select.Option value="demo">VVS1</Select.Option>
+          <Select.Option value="demo">VVS2</Select.Option>
+          <Select.Option value="demo">VS1</Select.Option>
+          <Select.Option value="demo">VS2</Select.Option>
+          <Select.Option value="demo">SI1</Select.Option>
+          <Select.Option value="demo">SI2</Select.Option>
+          <Select.Option value="demo">I1</Select.Option>
+          <Select.Option value="demo">I2</Select.Option>
+          <Select.Option value="demo">I3</Select.Option>
+        </Select>
       </Form.Item>
       <Form.Item
         label="Cắt Lớp"
