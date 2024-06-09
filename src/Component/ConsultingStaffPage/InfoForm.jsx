@@ -55,30 +55,16 @@ function InfoForm() {
         name="colorGrade"
         rules={[{ required: true, message: "Vui lòng điền lớp màu!" }]}
       >
-        <Select>
-          <Select.Option value="demo">D</Select.Option>
-          <Select.Option value="demo">E</Select.Option>
-          <Select.Option value="demo">F</Select.Option>
-          <Select.Option value="demo">G</Select.Option>
-          <Select.Option value="demo">H</Select.Option>
-          <Select.Option value="demo">I</Select.Option>
-          <Select.Option value="demo">J</Select.Option>
-          <Select.Option value="demo">K</Select.Option>
-          <Select.Option value="demo">L</Select.Option>
-          <Select.Option value="demo">M</Select.Option>
-          <Select.Option value="demo">N</Select.Option>
-          <Select.Option value="demo">O</Select.Option>
-          <Select.Option value="demo">P</Select.Option>
-          <Select.Option value="demo">Q</Select.Option>
-          <Select.Option value="demo">R</Select.Option>
-          <Select.Option value="demo">S</Select.Option>
-          <Select.Option value="demo">T</Select.Option>
-          <Select.Option value="demo">U</Select.Option>
-          <Select.Option value="demo">V</Select.Option>
-          <Select.Option value="demo">W</Select.Option>
-          <Select.Option value="demo">X</Select.Option>
-          <Select.Option value="demo">Y</Select.Option>
-          <Select.Option value="demo">Z</Select.Option>
+        <Select
+          value={colorGrade}
+          onChange={(value) => setColorGrade(value)}
+          className="p-2 border border-gray-300 rounded-md w-full"
+        >
+          {["D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].map((grade) => (
+            <Select.Option key={grade} value={grade}>
+              {grade}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
       <Form.Item
@@ -86,23 +72,16 @@ function InfoForm() {
         name="clarityGrade"
         rules={[{ required: true, message: "Vui lòng điền lớp rõ ràng!" }]}
       >
-        {/* <Input
+        <Select
           value={clarityGrade}
-          onChange={(e) => setClarityGrade(e.target.value)}
+          onChange={(value) => setClarityGrade(value)}
           className="p-2 border border-gray-300 rounded-md w-full"
-        /> */}
-        <Select>
-          <Select.Option value="demo">Flawless</Select.Option>
-          <Select.Option value="demo">Internally Flawless</Select.Option>
-          <Select.Option value="demo">VVS1</Select.Option>
-          <Select.Option value="demo">VVS2</Select.Option>
-          <Select.Option value="demo">VS1</Select.Option>
-          <Select.Option value="demo">VS2</Select.Option>
-          <Select.Option value="demo">SI1</Select.Option>
-          <Select.Option value="demo">SI2</Select.Option>
-          <Select.Option value="demo">I1</Select.Option>
-          <Select.Option value="demo">I2</Select.Option>
-          <Select.Option value="demo">I3</Select.Option>
+        >
+          {["Flawless", "Internally Flawless", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1", "I2", "I3"].map((grade) => (
+            <Select.Option key={grade} value={grade}>
+              {grade}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
       <Form.Item
@@ -110,17 +89,16 @@ function InfoForm() {
         name="cutGrade"
         rules={[{ required: true, message: "Vui lòng điền cắt lớp!" }]}
       >
-        {/* <Input
+        <Select
           value={cutGrade}
-          onChange={(e) => setCutGrade(e.target.value)}
+          onChange={(value) => setCutGrade(value)}
           className="p-2 border border-gray-300 rounded-md w-full"
-        /> */}
-        <Select>
-          <Select.Option value="demo">Excellent</Select.Option>
-          <Select.Option value="demo">Very Good</Select.Option>
-          <Select.Option value="demo">Good</Select.Option>
-          <Select.Option value="demo">Fair</Select.Option>
-          <Select.Option value="demo">Poor</Select.Option>
+        >
+          {["Excellent", "Very Good", "Good", "Fair", "Poor"].map((grade) => (
+            <Select.Option key={grade} value={grade}>
+              {grade}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
       <Form.Item>
