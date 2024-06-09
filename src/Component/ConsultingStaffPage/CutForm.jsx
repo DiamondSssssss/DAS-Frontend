@@ -12,6 +12,9 @@ function CutForm() {
   const [totalDepth, setTotalDepth] = useState("");
   const [pavilionDepth, setPavilionDepth] = useState("");
   const [symmetry, setSymmetry] = useState("");
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { id, sampleId } = useParams();
@@ -39,6 +42,11 @@ function CutForm() {
       totalDepth,
       pavilionDepth,
       symmetry,
+      images: {
+        image1,
+        image2,
+        image3,
+      },
     };
 
     navigate(
@@ -59,6 +67,7 @@ function CutForm() {
           value={depthPercentage}
           onChange={(e) => setDepthPercentage(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -68,6 +77,7 @@ function CutForm() {
           value={tablePercentage}
           onChange={(e) => setTablePercentage(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -79,6 +89,7 @@ function CutForm() {
           value={crownAngle}
           onChange={(e) => setCrownAngle(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -88,6 +99,7 @@ function CutForm() {
           value={pavilionAngle}
           onChange={(e) => setPavilionAngle(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -99,6 +111,7 @@ function CutForm() {
           value={culetSize}
           onChange={(e) => setCuletSize(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -108,6 +121,7 @@ function CutForm() {
           value={girdleThickness}
           onChange={(e) => setGirdleThickness(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -119,6 +133,7 @@ function CutForm() {
           value={crownHeight}
           onChange={(e) => setCrownHeight(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -130,6 +145,7 @@ function CutForm() {
           value={totalDepth}
           onChange={(e) => setTotalDepth(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -141,6 +157,7 @@ function CutForm() {
           value={pavilionDepth}
           onChange={(e) => setPavilionDepth(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <div className="mb-4">
@@ -150,6 +167,34 @@ function CutForm() {
           value={symmetry}
           onChange={(e) => setSymmetry(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-lg font-medium mb-2">Hình Ảnh 1:</label>
+        <input
+          type="file"
+          onChange={(e) => setImage1(e.target.files[0])}
+          className="p-2 border border-gray-300 rounded-md w-full"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-lg font-medium mb-2">Hình Ảnh 2:</label>
+        <input
+          type="file"
+          onChange={(e) => setImage2(e.target.files[0])}
+          className="p-2 border border-gray-300 rounded-md w-full"
+          required
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-lg font-medium mb-2">Hình Ảnh 3:</label>
+        <input
+          type="file"
+          onChange={(e) => setImage3(e.target.files[0])}
+          className="p-2 border border-gray-300 rounded-md w-full"
+          required
         />
       </div>
       <button
