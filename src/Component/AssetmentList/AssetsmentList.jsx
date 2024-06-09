@@ -1,7 +1,13 @@
 import React from "react";
 import "../AssetmentList/AssetsmentList.css";
 import { Button } from "antd";
+import { useHistory } from "react-router-dom";
 function AssetsmentList() {
+  const history = useHistory();
+
+  const handleBack = () => {
+    history.goBack();
+  };
   return (
     <>
       <div className="container-assetsmentlist">
@@ -162,6 +168,9 @@ function AssetsmentList() {
         </div>
         <Button type="primary" htmlType="submit">
           Tiếp Tục
+        </Button>
+        <Button type="default" onClick={handleBack} style={{ marginLeft: 8 }}>
+          Quay Lại
         </Button>
       </div>
     </>

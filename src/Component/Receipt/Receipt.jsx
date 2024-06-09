@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
+import DetailsAssetsment from "./DetailsAssetsment"; // Đường dẫn đúng với file của bạn
+import { useHistory } from "react-router-dom";
+function Receipt() {
+  const [diamonds, setDiamonds] = useState([]);
+  const { RangePicker } = DatePicker;
+  const history = useHistory();
 import { Button, Form, InputNumber, TreeSelect, DatePicker } from "antd";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import moment from 'moment';
@@ -10,7 +17,6 @@ function Receipt() {
   const [amount, setAmount] = useState(numberOfSamples || 0);
   const [form] = Form.useForm();
   const { id } = useParams();
-
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -38,6 +44,9 @@ function Receipt() {
       state: { bookingData: fullData, numberOfSamples: amount },
     });
   };
+  const handleBack = () => {
+    history.goBack();
+  };
 
   const serviceOptions = [
     {
@@ -60,7 +69,6 @@ function Receipt() {
       value: 2,
     },
   ];
-
   return (
     <>
       <Form {...formItemLayout} onFinish={handleSubmit} form={form} style={{ maxWidth: 600 }}>
@@ -97,6 +105,13 @@ function Receipt() {
           <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
             <Button type="primary" htmlType="submit">
               Tiếp Tục
+            </Button>
+            <Button
+              type="default"
+              onClick={handleBack}
+              style={{ marginLeft: 8 }}
+            >
+              Quay Về
             </Button>
           </Form.Item>
         </div>
