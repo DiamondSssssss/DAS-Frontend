@@ -18,7 +18,7 @@ import ConsultingStaffLayout from '../layout/ConsultingStaffLayout'
 import AssessmentRequestConsulting from '../Component/AssessmentRequestPage/AssessmentRequestConsulting'
 import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/AssessmentRequestDetail'
 import SuccessPage from '../Component/SuccessPage/SuccessPage'
-import Receipt from '../Component/Receipt/Receipt'
+import CreateAssessmentBooking from '../Component/CreateAssessmentBooking/CreateAssessmentBooking'
 import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
 import { useCookies } from 'react-cookie'
 
@@ -38,7 +38,7 @@ const RoutePath = () => {
           <Route index element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest' element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
-          <Route path='assessmentrequest/:id/createbooking' element={<Receipt />} />
+          <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
           <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
         </Route>
 

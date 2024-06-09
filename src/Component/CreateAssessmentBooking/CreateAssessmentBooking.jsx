@@ -3,7 +3,7 @@ import { Button, DatePicker, Form, Input, InputNumber, TreeSelect } from "antd";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import moment from 'moment';
 import { handleSession } from "../../utils/sessionUtils";
-  function Receipt() {
+  function CreateAssessmentBooking() {
     const [diamonds, setDiamonds] = useState([]);
     const { RangePicker } = DatePicker;
     const location = useLocation();
@@ -122,4 +122,4 @@ import { handleSession } from "../../utils/sessionUtils";
     );
   }
 
-  export default Receipt;
+  export default CreateAssessmentBooking;
