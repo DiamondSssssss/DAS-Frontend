@@ -1,8 +1,23 @@
 import "./AssessmentPaper.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 function AssessmentBooking() {
+  const [assessmentPapers, setAssessmentPapers] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/assessmentpapers")
+      .then(response => {
+        setAssessmentPapers(response.data);
+      })
+      .catch(error => {
+        console.error("There was an error fetching the assessment papers!", error);
+      });
+  }, []);
+
   return (
     <>
       <div className="step text-4xl font-bold">
@@ -15,25 +30,24 @@ function AssessmentBooking() {
               <th>Mã giám định</th>
               <th>Người Tạo</th>
               <th>Ngày tạo</th>
-              <th>Trạng Thái</th>
+              <th>Thuộc mẫu</th>
               <th>Chi Tiết</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>#001</td>
-              <td>Đặng Quang Huy</td>
-              <td>1/6/2024</td>
-              <td>Đã hoàn tất</td>
-              <td><button onClick={() => navigate("/")}>Xem chi tiết</button></td>
-            </tr>
-            <tr>
-              <td>#002</td>
-              <td>Đặng Quang Huy</td>
-              <td>2/6/2024</td>
-              <td>Đã duyệt</td>
-              <td><button onClick={() => navigate("/")}>Xem chi tiết</button></td>
-            </tr>
+            {assessmentPapers.map(paper => (
+              <tr key={paper.diamondId}>
+                <td>{paper.diamondId}</td>
+                <td>{paper.accountId}</td>
+                <td>{new Date(paper.dateCreated).toLocaleDateString()}</td>
+                <td>{paper.sampleId}</td>
+                <td>
+                  <button onClick={() => navigate(`/assessmentstaff/assessmentpaper/${paper.diamondId}`)}>
+                    Xem chi tiết
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

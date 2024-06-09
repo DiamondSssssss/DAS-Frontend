@@ -7,12 +7,14 @@ import { handleSession, clearSession, checkSession } from '../../utils/sessionUt
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userName, setUserName] = useState(null);
+  const [role, setRole] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const account = checkSession();
     if (account && account.displayName) {
       setUserName(account.displayName);
+      setRole(account.role);
     }
   }, []);
 
@@ -23,8 +25,24 @@ const Header = () => {
   const handleLogout = () => {
     clearSession();
     setUserName(null);
-    navigate('/login');
+    setRole(0);
+    // navigate('/login');
   };
+
+  const getButtonProperties = () => {
+    switch(role) {
+      case 1:
+        return { text: "Đặt Hẹn", path: "/makerequest" };
+      case 2:
+        return { text: "Consult", path: "/consultingstaff" };
+      case 3:
+        return { text: "Assess", path: "/assessmentstaff" };
+      default:
+        return { text: "Đặt Hẹn", path: "/makerequest" };
+    }
+  };
+
+  const { text, path } = getButtonProperties();
 
   return (
     <header className="bg-black text-white flex items-center justify-between px-6 py-4 fixed top-0 left-0 w-full z-50">
@@ -87,10 +105,10 @@ const Header = () => {
       </nav>
       <div className="flex items-center space-x-4">
         <button
-          onClick={() => navigate("/makerequest")}
+          onClick={() => navigate(path)}
           className="bg-transparent border border-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
-          Đặt Hẹn
+          {text}
         </button>
         {userName ? (
           <div className="flex items-center space-x-2">

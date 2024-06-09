@@ -21,6 +21,7 @@ import SuccessPage from '../Component/SuccessPage/SuccessPage'
 import CreateAssessmentBooking from '../Component/CreateAssessmentBooking/CreateAssessmentBooking'
 import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
 import { useCookies } from 'react-cookie'
+import AssessmentPaperDetail from '../Component/AssessmentPaperDetail/AssessmentPaperDetail'
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -40,6 +41,7 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
           <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
           <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
+          <Route path='assessmentpaper' element={<AssessmentPaper />} />
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
@@ -51,6 +53,7 @@ const RoutePath = () => {
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut" element={<CutForm/>} />
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaper' element={<AssessmentPaper />} />
+          <Route path='assessmentpaper/:id' element={<AssessmentPaperDetail/>} />
         </Route>
 
         <Route path='/login' element={<Login />} />
