@@ -20,8 +20,10 @@ import AssessmentRequestDetail from '../Component/AssessmentRequestDetail/Assess
 import SuccessPage from '../Component/SuccessPage/SuccessPage'
 import Receipt from '../Component/Receipt/Receipt'
 import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
+import { useCookies } from 'react-cookie'
 
 const RoutePath = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
     <BrowserRouter>
       <Routes>

@@ -5,13 +5,15 @@ import diamondIcon from "../../assets/logodas.png";
 import signInWithGoogle from "../../utils/authUtils";
 // import './Login.scss';
 import "../Login/Login.css";
+import { useCookies } from "react-cookie";
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
+  const [cookies, setCookie] = useCookies(['user']);
   const handleLoginSuccess = async (userInfo) => {
     setUser(userInfo);
+    setCookie('user', userInfo, { path: '/', maxAge: 86400 });
     navigate("/");
   };
 
