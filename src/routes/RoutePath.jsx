@@ -23,7 +23,6 @@ import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamond
 import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation";
 import CompanyInformation from "../Component/CompanyInformation/CompanyInformation";
 const RoutePath = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
     <BrowserRouter>
       <Routes>
