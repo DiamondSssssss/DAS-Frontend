@@ -1,17 +1,85 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import jsPDF from "jspdf";
+import axios from "axios";
+import { handleSession } from "../../utils/sessionUtils";
 
 function SummaryPage() {
+    const { id, sampleId } = useParams();
+    const navigate = useNavigate();
+    const [loggedAccount, setLoggedAccount] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    useEffect(() => {
+        const account = handleSession(navigate);
+        setLoggedAccount(account);
+    }, [navigate]);
+
     const location = useLocation();
     const {
-        loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade,
+        loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
         depthPercentage, tablePercentage, crownAngle, pavilionAngle, culetSize,
-        girdleThickness, crownHeight, totalDepth, pavilionDepth, symmetry
+        girdleThickness, crownHeight, totalDepth, pavilionDepth, symmetry, images
     } = location.state || {};
+
+    const getBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    };
+
+    const handleSubmit = async () => {
+        setIsSubmitting(true);
+        try {
+            const crossSection = images.image1 ? await getBase64(images.image1) : null;
+            const longitudinalSection = images.image2 ? await getBase64(images.image2) : null;
+            const transverseSection = images.image3 ? await getBase64(images.image3) : null;
+
+            const assessmentPaperDto = {
+                type: loai,
+                size: parseFloat(size),
+                shape: "shape",
+                color: colorGrade,
+                clarity: clarityGrade,
+                polish: "polish",
+                symmetry: symmetry,
+                fluorescence: "fluorescence",
+                weight: parseFloat(carat),
+                comments: "comments",
+                dateCreated: new Date().toISOString(),
+                tablePercentage: parseFloat(tablePercentage),
+                depthPercentage: parseFloat(depthPercentage),
+                crownAngle: parseFloat(crownAngle),
+                pavilionAngle: parseFloat(pavilionAngle),
+                girdleThickness: girdleThickness,
+                culetSize: parseFloat(culetSize),
+                totalDepth: parseFloat(totalDepth),
+                crownHeight: parseFloat(crownHeight),
+                pavilionDepth: parseFloat(pavilionDepth),
+                symmetryGrade: parseFloat(symmetry),
+                crossSection,
+                longitudinalSection,
+                transverseSection,
+                sealId: 1,
+                accountId: loggedAccount.accountId,
+                sampleId: sampleId
+            };
+
+            const response = await axios.post('http://localhost:8080/api/assessmentpapers', assessmentPaperDto);
+            console.log('Successfully submitted:', response.data);
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const downloadPdf = () => {
         const doc = new jsPDF();
+
         doc.text("Tổng Hợp Thông Tin", 10, 10);
         doc.text("Thông Tin Về Đá Quý:", 10, 20);
         doc.text(`Loại: ${loai}`, 10, 30);
@@ -33,6 +101,16 @@ function SummaryPage() {
         doc.text(`Độ Sâu Gian Hàng: ${pavilionDepth}`, 10, 190);
         doc.text(`Lớp Đối Xứng: ${symmetry}`, 10, 200);
         doc.save("summary.pdf");
+    };
+
+    const renderImage = (image) => {
+        if (image) {
+            if (typeof image === 'string') {
+                return <img src={image} alt="Hình Ảnh" className="mb-4 w-full" />;
+            }
+            return <img src={URL.createObjectURL(image)} alt="Hình Ảnh" className="mb-4 w-full" />;
+        }
+        return null;
     };
 
     return (
@@ -61,8 +139,17 @@ function SummaryPage() {
                 <p>Độ Sâu Gian Hàng: {pavilionDepth}</p>
                 <p>Lớp Đối Xứng: {symmetry}</p>
             </div>
+            <h2 className="text-lg font-bold mt-4 mb-2">Hình Ảnh:</h2>
+            <div className="mb-4">
+                {renderImage(images.image1)}
+                {renderImage(images.image2)}
+                {renderImage(images.image3)}
+            </div>
             <button onClick={downloadPdf} className="p-3 bg-orange-500 text-white font-bold rounded-md mt-4">
                 Tải về PDF
+            </button>
+            <button onClick={handleSubmit} disabled={isSubmitting} className="p-3 bg-blue-500 text-white font-bold rounded-md mt-4 ml-4">
+                {isSubmitting ? 'Đang Tạo Báo Cáo...' : 'Tạo Báo Cáo'}
             </button>
         </div>
     );

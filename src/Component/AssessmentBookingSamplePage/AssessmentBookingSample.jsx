@@ -33,7 +33,6 @@ function AssessmentBooking() {
               <th>Mã Sample</th>
               <th>Tên mẫu</th>
               <th>Kích cỡ</th>
-              <th>Ngày tạo</th>
               <th>Trạng Thái</th>
               <th>Chi Tiết</th>
             </tr>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { Form, Input, Button, Typography, Select } from "antd";
+import { Form, InputNumber, Button, Typography, Select } from "antd";
 
 const { Title } = Typography;
 
 function InfoForm() {
-  const [carat, setCarat] = useState("");
+  const [carat, setCarat] = useState(0);
   const [colorGrade, setColorGrade] = useState("");
   const [clarityGrade, setClarityGrade] = useState("");
   const [cutGrade, setCutGrade] = useState("");
+  const [size, setSize] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
   const { id, sampleId } = useParams();
@@ -24,6 +25,7 @@ function InfoForm() {
       colorGrade,
       clarityGrade,
       cutGrade,
+      size,
     };
 
     navigate(
@@ -44,12 +46,31 @@ function InfoForm() {
           { required: true, message: "Vui lòng điền trọng lượng carat!" },
         ]}
       >
-        <Input
+        <InputNumber
           value={carat}
-          onChange={(e) => setCarat(e.target.value)}
+          onChange={(value) => setCarat(value)}
           className="p-2 border border-gray-300 rounded-md w-full"
+          min={0}
+          step={0.01}
         />
       </Form.Item>
+
+      <Form.Item
+        label="Kích cỡ"
+        name="size"
+        rules={[
+          { required: true, message: "Vui lòng điền kích cỡ kim cương!" },
+        ]}
+      >
+        <InputNumber
+          value={size}
+          onChange={(value) => setSize(value)}
+          className="p-2 border border-gray-300 rounded-md w-full"
+          min={0}
+          step={0.01}
+        />
+      </Form.Item>
+
       <Form.Item
         label="Lớp Màu"
         name="colorGrade"

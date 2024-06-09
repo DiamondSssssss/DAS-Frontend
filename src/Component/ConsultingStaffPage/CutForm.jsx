@@ -18,7 +18,7 @@ function CutForm() {
   const location = useLocation();
   const navigate = useNavigate();
   const { id, sampleId } = useParams();
-  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade } =
+  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size } =
     location.state || {};
 
   const handleSubmit = (e) => {
@@ -32,6 +32,7 @@ function CutForm() {
       colorGrade,
       clarityGrade,
       cutGrade,
+      size,
       depthPercentage,
       tablePercentage,
       crownAngle,
