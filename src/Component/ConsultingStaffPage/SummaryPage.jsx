@@ -69,7 +69,7 @@ function SummaryPage() {
             };
 
             const response = await axios.post('http://localhost:8080/api/assessmentpapers', assessmentPaperDto);
-            console.log('Successfully submitted:', response.data);x
+            console.log('Successfully submitted:', response.data);
         } catch (error) {
             console.error('Error submitting data:', error);
         } finally {
