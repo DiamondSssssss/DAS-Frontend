@@ -63,13 +63,13 @@ function SummaryPage() {
                 crossSection,
                 longitudinalSection,
                 transverseSection,
-                sealId: 1,
+                sealId: 3,
                 accountId: loggedAccount.accountId,
                 sampleId: sampleId
             };
 
             const response = await axios.post('http://localhost:8080/api/assessmentpapers', assessmentPaperDto);
-            console.log('Successfully submitted:', response.data);
+            console.log('Successfully submitted:', response.data);x
         } catch (error) {
             console.error('Error submitting data:', error);
         } finally {

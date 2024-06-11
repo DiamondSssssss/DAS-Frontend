@@ -22,6 +22,7 @@ import CreateAssessmentBooking from '../Component/CreateAssessmentBooking/Create
 import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamondInputPage/AssessmentBookingDiamondInput'
 import { useCookies } from 'react-cookie'
 import AssessmentPaperDetail from '../Component/AssessmentPaperDetail/AssessmentPaperDetail'
+import InfoPage from '../Component/CompanyInformation/CompanyInformation'
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -31,6 +32,7 @@ const RoutePath = () => {
         <Route path='/' element={<CustomerLayout />} >
           <Route index element={<HomePage />} />
           <Route path='homepage' element={<HomePage />} />
+          <Route path='about' element={<InfoPage/>} />
           <Route path='makerequest' element={<AssessmentRequestCustomer />} />
           <Route path='success' element={<SuccessPage />} />
         </Route>
