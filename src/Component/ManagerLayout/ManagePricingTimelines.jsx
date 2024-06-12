@@ -23,17 +23,29 @@ const ManageOrderTimelines = () => {
   return (
     <div>
       <h1>Manage Order Timelines</h1>
-      {orders.map((order) => (
-        <div key={order.id} className="mb-3">
-          <label className="form-label">{order.name}</label>
-          <input
-            type="text"
-            className="form-control"
-            value={order.deliveryTime}
-            onChange={(e) => handleTimeChange(order.id, e.target.value)}
-          />
-        </div>
-      ))}
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Order Name</th>
+            <th>Delivery Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order) => (
+            <tr key={order.id}>
+              <td>{order.name}</td>
+              <td>
+                <input
+                  type="datetime-local"
+                  className="form-control"
+                  value={order.deliveryTime}
+                  onChange={(e) => handleTimeChange(order.id, e.target.value)}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <button className="btn btn-primary" onClick={handleSave}>
         Save
       </button>
