@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import { handleSession } from "../../utils/sessionUtils";
 
 function AssessmentPaperDetail() {
@@ -9,7 +9,7 @@ function AssessmentPaperDetail() {
   const navigate = useNavigate();
   const [loggedAccount, setLoggedAccount] = useState({});
   const [assessmentPaper, setAssessmentPaper] = useState(null);
-  
+
   useEffect(() => {
     const account = handleSession(navigate);
     setLoggedAccount(account);
@@ -27,11 +27,14 @@ function AssessmentPaperDetail() {
     fetchAssessmentPaper();
   }, [id]);
 
-  const downloadPdf = () => {
-    const doc = new jsPDF();
-    doc.text("Assessment Paper Detail", 10, 10);
-    // Add more details here based on the assessmentPaper data
-    doc.save("AssessmentPaperDetail.pdf");
+  const downloadImage = () => {
+    const element = document.getElementById("assessment-paper-detail");
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "AssessmentPaperDetail.png";
+      link.click();
+    });
   };
 
   const renderImage = (imageUrl) => {
@@ -43,7 +46,7 @@ function AssessmentPaperDetail() {
   }
 
   return (
-    <div className="p-10 bg-gray-50">
+    <div id="assessment-paper-detail" className="p-10 bg-gray-50">
       <h1 className="text-2xl font-bold mb-4">Assessment Paper Detail</h1>
       <div className="mb-4">
         <p>Type: {assessmentPaper.type}</p>
@@ -77,8 +80,8 @@ function AssessmentPaperDetail() {
         {renderImage(assessmentPaper.longitudinalSection)}
         {renderImage(assessmentPaper.transverseSection)}
       </div>
-      <button onClick={downloadPdf} className="p-3 bg-orange-500 text-white font-bold rounded-md mt-4">
-        Download PDF
+      <button onClick={downloadImage} className="p-3 bg-orange-500 text-white font-bold rounded-md mt-4">
+        Download Image
       </button>
     </div>
   );
