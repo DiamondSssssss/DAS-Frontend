@@ -1,25 +1,64 @@
 import React, { useState } from "react";
 
 const SealingRecords = () => {
-  const [record, setRecord] = useState("");
+  const [orders, setOrders] = useState([
+    { id: 1, name: "Order 1", sealed: false },
+    { id: 2, name: "Order 2", sealed: false },
+    { id: 3, name: "Order 3", sealed: false },
+  ]);
+
+  const toggleSeal = (id) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === id ? { ...order, sealed: !order.sealed } : order
+      )
+    );
+  };
 
   const handleSave = () => {
     // Logic to save sealing records
-    console.log("Record:", record);
+    console.log("Orders:", orders);
   };
 
   return (
     <div>
       <h1>Sealing Records</h1>
-      <div className="mb-3">
-        <label className="form-label">Sealing Record</label>
-        <input
-          type="text"
-          className="form-control"
-          value={record}
-          onChange={(e) => setRecord(e.target.value)}
-        />
-      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Order Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order) => (
+            <tr key={order.id}>
+              <td>{order.name}</td>
+              <td>
+                <button
+                  className="btn btn-success"
+                  onClick={() => toggleSeal(order.id)}
+                  disabled={order.sealed}
+                  style={{
+                    marginRight: "10px",
+                    opacity: order.sealed ? 0.5 : 1,
+                  }}
+                >
+                  Seal
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => toggleSeal(order.id)}
+                  disabled={!order.sealed}
+                  style={{ opacity: !order.sealed ? 0.5 : 1 }}
+                >
+                  Unseal
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <button className="btn btn-primary" onClick={handleSave}>
         Save
       </button>
