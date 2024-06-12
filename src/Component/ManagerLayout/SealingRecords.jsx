@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../ManagerLayout/SealingRecords.css";
 const SealingRecords = () => {
   const [orders, setOrders] = useState([
     { id: 1, name: "Order 1", sealed: false },
