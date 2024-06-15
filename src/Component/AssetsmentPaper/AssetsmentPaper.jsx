@@ -9,7 +9,7 @@ const clarityImg = "/mnt/data/image.png";
 const gradingScaleImg = "/mnt/data/image.png";
 const qrCodeImg = "/mnt/data/image.png";
 
-const App = () => {
+const AssessmentPaper = () => {
   return (
     <Container className="mt-5 report-container">
       <div className="text-center mb-4">
@@ -88,4 +88,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AssessmentPaper;
