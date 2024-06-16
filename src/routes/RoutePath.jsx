@@ -4,7 +4,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AssessmentStaffLayout from '../layout/AssessmentStaffLayout'
 import AssessmentBooking from '../Component/AssessmentBookingPage/AssessmentBooking'
-import AssessmentPaper from '../Component/AssessmentPaperPage/AssessmentPaper'
+import AssessmentPaperList from '../Component/AssessmentPaperListPage/AssessmentPaperList'
 import AssessmentBookingSample from '../Component/AssessmentBookingSamplePage/AssessmentBookingSample'
 import CustomerLayout from '../layout/CustomerLayout'
 import HomePage from '../Component/HomePage/HomePage'
@@ -57,8 +57,8 @@ const RoutePath = () => {
           <Route path="assessmentbooking/:id/:sampleId/selection/info" element={<InfoForm/>} />
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut" element={<CutForm/>} />
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
-          <Route path='assessmentpaper' element={<AssessmentPaper />} />
-          <Route path='assessmentpaper/:id' element={<AssessmentPaperDetail/>} />
+          <Route path='assessmentpaperlist' element={<AssessmentPaperList />} />
+          <Route path='assessmentpaperlist/:id' element={<AssessmentPaperDetail/>} />
         </Route>
 
         <Route path='/login' element={<Login />} />

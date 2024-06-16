@@ -1,9 +1,9 @@
-import "./AssessmentPaper.css";
+import "./AssessmentPaperList.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function AssessmentBooking() {
+function AssessmentPaperList() {
   const navigate = useNavigate();
 
   const [assessmentPapers, setAssessmentPapers] = useState([]);
@@ -67,4 +67,4 @@ function AssessmentBooking() {
   );
 }
 
-export default AssessmentBooking;
+export default AssessmentPaperList;

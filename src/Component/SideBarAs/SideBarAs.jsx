@@ -17,15 +17,15 @@ function SideBarAs() {
       >
         <span className="mr-1 text-lg">📄</span> Đơn Hàng Dịch Vụ
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/assessmentstaff/assessmentpaper"
         className="flex items-center py-2 px-1 rounded transition duration-200 hover:bg-gray-100 text-gray-800 text-sm whitespace-nowrap"
         activeClassName="bg-gray-200"
       >
         <span className="mr-1 text-lg">📋</span> Đơn Giám Định
-      </NavLink>
+      </NavLink> */}
       <NavLink
-        to="/assessmentstaff/assessmentpapers"
+        to="/assessmentstaff/assessmentpaperlist"
         className="flex items-center py-2 px-1 rounded transition duration-200 hover:bg-gray-100 text-gray-800 text-sm whitespace-nowrap"
         activeClassName="bg-gray-200"
       >
