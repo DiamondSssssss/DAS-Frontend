@@ -26,7 +26,7 @@ const Header = () => {
     clearSession();
     setUserName(null);
     setRole(0);
-    // navigate('/login');
+    navigate('/login');
   };
 
   const getButtonProperties = () => {

@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white py-8 w-full">
-      <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center px-8 space-y-8 md:space-y-0">
+      <div className="flex flex-col md:flex-row justify-between items-center px-8 space-y-8 md:space-y-0 w-full">
         {/* Logo Section */}
         <div className="flex justify-center md:justify-start w-full md:w-auto">
           <img src={logo} alt="DAS Logo" className="h-20" />
