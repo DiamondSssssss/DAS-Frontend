@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import diamondIcon from "../../assets/logodas.png";
-import {signInWithGoogle} from "../../utils/authUtils";
-// import './Login.scss';
+import { signInWithGoogle } from "../../utils/authUtils";
 import "../Login/Login.css";
 import illustration from "../../assets/loginbackground.png";
-import { useCookies } from "react-cookie";
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(['user']);
+
   const handleLoginSuccess = async (userInfo) => {
     setUser(userInfo);
-    setCookie('user', userInfo, { path: '/', maxAge: 86400 });
+    localStorage.setItem('user', JSON.stringify(userInfo));
+    const expirationTime = Date.now() + 2 * 3600 * 1000;
+    localStorage.setItem('expirationTime', expirationTime);
     navigate("/");
   };
 
@@ -32,7 +32,7 @@ const GoogleLoginComponent = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen w-full ">
       <div className="bg-white rounded-lg shadow-lg flex max-w-4xl w-full overflow-hidden">
         <div className="hidden md:flex w-1/2 bg-blue-800 items-center justify-center">
           <img

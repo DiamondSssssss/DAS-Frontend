@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./AssessmentRequestCustomer.css";
+import { handleSession } from "../../utils/sessionUtils";
 
 function AssessmentRequest() {
+  const [loggedAccount, setLoggedAccount] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const account = handleSession(navigate);
+    setLoggedAccount(account);
+  }, [])
 
   const formatDateToLocalDateTime = (date) => {
     return date.toISOString().split(".")[0]; // "yyyy-MM-ddTHH:mm:ss"
@@ -37,7 +44,7 @@ function AssessmentRequest() {
         requestId: -1,
         ...values,
         serviceId: parseInt(values.serviceId),
-        accountId: 1,
+        accountId: loggedAccount.accountId,
         status: 1,
         dateCreated: formatDateToLocalDateTime(now),
         meetingDate: formatDateToLocalDateTime(meetingDate),

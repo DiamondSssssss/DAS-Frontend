@@ -42,16 +42,6 @@ const InfoPage = () => {
             </div>
           </div>
         </section>
-
-        <section id="contact">
-          <h2 className="text-3xl font-bold text-blue-700 mb-4">Liên hệ</h2>
-          <p>
-            Địa Chỉ: 304-306 Phan Xích Long, Phường 7, Quận Phú Nhuận, TP.Hồ Chí
-            Minh, Việt Nam
-          </p>
-          <p>Email: example@gmail.com</p>
-          <p>SDT: 0123456789</p>
-        </section>
       </main>
     </div>
   );

@@ -36,15 +36,16 @@ const AssessmentRequestDetail = () => {
   };
 
   return (
-    <div>
-      <p className='text-1xl'>Mã giao dịch: #{request.requestId}</p>
-      <p className='text-1xl'>Tên khách hàng: {request.name}</p>
-      <p className='text-1xl'>Số điện thoại: {request.phone}</p>
-      <p className='text-1xl'>Dịch vụ: {getServiceText(request.serviceId)}</p>
-      <p className='text-1xl'>Số lượng: {request.numberOfSamples}</p>
-      <p className='text-1xl'>Ngày hẹn: {request.dateCreated}</p>
-      <p className='text-1xl'>Địa chỉ giao dịch: <span className='text-sm'>304-306 Phan Xích Long, Phường 7, Quận Phú Nhuận, TP.Hồ Chí Minh, Việt Nam</span></p>
-      <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' 
+    <div className="p-6 bg-white shadow-md rounded-lg">
+      <h2 className='text-2xl font-bold mb-4'>Chi tiết yêu cầu giám định</h2>
+      <p className='text-xl mb-2'>Mã giao dịch: <span className='font-semibold'>#{request.requestId}</span></p>
+      <p className='text-xl mb-2'>Tên khách hàng: <span className='font-semibold'>{request.name}</span></p>
+      <p className='text-xl mb-2'>Số điện thoại: <span className='font-semibold'>{request.phone}</span></p>
+      <p className='text-xl mb-2'>Dịch vụ: <span className='font-semibold'>{getServiceText(request.serviceId)}</span></p>
+      <p className='text-xl mb-2'>Số lượng: <span className='font-semibold'>{request.numberOfSamples}</span></p>
+      <p className='text-xl mb-2'>Ngày hẹn: <span className='font-semibold'>{request.dateCreated}</span></p>
+      <p className='text-xl mb-4'>Địa chỉ giao dịch: <span className='text-sm font-semibold'>304-306 Phan Xích Long, Phường 7, Quận Phú Nhuận, TP.Hồ Chí Minh, Việt Nam</span></p>
+      <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-150'
               onClick={() => navigate(`/consultingstaff/assessmentrequest/${id}/createbooking`, {state: { numberOfSamples: request.numberOfSamples, requestId: request.requestId }})}>
         Đặt Hẹn
       </button>

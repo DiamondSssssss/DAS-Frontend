@@ -18,7 +18,7 @@ function CutForm() {
   const location = useLocation();
   const navigate = useNavigate();
   const { id, sampleId } = useParams();
-  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade } =
+  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size } =
     location.state || {};
 
   const handleSubmit = (e) => {
@@ -32,6 +32,7 @@ function CutForm() {
       colorGrade,
       clarityGrade,
       cutGrade,
+      size,
       depthPercentage,
       tablePercentage,
       crownAngle,
@@ -56,151 +57,138 @@ function CutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col p-10 bg-gray-50">
-      <h1 className="text-2xl font-bold mb-4">Điền Thông Tin Mặt Cắt</h1>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Tỷ Lệ Phần Trăm Độ Sâu:
-        </label>
-        <input
-          type="number"
-          value={depthPercentage}
-          onChange={(e) => setDepthPercentage(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col p-10 bg-white shadow-lg rounded-lg w-full max-w-2xl mx-auto mt-10">
+      <h1 className="text-2xl font-bold mb-8 text-center">Điền Thông Tin Mặt Cắt</h1>
+      <div className="grid grid-cols-1 gap-6">
+        <div>
+          <label className="block text-lg font-medium mb-2">Tỷ Lệ Phần Trăm Độ Sâu:</label>
+          <input
+            type="number"
+            value={depthPercentage}
+            onChange={(e) => setDepthPercentage(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Tỷ Lệ Bàn:</label>
+          <input
+            type="number"
+            value={tablePercentage}
+            onChange={(e) => setTablePercentage(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Góc Vương Miện:</label>
+          <input
+            type="number"
+            value={crownAngle}
+            onChange={(e) => setCrownAngle(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Góc Mái:</label>
+          <input
+            type="number"
+            value={pavilionAngle}
+            onChange={(e) => setPavilionAngle(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Kích Thước Culet:</label>
+          <input
+            type="number"
+            value={culetSize}
+            onChange={(e) => setCuletSize(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Độ Dày Girdle:</label>
+          <input
+            type="number"
+            value={girdleThickness}
+            onChange={(e) => setGirdleThickness(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Chiều Cao Vương Miện:</label>
+          <input
+            type="number"
+            value={crownHeight}
+            onChange={(e) => setCrownHeight(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Tổng Chiều Sâu:</label>
+          <input
+            type="number"
+            value={totalDepth}
+            onChange={(e) => setTotalDepth(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Chiều Sâu Pavilion:</label>
+          <input
+            type="number"
+            value={pavilionDepth}
+            onChange={(e) => setPavilionDepth(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-lg font-medium mb-2">Độ Đối Xứng:</label>
+          <input
+            type="number"
+            value={symmetry}
+            onChange={(e) => setSymmetry(e.target.value)}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div className="col-span-1">
+          <label className="block text-lg font-medium mb-2">Hình Ảnh 1:</label>
+          <input
+            type="file"
+            onChange={(e) => setImage1(e.target.files[0])}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div className="col-span-1">
+          <label className="block text-lg font-medium mb-2">Hình Ảnh 2:</label>
+          <input
+            type="file"
+            onChange={(e) => setImage2(e.target.files[0])}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
+        <div className="col-span-1">
+          <label className="block text-lg font-medium mb-2">Hình Ảnh 3:</label>
+          <input
+            type="file"
+            onChange={(e) => setImage3(e.target.files[0])}
+            className="p-2 border border-gray-300 rounded-md w-full"
+            required
+          />
+        </div>
       </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Tỷ Lệ Bàn:</label>
-        <input
-          type="number"
-          value={tablePercentage}
-          onChange={(e) => setTablePercentage(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Góc Vương Miện:
-        </label>
-        <input
-          type="number"
-          value={crownAngle}
-          onChange={(e) => setCrownAngle(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Góc Mái:</label>
-        <input
-          type="number"
-          value={pavilionAngle}
-          onChange={(e) => setPavilionAngle(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Kích Thước Culet:
-        </label>
-        <input
-          type="number"
-          value={culetSize}
-          onChange={(e) => setCuletSize(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Độ Dày Girdle:</label>
-        <input
-          type="number"
-          value={girdleThickness}
-          onChange={(e) => setGirdleThickness(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Chiều Cao Vương Miện:
-        </label>
-        <input
-          type="number"
-          value={crownHeight}
-          onChange={(e) => setCrownHeight(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Tổng Chiều Sâu:
-        </label>
-        <input
-          type="number"
-          value={totalDepth}
-          onChange={(e) => setTotalDepth(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">
-          Chiều Sâu Pavilion:
-        </label>
-        <input
-          type="number"
-          value={pavilionDepth}
-          onChange={(e) => setPavilionDepth(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Độ Đối Xứng:</label>
-        <input
-          type="number"
-          value={symmetry}
-          onChange={(e) => setSymmetry(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Hình Ảnh 1:</label>
-        <input
-          type="file"
-          onChange={(e) => setImage1(e.target.files[0])}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Hình Ảnh 2:</label>
-        <input
-          type="file"
-          onChange={(e) => setImage2(e.target.files[0])}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-lg font-medium mb-2">Hình Ảnh 3:</label>
-        <input
-          type="file"
-          onChange={(e) => setImage3(e.target.files[0])}
-          className="p-2 border border-gray-300 rounded-md w-full"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4"
-      >
+      <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-md mt-6 self-center text-lg">
         Tiếp theo
       </button>
     </form>

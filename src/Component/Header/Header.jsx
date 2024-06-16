@@ -2,21 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
-import Cookies from 'js-cookie';
-import { signInWithGoogle } from '../../utils/authUtils';
+import { handleSession, clearSession, checkSession } from '../../utils/sessionUtils';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userName, setUserName] = useState(null);
+  const [role, setRole] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const account = Cookies.get('account');
-    if (account) {
-      const parsedAccount = JSON.parse(account);
-      if (parsedAccount.name) {
-        setUserName(parsedAccount.name);
-      }
+    const account = checkSession();
+    if (account && account.displayName) {
+      setUserName(account.displayName);
+      setRole(account.role);
     }
   }, []);
 
@@ -24,13 +22,27 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleLogin = async () => {
-    await signInWithGoogle((account) => {
-      if (account && account.name) {
-        setUserName(account.name);
-      }
-    });
+  const handleLogout = () => {
+    clearSession();
+    setUserName(null);
+    setRole(0);
+    // navigate('/login');
   };
+
+  const getButtonProperties = () => {
+    switch(role) {
+      case 1:
+        return { text: "Đặt Hẹn", path: "/makerequest" };
+      case 2:
+        return { text: "Consult", path: "/consultingstaff" };
+      case 3:
+        return { text: "Assess", path: "/assessmentstaff" };
+      default:
+        return { text: "Đặt Hẹn", path: "/makerequest" };
+    }
+  };
+
+  const { text, path } = getButtonProperties();
 
   return (
     <header className="bg-black text-white flex items-center justify-between px-6 py-4 fixed top-0 left-0 w-full z-50">
@@ -93,23 +105,26 @@ const Header = () => {
       </nav>
       <div className="flex items-center space-x-4">
         <button
-          onClick={() => navigate("/makerequest")}
+          onClick={() => navigate(path)}
           className="bg-transparent border border-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
-          Đặt Hẹn
+          {text}
         </button>
         {userName ? (
           <div className="flex items-center space-x-2">
             <span>Xin chào, {userName}!</span>
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
+            <button
+              onClick={handleLogout}
+              className="bg-transparent border border-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Đăng xuất
+            </button>
           </div>
         ) : (
           <div
             className="cursor-pointer hidden md:block"
-            onClick={() => {
-              navigate("/login");
-              setIsMobileMenuOpen(false);
-            }}
+            onClick={() => navigate("/login")}
           >
             <AccountCircle style={{ color: "white", fontSize: 30 }} />
           </div>
