@@ -30,7 +30,7 @@ const SuccessPage = () => {
         <h1>ĐẶT HẸN THÀNH CÔNG</h1>
         <p>Chúc mừng bạn đã đặt hẹn thành công, thông tin lịch hẹn</p>
         <div className="transaction-code">
-          <h2>Mã giao dịch: #{state.requestId}</h2>
+          <h2>Mã giao dịch: #{state.bookingId}</h2>
           <div className="appointment-details">
             <p>Số Điện Thoại: {state.phone}</p>
             <p>Dịch Vụ: {getServiceText(parseInt(state.serviceId))}</p>
