@@ -43,8 +43,8 @@ const RoutePath = () => {
           <Route index element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest' element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
-          <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
-          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
+          {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
+          <Route path='assessmentrequest/:id/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
           <Route path="consultingbooking" element={<ConsultingBooking />} />
           
         </Route>

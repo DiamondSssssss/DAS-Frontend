@@ -32,8 +32,10 @@ const AssessmentBookingDiamondInput = () => {
       }
     };
 
+    if (bookingData.serviceId) {
+      fetchServicePrice();
+    }
     fetchDiamondPrices();
-    fetchServicePrice();
   }, [bookingData.serviceId]);
 
   const calculatePrice = (size) => {
@@ -43,7 +45,7 @@ const AssessmentBookingDiamondInput = () => {
     if (priceData) {
       const { initPrice, sizeFrom, priceUnit } = priceData;
       const price = servicePrice + initPrice + (size - sizeFrom) * priceUnit;
-      return Math.round(price); // Làm tròn giá trị thành số nguyên
+      return Math.round(price); // Round the price to an integer
     }
 
     return 'N/A';
@@ -53,9 +55,9 @@ const AssessmentBookingDiamondInput = () => {
     const samples = [];
     let totalPrice = 0;
     for (let i = 0; i < numberOfSamples; i++) {
-      const samplePrice = Math.round(parseFloat(values[`diamond${i + 1}Price`])); // Làm tròn giá trị thành số nguyên
+      const samplePrice = Math.round(parseFloat(values[`diamond${i + 1}Price`])); // Round the price to an integer
       samples.push({
-        name: values[`diamond${i + 1}Name`],
+        name: `Mẫu ${i + 1}`,
         size: parseFloat(values[`diamond${i + 1}Size`]),
         price: samplePrice,
         isDiamond: 1,
@@ -73,7 +75,7 @@ const AssessmentBookingDiamondInput = () => {
     try {
       const response = await axios.post('http://localhost:8080/api/assessmentbookings', bookingPayload);
       console.log(response.data);
-      navigate('/'); // Chuyển hướng đến trang thành công
+      navigate('/'); // Redirect to success page
     } catch (error) {
       console.error('Error creating assessment booking:', error);
     }
@@ -84,16 +86,13 @@ const AssessmentBookingDiamondInput = () => {
     for (let i = 0; i < numberOfSamples; i++) {
       diamondFields.push(
         <div key={i} className="diamond-field">
-          <div className="diamond-field-title">Diamond {i + 1}</div>
           <Form.Item
-            label="Name"
-            name={`diamond${i + 1}Name`}
-            rules={[{ required: true, message: 'Nhập tên mẫu!' }]}
+            label={`Tên mẫu`}
           >
-            <Input />
+            <Input disabled value={`Mẫu ${i + 1}`} />
           </Form.Item>
           <Form.Item
-            label="Size"
+            label="Kích cỡ"
             name={`diamond${i + 1}Size`}
             rules={[{ required: true, message: 'Nhập kích cỡ!' }]}
           >
@@ -104,7 +103,7 @@ const AssessmentBookingDiamondInput = () => {
             }} />
           </Form.Item>
           <Form.Item
-            label="Estimated Price"
+            label="Số tiền ước tính"
             name={`diamond${i + 1}Price`}
           >
             <Input disabled />

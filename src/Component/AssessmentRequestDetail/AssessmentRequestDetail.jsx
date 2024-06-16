@@ -43,8 +43,10 @@ const AssessmentRequestDetail = () => {
       <p className='text-xl mb-2'>Số lượng: <span className='font-semibold'>{booking.quantities}</span></p>
       <p className='text-xl mb-2'>Ngày tạo: <span className='font-semibold'>{booking.dateCreated}</span></p>
       <p className='text-xl mb-4'>Ngày trả mẫu: <span className='font-semibold'>{booking.sampleReturnDate}</span></p>
-      <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-150'
-              onClick={() => navigate(`/consultingstaff/assessmentrequest/${id}/createbooking`, { state: { numberOfSamples: booking.quantities, bookingId: booking.bookingId } })}>
+      <button
+        className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-150'
+        onClick={() => navigate(`/consultingstaff/assessmentrequest/${id}/inputdiamonds`, { state: { bookingData: booking, numberOfSamples: booking.quantities } })}
+      >
         Đặt Hẹn
       </button>
     </div>

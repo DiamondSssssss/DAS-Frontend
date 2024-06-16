@@ -50,7 +50,6 @@ const CreateAssessmentBooking = () => {
 
   return (
     <Form
-      {...formItemLayout}
       onFinish={handleSubmit}
       form={form}
       className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg"
