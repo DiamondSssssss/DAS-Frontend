@@ -3,13 +3,14 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 import axios from "axios";
 import { handleSession } from "../../utils/sessionUtils";
+import "../AssetsmentPaper/AssetsmentPaper.css";  // Ensure this CSS file is imported
 
 function SummaryPage() {
     const { id, sampleId } = useParams();
     const navigate = useNavigate();
     const [loggedAccount, setLoggedAccount] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    
+
     useEffect(() => {
         const account = handleSession(navigate);
         setLoggedAccount(account);
@@ -114,15 +115,15 @@ function SummaryPage() {
     };
 
     return (
-        <div className="p-10 bg-gray-50">
-            <h1 className="text-2xl font-bold mb-4">Tổng Hợp Thông Tin</h1>
-            <h2 className="text-lg font-bold mb-2">Thông Tin Về Đá Quý:</h2>
+        <div className="summary-container p-10 bg-gray-50">
+            <h1 className="summary-title text-2xl font-bold mb-4">Tổng Hợp Thông Tin</h1>
+            <h2 className="section-title text-lg font-bold mb-2">Thông Tin Về Đá Quý:</h2>
             <div className="mb-4">
                 <p>Loại: {loai}</p>
                 <p>Trạng Thái: {trangThai}</p>
                 <p>Xuất Xứ: {xuatXu}</p>
             </div>
-            <h2 className="text-lg font-bold mt-4 mb-2">Thông Tin Về Mặt Cắt:</h2>
+            <h2 className="section-title text-lg font-bold mt-4 mb-2">Thông Tin Về Mặt Cắt:</h2>
             <div className="mb-4">
                 <p>Trọng Lượng Carat: {carat}</p>
                 <p>Lớp Màu: {colorGrade}</p>
@@ -139,18 +140,20 @@ function SummaryPage() {
                 <p>Độ Sâu Gian Hàng: {pavilionDepth}</p>
                 <p>Lớp Đối Xứng: {symmetry}</p>
             </div>
-            <h2 className="text-lg font-bold mt-4 mb-2">Hình Ảnh:</h2>
+            <h2 className="section-title text-lg font-bold mt-4 mb-2">Hình Ảnh:</h2>
             <div className="mb-4">
                 {renderImage(images.image1)}
                 {renderImage(images.image2)}
                 {renderImage(images.image3)}
             </div>
-            <button onClick={downloadPdf} className="p-3 bg-orange-500 text-white font-bold rounded-md mt-4">
-                Tải về PDF
-            </button>
-            <button onClick={handleSubmit} disabled={isSubmitting} className="p-3 bg-blue-500 text-white font-bold rounded-md mt-4 ml-4">
-                {isSubmitting ? 'Đang Tạo Báo Cáo...' : 'Tạo Báo Cáo'}
-            </button>
+            <div className="button-container">
+                <button onClick={downloadPdf} className="download-pdf">
+                    Tải về PDF
+                </button>
+                <button onClick={handleSubmit} disabled={isSubmitting} className="submit-report">
+                    {isSubmitting ? 'Đang Tạo Báo Cáo...' : 'Tạo Báo Cáo'}
+                </button>
+            </div>
         </div>
     );
 }
