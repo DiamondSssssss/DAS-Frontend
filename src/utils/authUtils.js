@@ -1,6 +1,6 @@
 import { auth, googleProvider } from '../config/firebase';
 
-const signInWithGoogle = async (onLoginSuccess) => {
+const signInWithGoogle = async () => {
   try {
     const result = await auth.signInWithPopup(googleProvider);
     const user = result.user;
@@ -28,12 +28,14 @@ const signInWithGoogle = async (onLoginSuccess) => {
       console.log("Successfully authenticated");
       console.log("Account details:", account);
 
-      onLoginSuccess(account);
+      return account; // Return account details
     } else {
       console.error("Authentication failed");
+      throw new Error("Authentication failed");
     }
   } catch (error) {
     console.error("Error during Google Sign-In: ", error);
+    throw error; // Throw error to be handled by caller
   }
 };
 
