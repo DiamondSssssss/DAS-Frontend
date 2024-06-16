@@ -12,49 +12,51 @@ function AssessmentRequest() {
 
   useEffect(() => {
     const account = handleSession(navigate);
-    setLoggedAccount(account);
-  }, [])
+    if (account) {
+      setLoggedAccount(account);
+    }
+  }, [navigate]);
 
   const formatDateToLocalDateTime = (date) => {
-    return date.toISOString().split(".")[0]; // "yyyy-MM-ddTHH:mm:ss"
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   };
+  
 
   const formik = useFormik({
     initialValues: {
-      name: "",
       phone: "",
-      address: "",
       serviceId: "",
-      numberOfSamples: 1,
+      paymentType: "",
+      quantities: 1,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Please input!"),
       phone: Yup.string().required("Please input!"),
-      address: Yup.string().required("Please input!"),
       serviceId: Yup.string().required("Please choose one!"),
-      numberOfSamples: Yup.number()
+      paymentType: Yup.string().required("Please choose one!"),
+      quantities: Yup.number()
         .required("Please input!")
         .min(1, "At least 1 sample"),
     }),
     onSubmit: (values) => {
       const now = new Date();
-      const meetingDate = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000);
 
       const data = {
-        requestId: -1,
         ...values,
         serviceId: parseInt(values.serviceId),
         accountId: loggedAccount.accountId,
         status: 1,
+        paymentStatus: 1,
         dateCreated: formatDateToLocalDateTime(now),
-        meetingDate: formatDateToLocalDateTime(meetingDate),
       };
 
       axios
-        .post("http://localhost:8080/api/assessmentrequests", data)
+        .post("http://localhost:8080/api/assessment-bookings", data)
         .then((response) => {
           console.log("Success:", response.data);
-          navigate("/success", { state: response.data });
+          navigate("/success", { state: { ...response.data, ...data } });
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -71,31 +73,6 @@ function AssessmentRequest() {
         <h2 className="text-2xl font-bold mb-6 text-blue-600 text-center">
           Đặt Hẹn
         </h2>
-
-        <div className="mb-4 text-left">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="name"
-          >
-            Tên Khách Hàng
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-              formik.touched.name && formik.errors.name ? "border-red-500" : ""
-            }`}
-          />
-          {formik.touched.name && formik.errors.name ? (
-            <div className="text-red-500 text-xs italic mt-2">
-              {formik.errors.name}
-            </div>
-          ) : null}
-        </div>
 
         <div className="mb-4 text-left">
           <label
@@ -120,33 +97,6 @@ function AssessmentRequest() {
           {formik.touched.phone && formik.errors.phone ? (
             <div className="text-red-500 text-xs italic mt-2">
               {formik.errors.phone}
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mb-4 text-left">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="address"
-          >
-            Địa Chỉ
-          </label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.address}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-              formik.touched.address && formik.errors.address
-                ? "border-red-500"
-                : ""
-            }`}
-          />
-          {formik.touched.address && formik.errors.address ? (
-            <div className="text-red-500 text-xs italic mt-2">
-              {formik.errors.address}
             </div>
           ) : null}
         </div>
@@ -184,27 +134,57 @@ function AssessmentRequest() {
         <div className="mb-4 text-left">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="numberOfSamples"
+            htmlFor="paymentType"
           >
-            Số Lượng(Viên)
+            Hình Thức Thanh Toán
+          </label>
+          <select
+            id="paymentType"
+            name="paymentType"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.paymentType}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              formik.touched.paymentType && formik.errors.paymentType
+                ? "border-red-500"
+                : ""
+            }`}
+          >
+            <option value="" label="Chọn Hình Thức Thanh Toán" />
+            <option value="1" label="Tiền Mặt" />
+            <option value="2" label="Chuyển Khoản" />
+          </select>
+          {formik.touched.paymentType && formik.errors.paymentType ? (
+            <div className="text-red-500 text-xs italic mt-2">
+              {formik.errors.paymentType}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mb-4 text-left">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="quantities"
+          >
+            Số Lượng (Viên)
           </label>
           <input
-            id="numberOfSamples"
-            name="numberOfSamples"
+            id="quantities"
+            name="quantities"
             type="number"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.numberOfSamples}
+            value={formik.values.quantities}
             min="1"
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-              formik.touched.numberOfSamples && formik.errors.numberOfSamples
+              formik.touched.quantities && formik.errors.quantities
                 ? "border-red-500"
                 : ""
             }`}
           />
-          {formik.touched.numberOfSamples && formik.errors.numberOfSamples ? (
+          {formik.touched.quantities && formik.errors.quantities ? (
             <div className="text-red-500 text-xs italic mt-2">
-              {formik.errors.numberOfSamples}
+              {formik.errors.quantities}
             </div>
           ) : null}
         </div>

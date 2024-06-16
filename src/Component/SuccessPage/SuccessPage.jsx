@@ -1,24 +1,23 @@
-import React from 'react';
-// import './SuccessPage.scss';
-import './SuccessPage.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./SuccessPage.css";
 
 const SuccessPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const data = location.state;
-  const getServiceText = (service) => {
-    switch (service) {
+  const { state } = location;
+
+  const getServiceText = (serviceId) => {
+    switch (serviceId) {
       case 1:
-        return "Giám định kim cương";
+        return "Giám Định Kim Cương 24H";
       case 2:
-        return "Niêm phong kim cương";
-      case 3:
-        return "Cấp lại giấy giám định";
+        return "Giám Định Kim Cương 48H";
       default:
-        return "Không xác định";
+        return "Unknown Service";
     }
   };
+
   return (
     <div className="success-page">
       <div className="success-message">
@@ -31,20 +30,18 @@ const SuccessPage = () => {
         <h1>ĐẶT HẸN THÀNH CÔNG</h1>
         <p>Chúc mừng bạn đã đặt hẹn thành công, thông tin lịch hẹn</p>
         <div className="transaction-code">
-          <h2>Mã giao dịch: #{data.requestId}</h2>
+          <h2>Mã giao dịch: #{state.bookingId}</h2>
           <div className="appointment-details">
-            <p>Tên khách hàng: {data.name}</p>
-            <p>Số điện thoại: {data.phone}</p>
-            <p>Dịch vụ: {getServiceText(data.serviceId)}</p>
-            <p>Số lượng(Viên): {data.numberOfSamples}</p>
-            <p>Ngày hẹn: {data.date}</p>
-            <p>Địa chỉ giao dịch: {data.address}</p>
+            <p>Số Điện Thoại: {state.phone}</p>
+            <p>Dịch Vụ: {getServiceText(parseInt(state.serviceId))}</p>
+            <p>Số Lượng (Viên): {state.quantities}</p>
+            <p>Ngày Đặt Hẹn: {state.dateCreated}</p>
           </div>
-          <button onClick={navigate('/')}>TẢI VỀ</button>
+          <button onClick={() => navigate("/")}>Trang Chủ</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SuccessPage;
+export default SuccessPage

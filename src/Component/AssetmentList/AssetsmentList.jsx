@@ -1,13 +1,17 @@
 import React from "react";
-import "../AssetmentList/AssetsmentList.css";
 import { Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./AssetsmentList.css";
+
 function AssetsmentList() {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { diamonds } = location.state || {};
 
   const handleBack = () => {
-    history.goBack();
+    navigate(-1);
   };
+
   return (
     <>
       <div className="container-assetsmentlist">
@@ -106,49 +110,40 @@ function AssetsmentList() {
                           </tr>
                         </thead>
                         <tbody>
+                          {/* {diamonds.map((diamond, index) => (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>
+                                <strong>{diamond.name}</strong>
+                              </td>
+                              <td className="text-center">1</td>
+                              <td className="text-right">${diamond.price}</td>
+                              <td className="text-right">${diamond.price}</td>
+                            </tr>
+                          ))} */}
                           <tr>
-                            <td>1</td>
-                            <td>
-                              <strong>Giám định kim cương</strong>
-                            </td>
+                            <td>Index 1</td>
+                            <td>Mẫu 1</td>
                             <td className="text-center">1</td>
-                            <td className="text-right">$100</td>
-                            <td className="text-right">$100</td>
+                            <td className="text-right">$8000</td>
+                            <td className="text-right">$800000</td>
                           </tr>
                           <tr>
-                            <td>2</td>
-                            <td>
-                              <strong>Đánh bóng</strong>
-                            </td>
-                            <td className="text-center">2</td>
-                            <td className="text-right">$50</td>
-                            <td className="text-right">$100</td>
-                          </tr>
-                          <tr className="line">
-                            <td>3</td>
-                            <td>
-                              <strong>Vệ sinh</strong>
-                            </td>
-                            <td className="text-center">1</td>
-                            <td className="text-right">$30</td>
-                            <td className="text-right">$30</td>
-                          </tr>
-                          <tr>
-                            <td colSpan={3} />
+                            <td colSpan="3" />
                             <td className="text-right">
                               <strong>Thuế (10%)</strong>
                             </td>
                             <td className="text-right">$23</td>
                           </tr>
                           <tr>
-                            <td colSpan={3} />
+                            <td colSpan="3" />
                             <td className="text-right">
                               <strong>Giảm giá</strong>
                             </td>
                             <td className="text-right">-$10</td>
                           </tr>
                           <tr>
-                            <td colSpan={3} />
+                            <td colSpan="3" />
                             <td className="text-right">
                               <strong>Thành tiền</strong>
                             </td>
@@ -166,10 +161,7 @@ function AssetsmentList() {
             {/* END INVOICE */}
           </div>
         </div>
-        <Button type="primary" htmlType="submit">
-          Tiếp Tục
-        </Button>
-        <Button type="default" onClick={handleBack} style={{ marginLeft: 8 }}>
+        <Button type="primary" onClick={handleBack}>
           Quay Lại
         </Button>
       </div>

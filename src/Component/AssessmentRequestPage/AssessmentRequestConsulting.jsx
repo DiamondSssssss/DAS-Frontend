@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -6,7 +5,7 @@ import { useState, useEffect } from "react";
 function AssessmentRequestConsulting() {
   const navigate = useNavigate();
 
-  const [requests, setRequests] = useState([]);
+  const [bookings, setBookings] = useState([]);
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -47,24 +46,17 @@ function AssessmentRequestConsulting() {
     }
   };
 
-  // const [requests] = useState([
-  //   { requestId: 1, serviceId: 1, numberOfSamples: 5, dateCreated: "2024-06-15", status: 1 },
-  //   { requestId: 2, serviceId: 2, numberOfSamples: 3, dateCreated: "2024-06-14", status: 2 },
-  //   { requestId: 3, serviceId: 3, numberOfSamples: 7, dateCreated: "2024-06-13", status: 3 },
-  // ]);
-
-  // Uncomment and modify the following useEffect if you want to fetch data from the backend API
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBookings = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/assessmentrequests");
-        setRequests(response.data);
+        const response = await axios.get("http://localhost:8080/api/assessment-bookings");
+        setBookings(response.data);
       } catch (error) {
-        console.error("Error fetching the requests:", error);
+        console.error("Error fetching the bookings:", error);
       }
     };
 
-    fetchData();
+    fetchBookings();
   }, []);
 
   return (
@@ -84,19 +76,19 @@ function AssessmentRequestConsulting() {
               </tr>
             </thead>
             <tbody className="text-gray-700">
-              {requests.map((request) => (
-                <tr key={request.requestId} className="hover:bg-gray-100">
-                  <td className="py-4 px-4 align-middle">{`#${request.requestId}`}</td>
-                  <td className="py-4 px-4 align-middle">{getServiceText(request.serviceId)}</td>
-                  <td className="py-4 px-4 align-middle">{request.numberOfSamples}</td>
-                  <td className="py-4 px-4 align-middle">{request.dateCreated}</td>
-                  <td className={`py-4 px-4 align-middle ${getStatusClass(request.status)}`}>
-                    {getStatusText(request.status)}
+              {bookings.map((booking) => (
+                <tr key={booking.bookingId} className="hover:bg-gray-100">
+                  <td className="py-4 px-4 align-middle">{`#${booking.bookingId}`}</td>
+                  <td className="py-4 px-4 align-middle">{getServiceText(booking.serviceId)}</td>
+                  <td className="py-4 px-4 align-middle">{booking.quantities}</td>
+                  <td className="py-4 px-4 align-middle">{booking.dateCreated}</td>
+                  <td className={`py-4 px-4 align-middle ${getStatusClass(booking.status)}`}>
+                    {getStatusText(booking.status)}
                   </td>
                   <td className="py-4 px-4 align-middle">
                     <div className="flex items-center justify-center">
                       <button
-                        onClick={() => navigate(`/consultingstaff/assessmentrequest/${request.requestId}`)}
+                        onClick={() => navigate(`/consultingstaff/assessmentrequest/${booking.bookingId}`)}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       >
                         Xem chi tiết

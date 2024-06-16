@@ -31,6 +31,7 @@ import ManagerLayout from "../Component/ManagerLayout/ManagerLayout.jsx";
 // import SealingRecords from "../ManagerLayout/SealingRecords";
 // import CommitmentPaper from "../ManagerLayout/CommitmentPaper";
 import Dashboard from "../Component/ManagerLayout/Dashboard";
+import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
@@ -48,12 +49,12 @@ const RoutePath = () => {
           <Route index element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest' element={<AssessmentRequestConsulting />} />
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
-          <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
-          <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
-          <Route path="consultingbooking" element={<ConsultingBooking />} />
+          {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
+          <Route path='assessmentrequest/:id/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
+          <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
           
         </Route>
-
+        <Route path="summary" element={<AssetsmentList />} />
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
