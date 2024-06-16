@@ -26,7 +26,7 @@ function ConsultingBooking() {
   return (
     <div className="booking-container">
       <div className="step text-4xl font-bold">
-        <h4> Danh Sách Đặt Hẹn </h4>
+        <h4> Danh Sách Đơn Giám Định </h4>
       </div>
       <div>
         <table>
