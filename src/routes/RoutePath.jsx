@@ -60,8 +60,8 @@ const RoutePath = () => {
             path="assessmentbooking/:id/:sampleId/selection/info/cut/summary"
             element={<SummaryPage />}
           />
-          <Route path="assessmentbooking" element={<AssessmentBooking />} />
-          <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
+          <Route path="assessmentpaper" element={<AssessmentPaper />} />
+          <Route path="assessmentpapers" element={<AssetsmentPaper />} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />

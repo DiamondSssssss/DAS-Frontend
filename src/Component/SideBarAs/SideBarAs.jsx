@@ -8,8 +8,8 @@ function SideBarAs() {
       <NavLink to="/assessmentstaff/assessmentbooking">
         Đơn Hàng Dịch Vụ
       </NavLink>
-      <NavLink to="/assessmentstaff/assessmentbooking">Đơn Giám Định</NavLink>
-      <NavLink to="/assessmentstaff/assessmentpaper">Giấy Giám Định</NavLink>
+      <NavLink to="/assessmentstaff/assessmentpaper">Đơn Giám Định</NavLink>
+      <NavLink to="/assessmentstaff/assessmentpapers">Giấy Giám Định</NavLink>
     </div>
   );
 }
