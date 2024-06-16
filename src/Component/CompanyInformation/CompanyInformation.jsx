@@ -3,7 +3,7 @@ import logo from "../../assets/logodas.png"; // Ensure the path to the logo is c
 
 const InfoPage = () => {
   return (
-    <div className="bg-white text-gray-900">
+    <div className="bg-white text-gray-900 mt-10 w-full ">
       <main className="max-w-screen-xl mx-auto px-6 py-12">
         <section id="about" className="mb-12">
           <h2 className="text-3xl font-bold text-blue-700 mb-4">Giới thiệu</h2>

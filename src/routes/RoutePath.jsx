@@ -26,6 +26,11 @@ import AssessmentPaperDetail from '../Component/AssessmentPaperDetail/Assessment
 import InfoPage from '../Component/CompanyInformation/CompanyInformation'
 import AssetsmentPaper from "../Component/AssetsmentPaper/AssetsmentPaper";
 import ConsultingBooking from "../Component/ConsultingBooking/ConsultingBooking";
+import ManagerLayout from "../Component/ManagerLayout/ManagerLayout.jsx";
+// import ManagePricingTimelines from "../ManagerLayout/ManagePricingTimelines";
+// import SealingRecords from "../ManagerLayout/SealingRecords";
+// import CommitmentPaper from "../ManagerLayout/CommitmentPaper";
+import Dashboard from "../Component/ManagerLayout/Dashboard";
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
@@ -59,6 +64,13 @@ const RoutePath = () => {
           <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaperlist' element={<AssessmentPaperList />} />
           <Route path='assessmentpaperlist/:id' element={<AssessmentPaperDetail/>} />
+        </Route>
+        <Route path='/manager' element={<ManagerLayout />} >
+          <Route index element={<Dashboard />} />
+          {/* <Route path='manager' element={<ManagerLayout />} />
+          <Route path='about' element={<InfoPage/>} />
+          <Route path='makerequest' element={<AssessmentRequestCustomer />} />
+          <Route path='success' element={<SuccessPage />} /> */}
         </Route>
 
         <Route path='/login' element={<Login />} />
