@@ -40,26 +40,25 @@
 .read-the-docs {
   color: #888;
 } */
-body{
+html, body {
   width: 100%;
   height: 100%;
-  margin: 0 0;
-  padding: 0 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.staffLayout{
-  width: 100%;
-  height: 100%;
-}
-
-.staffbody{
+.staffLayout, .staffbody {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column; 
 }
-.sidebar{
-  width: 15%;
+
+.sidebar {
+  flex: 0 0 15%; 
 }
-.outlet{
-  width: 85%;
+
+.outlet {
+  flex: 1; 
 }
