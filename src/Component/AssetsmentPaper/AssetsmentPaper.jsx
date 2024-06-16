@@ -1,15 +1,34 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../AssetsmentPaper/AssetsmentPaper.css";
 
-// Placeholder image paths (replace these with the actual paths or import statements)
-const proportionImg = "/mnt/data/image.png";
-const clarityImg = "/mnt/data/image.png";
-const gradingScaleImg = "/mnt/data/image.png";
-const qrCodeImg = "/mnt/data/image.png";
-
 const AssessmentPaper = () => {
+  const [uploadedProportionImage, setUploadedProportionImage] = useState(null);
+  const [uploadedClarityImage, setUploadedClarityImage] = useState(null);
+
+  const handleProportionImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUploadedProportionImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleClarityImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUploadedClarityImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <Container className="mt-5 report-container">
       <div className="text-center mb-4">
@@ -49,21 +68,45 @@ const AssessmentPaper = () => {
           <Row className="mb-4">
             <Col>
               <h3 className="section-title">PROPORTION</h3>
-              <img
-                src={proportionImg}
-                alt="Proportion Diagram"
-                className="img-fluid"
-              />
+              <Form.Group className="mt-3">
+                <Form.Control
+                  type="file"
+                  label="Upload Image"
+                  accept="image/*"
+                  onChange={handleProportionImageUpload}
+                />
+              </Form.Group>
+              {uploadedProportionImage && (
+                <div className="image-container">
+                  <img
+                    src={uploadedProportionImage}
+                    alt="Proportion"
+                    className="uploaded-image"
+                  />
+                </div>
+              )}
             </Col>
           </Row>
           <Row className="mb-4">
             <Col>
               <h3 className="section-title">CLARITY CHARACTERISTICS</h3>
-              <img
-                src={clarityImg}
-                alt="Clarity Characteristics Diagram"
-                className="img-fluid"
-              />
+              <Form.Group className="mt-3">
+                <Form.Control
+                  type="file"
+                  label="Upload Image"
+                  accept="image/*"
+                  onChange={handleClarityImageUpload}
+                />
+              </Form.Group>
+              {uploadedClarityImage && (
+                <div className="image-container">
+                  <img
+                    src={uploadedClarityImage}
+                    alt="Clarity"
+                    className="uploaded-image"
+                  />
+                </div>
+              )}
             </Col>
           </Row>
         </Col>
@@ -72,7 +115,7 @@ const AssessmentPaper = () => {
             <Col>
               <h3 className="section-title">GRADING SCALE</h3>
               <img
-                src={gradingScaleImg}
+                src={"./src/assets/All-Scales.jpg"}
                 alt="Grading Scale"
                 className="img-fluid"
               />
@@ -80,10 +123,6 @@ const AssessmentPaper = () => {
           </Row>
         </Col>
       </Row>
-      <div className="description-section">
-        <h3>Description</h3>
-        <img src={qrCodeImg} alt="QR" className="img-fluid" />
-      </div>
     </Container>
   );
 };

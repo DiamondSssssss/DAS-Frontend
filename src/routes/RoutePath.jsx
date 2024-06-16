@@ -46,7 +46,7 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
           <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
           <Route path="consultingbooking" element={<ConsultingBooking />} />
-          <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
+          
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
@@ -63,6 +63,7 @@ const RoutePath = () => {
 
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<ErrorPage />} />
+        <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
       </Routes>
     </BrowserRouter>
   )
