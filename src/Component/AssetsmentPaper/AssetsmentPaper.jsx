@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "../AssetsmentPaper/AssetsmentPaper.css";
 
 // Placeholder image paths (replace these with the actual paths or import statements)
 const proportionImg = "/mnt/data/image.png";
