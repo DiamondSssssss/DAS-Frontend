@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 function AssessmentBooking() {
   const navigate = useNavigate();
 
+  const [assessmentPapers, setAssessmentPapers] = useState([]);
+
   // const [assessmentPapers] = useState([
   //   { diamondId: 1, accountId: 'user1', dateCreated: '2023-06-15', sampleId: 'sample1' },
   //   { diamondId: 2, accountId: 'user2', dateCreated: '2023-06-14', sampleId: 'sample2' },

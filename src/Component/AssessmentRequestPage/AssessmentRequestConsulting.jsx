@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 function AssessmentRequestConsulting() {
   const navigate = useNavigate();
 
+  const [requests, setRequests] = useState([]);
+
   const getStatusClass = (status) => {
     switch (status) {
       case 1:
