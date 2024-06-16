@@ -23,6 +23,7 @@ function SideBarAs() {
         activeClassName="bg-gray-200"
       >
         <span className="mr-1 text-lg">📋</span> Đơn Giám Định
+      <NavLink to="/assessmentstaff/assessmentpapers">Giấy Giám Định</NavLink>
       </NavLink>
     </div>
   );

@@ -23,6 +23,7 @@ function SideBarCs() {
         activeClassName="bg-gray-200"
       >
         <span className="mr-2">📋</span> Đơn Giám Định
+      <NavLink to="/consultingstaff/assetsmentpaper">Giấy Giám Định</NavLink>
       </NavLink>
     </div>
   );

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AssessmentStaffLayout from '../layout/AssessmentStaffLayout'
@@ -23,7 +24,8 @@ import AssessmentBookingDiamondInput from '../Component/AssessmentBookingDiamond
 import { useCookies } from 'react-cookie'
 import AssessmentPaperDetail from '../Component/AssessmentPaperDetail/AssessmentPaperDetail'
 import InfoPage from '../Component/CompanyInformation/CompanyInformation'
-
+import AssetsmentPaper from "../Component/AssetsmentPaper/AssetsmentPaper";
+import ConsultingBooking from "../Component/ConsultingBooking/ConsultingBooking";
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
@@ -43,7 +45,8 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
           <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} />
           <Route path='assessmentrequest/:id/createbooking/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
-          <Route path='assessmentpaper' element={<AssessmentPaper />} />
+          <Route path="consultingbooking" element={<ConsultingBooking />} />
+          <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
