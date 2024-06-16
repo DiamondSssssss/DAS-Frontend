@@ -90,7 +90,7 @@ function AssetsmentList() {
                     <div className="row">
                       <h3>Tóm Tắt Đơn Hàng</h3>
                       <br/>
-                      <table className="table table-striped table-hover table-sm">
+                      <table className="table table-striped table-hover ">
                         <thead>
                           <tr className="">
                             <th>
@@ -105,13 +105,10 @@ function AssetsmentList() {
                             <th className="text-right">
                               <strong>Giá</strong>
                             </th>
-                            <th className="text-right">
-                              <strong>Tổng</strong>
-                            </th>
                           </tr>
                         </thead>
                         <tbody>
-                          {/* {diamonds.map((diamond, index) => (
+                          {diamonds.map((diamond, index) => (
                             <tr key={index}>
                               <td>{index + 1}</td>
                               <td>
@@ -119,32 +116,11 @@ function AssetsmentList() {
                               </td>
                               <td className="text-center">1</td>
                               <td className="text-right">${diamond.price}</td>
-                              <td className="text-right">${diamond.price}</td>
                             </tr>
-                          ))} */}
+                          ))}
+                          
                           <tr>
-                            <td>Index 1</td>
-                            <td>Mẫu 1</td>
-                            <td className="text-center">1</td>
-                            <td className="text-right">$8000</td>
-                            <td className="text-right">$800000</td>
-                          </tr>
-                          <tr>
-                            <td colSpan="3" />
-                            <td className="text-right">
-                              <strong>Thuế (10%)</strong>
-                            </td>
-                            <td className="text-right">$23</td>
-                          </tr>
-                          <tr>
-                            <td colSpan="3" />
-                            <td className="text-right">
-                              <strong>Giảm giá</strong>
-                            </td>
-                            <td className="text-right">-$10</td>
-                          </tr>
-                          <tr>
-                            <td colSpan="3" />
+                            <td colSpan="2" />
                             <td className="text-right">
                               <strong>Thành tiền</strong>
                             </td>

@@ -52,9 +52,8 @@ const RoutePath = () => {
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
           <Route path='assessmentrequest/:id/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
-          
         </Route>
-        <Route path="summary" element={<AssetsmentList />} />
+        
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
