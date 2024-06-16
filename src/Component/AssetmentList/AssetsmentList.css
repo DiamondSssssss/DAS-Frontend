@@ -1,9 +1,3 @@
-/* .container-assetsmentlist{
-    margin-left: 200px;
-} */
-/* .container-assetsmentlist button{
-	margin-left: 1045px;
-} */
 .container {
     width: 100%;
     margin: 20px auto;
@@ -11,7 +5,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .invoice-title {
@@ -19,7 +13,7 @@
 }
 
 .invoice-title img {
-	width: 100px;
+    width: 100px;
 }
 
 .invoice-title h2 {
@@ -35,25 +29,24 @@
     width: 100%;
     margin-bottom: 20px;
     border-collapse: collapse;
-	color: #ffffff;
     margin-left: 0;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 8px;
-    border: 1px solid #ddd;
     text-align: left;
-	color: #ffffff;
+    color: #ffffff;
+    background-color: rgba(0, 57, 87, 1);
 }
 
 .table th {
-    background-color: #f9f9f9;
-	color: #ffffff;
+    background-color: rgba(0, 57, 87, 1);
+    color: #ffffff;
 }
 
 .table .line td {
-    border-top: 2px solid #ddd;
-	color: #ffffff;
+    color: rgba(0, 57, 87, 1);
 }
 
 .text-right {
