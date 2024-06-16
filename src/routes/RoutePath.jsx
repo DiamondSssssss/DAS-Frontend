@@ -26,6 +26,7 @@ import AssessmentPaperDetail from '../Component/AssessmentPaperDetail/Assessment
 import InfoPage from '../Component/CompanyInformation/CompanyInformation'
 import AssetsmentPaper from "../Component/AssetsmentPaper/AssetsmentPaper";
 import ConsultingBooking from "../Component/ConsultingBooking/ConsultingBooking";
+import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
@@ -45,7 +46,7 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id' element={<AssessmentRequestDetail />} />
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
           <Route path='assessmentrequest/:id/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
-          <Route path="consultingbooking" element={<ConsultingBooking />} />
+          <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
           
         </Route>
 
