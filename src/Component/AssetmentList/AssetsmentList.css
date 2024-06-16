@@ -35,7 +35,7 @@
 .table th,
 .table td {
     padding: 8px;
-    text-align: left;
+    text-align: center;
     color: #ffffff;
     background-color: rgba(0, 57, 87, 1);
 }
