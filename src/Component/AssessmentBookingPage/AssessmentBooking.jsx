@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./AssessmentBooking.css";
+import { getSampleStatusMeaning } from "../../utils/getStatusMeaning";
 
 function AssessmentBooking() {
   const navigate = useNavigate();
-  const [bookings, setBookings] = useState([]);
+  const [samples, setSamples] = useState([]);
+
 
   useEffect(() => {
     // Fetch data from the backend API
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/assessmentbookings");
-        setBookings(response.data);
+        const response = await axios.get("http://localhost:8080/api/booking-samples");
+        setSamples(response.data);
       } catch (error) {
-        console.error("Error fetching the bookings:", error);
+        console.error("Error fetching the samples:", error);
       }
     };
 
@@ -54,25 +56,23 @@ function AssessmentBooking() {
           <thead className="bg-gray-800 text-white">
             <tr>
               <th className="py-4 px-4 text-left align-middle">Mã đơn hàng</th>
-              <th className="py-4 px-4 text-left align-middle">Dịch vụ</th>
-              <th className="py-4 px-4 text-left align-middle">Số Lượng Kim Cương</th>
-              <th className="py-4 px-4 text-left align-middle">Ngày tạo</th>
+              <th className="py-4 px-4 text-left align-middle">Tên mẫu</th>
+              <th className="py-4 px-4 text-left align-middle">Kích cỡ</th>
               <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
               <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
-            {bookings.map((booking) => (
-              <tr key={booking.bookingId}>
-                <td className="py-4 px-4 align-middle">{`#${booking.bookingId}`}</td>
-                <td className="py-4 px-4 align-middle">{`Giám định kim cương`}</td>
-                <td className="py-4 px-4 align-middle">{booking.quantity}</td>
-                <td className="py-4 px-4 align-middle">{booking.dateCreated}</td>
-                <td className={`py-4 px-4 align-middle ${getStatusClass(booking.status)}`}>{booking.status}</td>
+            {samples.map((sample) => (
+              <tr key={sample.sampleId}>
+                <td className="py-4 px-4 align-middle">{`#${sample.bookingId}`}</td>
+                <td className="py-4 px-4 align-middle">{`${sample.name}`}</td>
+                <td className="py-4 px-4 align-middle">{sample.size}</td>
+                <td className={`py-4 px-4 align-middle`}>{getSampleStatusMeaning(sample.status)}</td>
                 <td className="py-4 px-4 align-middle">
                   <div className="flex items-center justify-center">
                     <button
-                      onClick={() => navigate(`/assessmentstaff/assessmentbooking/${booking.bookingId}`)}
+                      onClick={() => navigate(`/assessmentstaff/assessmentbooking/${sample.sampleId}/selection`)}
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
                       Xem chi tiết

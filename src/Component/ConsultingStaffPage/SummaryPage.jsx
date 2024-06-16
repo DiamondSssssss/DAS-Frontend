@@ -4,7 +4,7 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import axios from "axios";
 import jsPDF from "jspdf";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../AssetsmentPaper/AssetsmentPaper.css";
+import "../AssetsmentPaper/AssetsmentPaper.css"; // Ensure correct path to assetmentPaper.css
 import { handleSession } from "../../utils/sessionUtils";
 
 const SummaryPage = () => {
@@ -205,7 +205,7 @@ const SummaryPage = () => {
                         <Col>
                             <h3 className="section-title">GRADING SCALE</h3>
                             <img
-                                src={"./src/assets/All-Scales.jpg"}
+                                src={"./src/assets/All-Scales.jpg"} // Make sure this path is correct
                                 alt="Grading Scale"
                                 className="img-fluid"
                             />

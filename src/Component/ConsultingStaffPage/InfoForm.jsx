@@ -5,6 +5,7 @@ import { Form, InputNumber, Button, Typography, Select } from "antd";
 const { Title } = Typography;
 const { Option } = Select;
 
+
 function InfoForm() {
   const [carat, setCarat] = useState(0);
   const [colorGrade, setColorGrade] = useState("");
@@ -30,7 +31,7 @@ function InfoForm() {
     };
 
     navigate(
-      `/assessmentstaff/assessmentbooking/${id}/${sampleId}/selection/info/cut`,
+      `/assessmentstaff/assessmentbooking/${sampleId}/selection/info/summary`,
       { state: reportData }
     );
   };

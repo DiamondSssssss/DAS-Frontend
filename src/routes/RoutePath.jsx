@@ -53,15 +53,15 @@ const RoutePath = () => {
           <Route path='assessmentrequest/:id/inputdiamonds' element={<AssessmentBookingDiamondInput />} />
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
         </Route>
-        
+
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path='assessmentbooking' element={<AssessmentBooking />} />
-          <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} />
-          <Route path='assessmentbooking/:id/:sampleId/selection' element={<SelectionForm />} />
-          <Route path="assessmentbooking/:id/:sampleId/selection/info" element={<InfoForm/>} />
-          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut" element={<CutForm/>} />
-          <Route path="assessmentbooking/:id/:sampleId/selection/info/cut/summary" element={<SummaryPage/>} />
+          {/* <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} /> */}
+          <Route path='assessmentbooking/:id/selection' element={<SelectionForm />} />
+          <Route path="assessmentbooking/:id/selection/info" element={<InfoForm/>} />
+          {/* <Route path="assessmentbooking/:id/selection/info/cut" element={<CutForm/>} /> */}
+          <Route path="assessmentbooking/:id/selection/info/summary" element={<SummaryPage/>} />
           <Route path='assessmentpaperlist' element={<AssessmentPaperList />} />
           <Route path='assessmentpaperlist/:id' element={<AssessmentPaperDetail/>} />
         </Route>

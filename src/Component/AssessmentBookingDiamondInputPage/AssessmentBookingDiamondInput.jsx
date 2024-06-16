@@ -7,11 +7,12 @@ import axios from 'axios';
 const AssessmentBookingDiamondInput = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { bookingData, numberOfSamples, id } = location.state || {}; // Ensure id is retrieved here
+  const { bookingData, serviceData, numberOfSamples, id } = location.state || {}; 
   const [form] = Form.useForm();
 
   const [diamondPrices, setDiamondPrices] = useState([]);
-  const [service, setService] = useState({});
+  const [service, setService] = useState(serviceData);
+  const [samples, setSamples] = useState([]);
 
   useEffect(() => {
     const fetchDiamondPrices = async () => {
@@ -23,20 +24,8 @@ const AssessmentBookingDiamondInput = () => {
       }
     };
 
-    const fetchServicePrice = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/api/services/${bookingData.serviceId}`);
-        setService(response.data);
-      } catch (error) {
-        console.error("Error fetching the service prices:", error);
-      }
-    };
-
-    if (bookingData?.serviceId) {
-      fetchServicePrice();
-    }
     fetchDiamondPrices();
-  }, [bookingData?.serviceId]);
+  }, []);
 
   const calculatePrice = (size) => {
     const { servicePrice } = service;
@@ -51,21 +40,22 @@ const AssessmentBookingDiamondInput = () => {
     return 'N/A';
   };
 
-  const handleSubmit = async (values) => {
-    const samples = [];
+  const handleFormChange = (changedValues, allValues) => {
+    const updatedSamples = [];
     for (let i = 0; i < numberOfSamples; i++) {
-      const samplePrice = Math.round(parseFloat(values[`diamond${i + 1}Price`] || 0)); // Ensure price is a number
-      samples.push({
+      const sampleSize = parseFloat(allValues[`diamond${i + 1}Size`] || 0);
+      const price = calculatePrice(sampleSize);
+      const priceId = parseInt(allValues[`diamond${i + 1}ServicePriceId`] || 0);
+      updatedSamples.push({
         name: `Mẫu ${i + 1}`,
-        size: parseFloat(values[`diamond${i + 1}Size`] || 0), // Ensure size is a number
-        price: samplePrice,
+        size: sampleSize,
+        price: price,
         isDiamond: 1,
         status: 1,
+        servicePriceId: priceId,
       });
     }
-
-    // Navigate to assetsmentList page with diamonds data
-    navigate(`/consultingstaff/assessmentrequest/${id}/inputdiamonds/summary`, { state: { diamonds: samples } });
+    setSamples(updatedSamples);
   };
 
   const renderDiamondFields = () => {
@@ -90,24 +80,37 @@ const AssessmentBookingDiamondInput = () => {
           <Form.Item label="Số tiền ước tính" name={`diamond${i + 1}Price`}>
             <Input disabled />
           </Form.Item>
+          <Form.Item label="ID Giá Dịch Vụ" name={`diamond${i + 1}ServicePriceId`} hidden>
+            <Input /> {/* Input field for servicePriceId */}
+          </Form.Item>
         </div>
       );
     }
     return diamondFields;
   };
 
+  const handleNextClick = () => {
+    navigate('/consultingstaff/assessmentrequest/' + id + '/inputdiamonds/summary', {
+      state: {
+        diamonds: samples,
+        bookingData,
+        serviceData
+      }
+    });
+  };
+
   return (
     <div className="assessment-booking-diamond-input">
       <Form
         form={form}
-        onFinish={handleSubmit}
+        onValuesChange={handleFormChange}
         layout="vertical"
         style={{ maxWidth: 600, margin: '0 auto' }}
       >
         {renderDiamondFields()}
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button type="primary" onClick={handleNextClick}>
+            Next
           </Button>
         </Form.Item>
       </Form>

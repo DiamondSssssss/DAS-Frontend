@@ -151,8 +151,8 @@ function AssessmentRequest() {
             }`}
           >
             <option value="" label="Chọn Hình Thức Thanh Toán" />
-            <option value="1" label="Tiền Mặt" />
-            <option value="2" label="Chuyển Khoản" />
+            <option value={1} label="Tiền Mặt" />
+            <option value={2} label="Chuyển Khoản" />
           </select>
           {formik.touched.paymentType && formik.errors.paymentType ? (
             <div className="text-red-500 text-xs italic mt-2">
