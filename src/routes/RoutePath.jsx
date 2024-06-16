@@ -23,6 +23,7 @@ import AssessmentBookingDiamondInput from "../Component/AssessmentBookingDiamond
 import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation";
 import CompanyInformation from "../Component/CompanyInformation/CompanyInformation";
 import ConsultingBooking from "../Component/ConsultingBooking/ConsultingBooking";
+import AssetsmentPaper from "../Component/AssetsmentPaper/AssetsmentPaper";
 const RoutePath = () => {
   return (
     <BrowserRouter>
@@ -59,7 +60,8 @@ const RoutePath = () => {
             path="assessmentbooking/:id/:sampleId/selection/info/cut/summary"
             element={<SummaryPage />}
           />
-          <Route path="assessmentpaper" element={<AssessmentPaper />} />
+          <Route path="assessmentbooking" element={<AssessmentBooking />} />
+          <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
@@ -80,6 +82,7 @@ const RoutePath = () => {
             element={<AssessmentBookingDiamondInput />}
           />
           <Route path="consultingbooking" element={<ConsultingBooking />} />
+          <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

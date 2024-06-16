@@ -10,6 +10,7 @@ function SideBarCs() {
       <NavLink to="/consultingstaff/consultingbooking">
         Danh Sách Đơn Giám Định
       </NavLink>
+      <NavLink to="/consultingstaff/assetsmentpaper">Giấy Giám Định</NavLink>
     </div>
   );
 }
