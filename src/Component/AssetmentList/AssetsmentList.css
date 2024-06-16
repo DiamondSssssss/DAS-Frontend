@@ -1,12 +1,11 @@
-.container-assetsmentlist{
+/* .container-assetsmentlist{
     margin-left: 200px;
-}
-.container-assetsmentlist button{
+} */
+/* .container-assetsmentlist button{
 	margin-left: 1045px;
-}
+} */
 .container {
     width: 100%;
-    max-width: 900px;
     margin: 20px auto;
     background-color: rgba(0, 57, 87, 1);
     padding: 20px;
@@ -37,6 +36,7 @@
     margin-bottom: 20px;
     border-collapse: collapse;
 	color: #ffffff;
+    margin-left: 0;
 }
 
 .table th, .table td {

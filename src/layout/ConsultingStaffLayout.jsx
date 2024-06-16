@@ -8,7 +8,7 @@ const ConsultingStaffLayout = () => {
     <div className="flex flex-col min-h-screen w-full">
       <HeaderCs />
       <div className="flex flex-grow w-full">
-        <div className="w-50 text-white min-h-full">
+        <div className=" text-white min-h-full">
           <SideBarCs />
         </div>
         <div className="flex-grow bg-gray-100 p-4 overflow-auto">

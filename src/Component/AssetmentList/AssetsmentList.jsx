@@ -86,27 +86,28 @@ function AssetsmentList() {
                       </address>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-12">
+                  <div className="container">
+                    <div className="row">
                       <h3>Tóm Tắt Đơn Hàng</h3>
-                      <table className="table table-striped">
+                      <br/>
+                      <table className="table table-striped table-hover table-sm">
                         <thead>
-                          <tr className="line">
-                            <td>
+                          <tr className="">
+                            <th>
                               <strong>#</strong>
-                            </td>
-                            <td className="text-center">
+                            </th>
+                            <th className="text-center">
                               <strong>Dịch vụ</strong>
-                            </td>
-                            <td className="text-center">
+                            </th>
+                            <th className="text-center">
                               <strong>Số lượng</strong>
-                            </td>
-                            <td className="text-right">
+                            </th>
+                            <th className="text-right">
                               <strong>Giá</strong>
-                            </td>
-                            <td className="text-right">
+                            </th>
+                            <th className="text-right">
                               <strong>Tổng</strong>
-                            </td>
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
