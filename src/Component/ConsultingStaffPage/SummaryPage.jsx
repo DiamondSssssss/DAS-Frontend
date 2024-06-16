@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import axios from "axios";
-import jsPDF from "jspdf";
+import htmlToImage from 'html-to-image';
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../AssetsmentPaper/AssetsmentPaper.css"; // Ensure correct path to assetmentPaper.css
+import "../AssetsmentPaper/AssetsmentPaper.css";
 import { handleSession } from "../../utils/sessionUtils";
 
 const SummaryPage = () => {
@@ -76,37 +76,20 @@ const SummaryPage = () => {
         }
     };
 
-    const downloadPdf = () => {
-        const doc = new jsPDF();
-        if (assessmentData) {
-            const {
-                loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
-                depthPercentage, tablePercentage, crownAngle, pavilionAngle, culetSize,
-                girdleThickness, crownHeight, totalDepth, pavilionDepth, symmetry
-            } = assessmentData;
-
-            doc.text("Tổng Hợp Thông Tin", 10, 10);
-            doc.text("Thông Tin Về Đá Quý:", 10, 20);
-            doc.text(`Loại: ${loai}`, 10, 30);
-            doc.text(`Trạng Thái: ${trangThai}`, 10, 40);
-            doc.text(`Xuất Xứ: ${xuatXu}`, 10, 50);
-            doc.text("Thông Tin Về Mặt Cắt:", 10, 60);
-            doc.text(`Trọng Lượng Carat: ${carat}`, 10, 70);
-            doc.text(`Lớp Màu: ${colorGrade}`, 10, 80);
-            doc.text(`Lớp Rõ Ràng: ${clarityGrade}`, 10, 90);
-            doc.text(`Cắt Lớp: ${cutGrade}`, 10, 100);
-            doc.text(`Tỷ Lệ Phần Trăm Độ Sâu: ${depthPercentage}`, 10, 110);
-            doc.text(`Tỷ Lệ Bảng: ${tablePercentage}`, 10, 120);
-            doc.text(`Góc Mặt Trên: ${crownAngle}`, 10, 130);
-            doc.text(`Góc Gian Hàng: ${pavilionAngle}`, 10, 140);
-            doc.text(`Kích Thước Culet: ${culetSize}`, 10, 150);
-            doc.text(`Độ Dày Của Đai: ${girdleThickness}`, 10, 160);
-            doc.text(`Chiều Cao Mặt Trên: ${crownHeight}`, 10, 170);
-            doc.text(`Tổng Độ Sâu: ${totalDepth}`, 10, 180);
-            doc.text(`Độ Sâu Gian Hàng: ${pavilionDepth}`, 10, 190);
-            doc.text(`Lớp Đối Xứng: ${symmetry}`, 10, 200);
-            doc.save("summary.pdf");
-        }
+    const downloadImage = () => {
+        const node = document.getElementById('report-container');
+        htmlToImage.toJpeg(node)
+            .then((dataUrl) => {
+                const link = document.createElement('a');
+                link.href = dataUrl;
+                link.download = 'DASREPORT_ASSESSMENTPAPER.jpeg';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch((error) => {
+                console.error('Error generating image:', error);
+            });
     };
 
     if (!assessmentData) {
@@ -120,7 +103,7 @@ const SummaryPage = () => {
     } = assessmentData;
 
     return (
-        <Container className="mt-5 report-container">
+        <Container id="report-container" className="mt-5 report-container">
             <div className="text-center mb-4">
                 <h1 className="report-title">DAS REPORT</h1>
                 <h2 className="report-id">{id}</h2>
@@ -205,7 +188,7 @@ const SummaryPage = () => {
                         <Col>
                             <h3 className="section-title">GRADING SCALE</h3>
                             <img
-                                src={"./src/assets/All-Scales.jpg"} // Make sure this path is correct
+                                src={"./src/assets/All-Scales.jpg"}
                                 alt="Grading Scale"
                                 className="img-fluid"
                             />
@@ -214,8 +197,8 @@ const SummaryPage = () => {
                 </Col>
             </Row>
             <div className="button-container text-center">
-                <button onClick={downloadPdf} className="download-pdf btn btn-danger">
-                    Tải về PDF
+                <button onClick={downloadImage} className="download-image btn btn-danger">
+                    Tải về Hình Ảnh
                 </button>
                 <button onClick={handleSubmit} disabled={isSubmitting} className="submit-report btn btn-primary ml-3">
                     {isSubmitting ? 'Đang Tạo Báo Cáo...' : 'Tạo Báo Cáo'}
