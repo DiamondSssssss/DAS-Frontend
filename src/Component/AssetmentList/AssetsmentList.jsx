@@ -110,7 +110,7 @@ function AssetsmentList() {
                           </tr>
                         </thead>
                         <tbody>
-                          {diamonds.map((diamond, index) => (
+                          {/* {diamonds.map((diamond, index) => (
                             <tr key={index}>
                               <td>{index + 1}</td>
                               <td>
@@ -120,7 +120,14 @@ function AssetsmentList() {
                               <td className="text-right">${diamond.price}</td>
                               <td className="text-right">${diamond.price}</td>
                             </tr>
-                          ))}
+                          ))} */}
+                          <tr>
+                            <td>Index 1</td>
+                            <td>Mẫu 1</td>
+                            <td className="text-center">1</td>
+                            <td className="text-right">$8000</td>
+                            <td className="text-right">$800000</td>
+                          </tr>
                           <tr>
                             <td colSpan="3" />
                             <td className="text-right">
