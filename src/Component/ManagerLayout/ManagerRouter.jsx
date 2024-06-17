@@ -1,28 +1,51 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import ManagePricingTimelines from "./pages/ManagePricingTimelines";
-import SealingRecords from "./pages/SealingRecords";
-import CommitmentPaper from "./pages/CommitmentPaper";
-import Dashboard from "./pages/Dashboard";
-import NavbarManager from "./NavBarManager";
+import { Link } from "react-router-dom";
 
-const App = () => {
+const Navbar = () => {
   return (
-    <div>
-      <NavbarManager />
-      <div className="container mt-4">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route
-            path="/manage-pricing-timelines"
-            element={<ManagePricingTimelines />}
-          />
-          <Route path="/sealing-records" element={<SealingRecords />} />
-          <Route path="/commitment-paper" element={<CommitmentPaper />} />
-        </Routes>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          Manager Portal
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/manager/manage-pricing-timelines">
+                Manage Pricing & Timelines
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/manager/sealing-records">
+                Sealing Records
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/manager/commitment-paper">
+                Commitment Paper
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
-export default App;
+export default Navbar;

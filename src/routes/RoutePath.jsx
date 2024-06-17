@@ -27,11 +27,11 @@ import InfoPage from '../Component/CompanyInformation/CompanyInformation'
 import AssetsmentPaper from "../Component/AssetsmentPaper/AssetsmentPaper";
 import ConsultingBooking from "../Component/ConsultingBooking/ConsultingBooking";
 import ManagerLayout from "../Component/ManagerLayout/ManagerLayout.jsx";
-// import ManagePricingTimelines from "../ManagerLayout/ManagePricingTimelines";
-// import SealingRecords from "../ManagerLayout/SealingRecords";
-// import CommitmentPaper from "../ManagerLayout/CommitmentPaper";
+import SealingRecords from '../Component/ManagerLayout/SealingRecords.jsx'
+import CommitmentPaper from '../Component/ManagerLayout/CommitmentPaper.jsx'
 import Dashboard from "../Component/ManagerLayout/Dashboard";
 import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
+import ManageOrderTimelines from '../Component/ManagerLayout/ManagePricingTimelines.jsx'
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
@@ -67,10 +67,9 @@ const RoutePath = () => {
         </Route>
         <Route path='/manager' element={<ManagerLayout />} >
           <Route index element={<Dashboard />} />
-          {/* <Route path='manager' element={<ManagerLayout />} />
-          <Route path='about' element={<InfoPage/>} />
-          <Route path='makerequest' element={<AssessmentRequestCustomer />} />
-          <Route path='success' element={<SuccessPage />} /> */}
+          <Route path="/manager/manage-pricing-timelines" element={<ManageOrderTimelines />}/>
+          <Route path="/manager/sealing-records" element={<SealingRecords />} />
+          <Route path="/manager/commitment-paper" element={<CommitmentPaper />} />
         </Route>
 
         <Route path='/login' element={<Login />} />
