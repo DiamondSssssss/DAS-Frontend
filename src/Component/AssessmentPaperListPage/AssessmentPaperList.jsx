@@ -16,7 +16,7 @@ function AssessmentPaperList() {
 
   // Uncomment and modify the following useEffect if you want to fetch data from the backend API
   useEffect(() => {
-    axios.get("http://localhost:8080/api/assessmentpapers")
+    axios.get("http://localhost:8080/api/assessment-papers")
       .then(response => {
         setAssessmentPapers(response.data);
       })
@@ -33,7 +33,7 @@ function AssessmentPaperList() {
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
             <thead className="bg-blue-600 text-white">
               <tr>
-                <th className="py-4 px-4 text-left align-middle">Mã giám định</th>
+                <th className="py-4 px-4 text-left align-middle">Mã giấy giám định</th>
                 <th className="py-4 px-4 text-left align-middle">Người Tạo</th>
                 <th className="py-4 px-4 text-left align-middle">Ngày tạo</th>
                 <th className="py-4 px-4 text-left align-middle">Thuộc mẫu</th>
@@ -45,12 +45,12 @@ function AssessmentPaperList() {
                 <tr key={paper.diamondId} className="hover:bg-gray-100">
                   <td className="py-4 px-4 align-middle">{paper.diamondId}</td>
                   <td className="py-4 px-4 align-middle">{paper.accountId}</td>
-                  <td className="py-4 px-4 align-middle">{new Date(paper.dateCreated).toLocaleDateString()}</td>
+                  <td className="py-4 px-4 align-middle">{paper.dateCreated}</td>
                   <td className="py-4 px-4 align-middle">{paper.sampleId}</td>
                   <td className="py-4 px-4 align-middle">
                     <div className="flex items-center justify-center">
                       <button
-                        onClick={() => navigate(`/assessmentstaff/assessmentpaper/${paper.diamondId}`)}
+                        onClick={() => navigate(`/assessmentstaff/assessmentpaperlist/${paper.diamondId}`)}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       >
                         Xem chi tiết
