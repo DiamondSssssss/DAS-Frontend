@@ -11,7 +11,7 @@ import HomePage from '../Component/HomePage/HomePage'
 import Login from '../Component/Login/Login'
 import InfoForm from '../Component/ConsultingStaffPage/InfoForm'
 import CutForm from '../Component/ConsultingStaffPage/CutForm'
-import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
+// import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
 import ErrorPage from '../Component/ErrorPage/ErrorPage'
 import SelectionForm from '../Component/ConsultingStaffPage/SelectionForm'
 import AssessmentRequestCustomer from '../Component/AssessmentRequestCustomer/AssessmentRequestCustomer'
@@ -61,7 +61,7 @@ const RoutePath = () => {
           <Route path='assessmentbooking/:id/selection' element={<SelectionForm />} />
           <Route path="assessmentbooking/:id/selection/info" element={<InfoForm/>} />
           {/* <Route path="assessmentbooking/:id/selection/info/cut" element={<CutForm/>} /> */}
-          <Route path="assessmentbooking/:id/selection/info/summary" element={<SummaryPage/>} />
+          <Route path="assessmentbooking/:id/selection/info/summary" element={<AssetsmentPaper/>} />
           <Route path='assessmentpaperlist' element={<AssessmentPaperList />} />
           <Route path='assessmentpaperlist/:id' element={<AssessmentPaperDetail/>} />
         </Route>
