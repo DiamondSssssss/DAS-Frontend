@@ -36,35 +36,35 @@ function SelectionForm() {
           Thuộc Tính
         </Title>
       </div>
-      <Form.Item label="Loại :" className="mb-4">
+      <Form.Item label="Type :" className="mb-4">
         <Radio.Group onChange={handleLoaiChange} value={loai}>
-          <Radio value="Kim Cương">Kim Cương</Radio>
-          <Radio value="Đá Giả Kim Cương">Đá Giả Kim Cương</Radio>
+          <Radio value="Kim Cương">Diamond</Radio>
+          <Radio value="Đá Giả Kim Cương">Diamond-Like</Radio>
         </Radio.Group>
       </Form.Item>
-      <Form.Item label="Trạng Thái :" className="mb-4">
+      <Form.Item label="Status :" className="mb-4">
         <Radio.Group
           onChange={(e) => setTrangThai(e.target.value)}
           value={trangThai}
           disabled={loai === 'Đá Giả Kim Cương'}
         >
-          <Radio value="Đã Xử Lý">Đã Xử Lý</Radio>
-          <Radio value="Chưa Xử Lý">Chưa Xử Lý</Radio>
+          <Radio value="Đã Xử Lý">Processed</Radio>
+          <Radio value="Chưa Xử Lý">Not Processed</Radio>
         </Radio.Group>
       </Form.Item>
-      <Form.Item label="Xuất Xứ :" className="mb-4">
+      <Form.Item label="Origin :" className="mb-4">
         <Radio.Group
           onChange={(e) => setXuatXu(e.target.value)}
           value={xuatXu}
           disabled={loai === 'Đá Giả Kim Cương'}
         >
-          <Radio value="Tự Nhiên">Tự Nhiên</Radio>
-          <Radio value="Nhân Tạo">Nhân Tạo</Radio>
+          <Radio value="Tự Nhiên">Natural</Radio>
+          <Radio value="Nhân Tạo">Non-Natural</Radio>
         </Radio.Group>
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit">
-          Tiếp theo
+          Continue
         </Button>
       </Form.Item>
     </Form>

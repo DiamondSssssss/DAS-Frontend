@@ -58,10 +58,10 @@ function CutForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col p-10 bg-white shadow-lg rounded-lg w-full max-w-2xl mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-8 text-center">Điền Thông Tin Mặt Cắt</h1>
+      <h1 className="text-2xl font-bold mb-8 text-center">Cut Form</h1>
       <div className="grid grid-cols-1 gap-6">
         <div>
-          <label className="block text-lg font-medium mb-2">Tỷ Lệ Phần Trăm Độ Sâu:</label>
+          <label className="block text-lg font-medium mb-2">Depth Percentage:</label>
           <input
             type="number"
             value={depthPercentage}
@@ -71,7 +71,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Tỷ Lệ Bàn:</label>
+          <label className="block text-lg font-medium mb-2">Table Percentage:</label>
           <input
             type="number"
             value={tablePercentage}
@@ -81,7 +81,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Góc Vương Miện:</label>
+          <label className="block text-lg font-medium mb-2">Crown Angle:</label>
           <input
             type="number"
             value={crownAngle}
@@ -91,7 +91,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Góc Mái:</label>
+          <label className="block text-lg font-medium mb-2">Pavilion Angle:</label>
           <input
             type="number"
             value={pavilionAngle}
@@ -101,7 +101,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Kích Thước Culet:</label>
+          <label className="block text-lg font-medium mb-2">Culet Size:</label>
           <input
             type="number"
             value={culetSize}
@@ -111,7 +111,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Độ Dày Girdle:</label>
+          <label className="block text-lg font-medium mb-2">Girdle Thickness</label>
           <input
             type="number"
             value={girdleThickness}
@@ -121,7 +121,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Chiều Cao Vương Miện:</label>
+          <label className="block text-lg font-medium mb-2">Crown Height:</label>
           <input
             type="number"
             value={crownHeight}
@@ -131,7 +131,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Tổng Chiều Sâu:</label>
+          <label className="block text-lg font-medium mb-2">Total Depth:</label>
           <input
             type="number"
             value={totalDepth}
@@ -141,7 +141,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Chiều Sâu Pavilion:</label>
+          <label className="block text-lg font-medium mb-2">Pavilion Depth</label>
           <input
             type="number"
             value={pavilionDepth}
@@ -151,7 +151,7 @@ function CutForm() {
           />
         </div>
         <div>
-          <label className="block text-lg font-medium mb-2">Độ Đối Xứng:</label>
+          <label className="block text-lg font-medium mb-2">Symmetry Value:</label>
           <input
             type="number"
             value={symmetry}
@@ -161,7 +161,7 @@ function CutForm() {
           />
         </div>
         <div className="col-span-1">
-          <label className="block text-lg font-medium mb-2">Hình Ảnh 1:</label>
+          <label className="block text-lg font-medium mb-2">Image 1:</label>
           <input
             type="file"
             onChange={(e) => setImage1(e.target.files[0])}
@@ -170,7 +170,7 @@ function CutForm() {
           />
         </div>
         <div className="col-span-1">
-          <label className="block text-lg font-medium mb-2">Hình Ảnh 2:</label>
+          <label className="block text-lg font-medium mb-2">Image 2:</label>
           <input
             type="file"
             onChange={(e) => setImage2(e.target.files[0])}
@@ -179,7 +179,7 @@ function CutForm() {
           />
         </div>
         <div className="col-span-1">
-          <label className="block text-lg font-medium mb-2">Hình Ảnh 3:</label>
+          <label className="block text-lg font-medium mb-2">Image 3:</label>
           <input
             type="file"
             onChange={(e) => setImage3(e.target.files[0])}
@@ -189,7 +189,7 @@ function CutForm() {
         </div>
       </div>
       <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-md mt-6 self-center text-lg">
-        Tiếp theo
+        Continue
       </button>
     </form>
   );

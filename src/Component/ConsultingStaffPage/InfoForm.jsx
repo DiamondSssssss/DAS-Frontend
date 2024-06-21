@@ -36,15 +36,15 @@ function InfoForm() {
   };
 
   return (
-    <Form 
-      onFinish={handleSubmit} 
+    <Form
+      onFinish={handleSubmit}
       className="flex flex-col p-10 bg-white shadow-lg rounded-lg w-full max-w-2xl mx-auto mt-10"
     >
       <div className="text-center mb-6">
-        <Title level={2} className="text-gray-700">Điền Thông Tin</Title>
+        <Title level={2} className="text-gray-700">Fill Information</Title>
       </div>
       <Form.Item
-        label="Trọng Lượng Carat"
+        label="Carat Weight"
         name="carat"
         rules={[
           { required: true, message: "Vui lòng điền trọng lượng carat!" },
@@ -61,7 +61,7 @@ function InfoForm() {
       </Form.Item>
 
       <Form.Item
-        label="Kích cỡ"
+        label="Size"
         name="size"
         rules={[
           { required: true, message: "Vui lòng điền kích cỡ kim cương!" },
@@ -78,7 +78,7 @@ function InfoForm() {
       </Form.Item>
 
       <Form.Item
-        label="Lớp Màu"
+        label="Color Grade"
         name="colorGrade"
         rules={[{ required: true, message: "Vui lòng điền lớp màu!" }]}
         className="text-xl"
@@ -98,9 +98,9 @@ function InfoForm() {
           ))}
         </Select>
       </Form.Item>
-      
+
       <Form.Item
-        label="Lớp Rõ Ràng"
+        label="Clarity Grade"
         name="clarityGrade"
         rules={[{ required: true, message: "Vui lòng điền lớp rõ ràng!" }]}
         className="text-xl"
@@ -120,9 +120,9 @@ function InfoForm() {
           ))}
         </Select>
       </Form.Item>
-      
+
       <Form.Item
-        label="Cắt Lớp"
+        label="Cut Grade"
         name="cutGrade"
         rules={[{ required: true, message: "Vui lòng điền cắt lớp!" }]}
         className="text-xl"
@@ -142,7 +142,7 @@ function InfoForm() {
           ))}
         </Select>
       </Form.Item>
-      
+
       <Form.Item className="text-center">
         <Button type="primary" htmlType="submit" className="mt-4 w-full text-xl">
           Tiếp theo
