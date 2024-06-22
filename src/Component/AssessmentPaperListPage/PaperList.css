@@ -1,0 +1,15 @@
+/* Add your custom CSS styles for AssessmentList component */
+.table {
+    margin-top: 20px;
+}
+
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}

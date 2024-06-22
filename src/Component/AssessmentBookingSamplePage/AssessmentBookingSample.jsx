@@ -46,11 +46,6 @@ function AssessmentRequestConsulting() {
     }
   };
 
-  // const [requests] = useState([
-  //   { requestId: 1, serviceId: 1, numberOfSamples: 5, dateCreated: "2024-06-15", status: 1 },
-  //   { requestId: 2, serviceId: 2, numberOfSamples: 3, dateCreated: "2024-06-14", status: 2 },
-  //   { requestId: 3, serviceId: 3, numberOfSamples: 7, dateCreated: "2024-06-13", status: 3 },
-  // ]);
 
   return (
     <div className="w-full">
