@@ -1,54 +1,73 @@
 import React, { useState } from "react";
-import "../ManagerLayout/ManagePricingTimelines.css";
+import "../ManagerLayout/ManagePricingTimeline.css";
+
 const ManageOrderTimelines = () => {
-  const [orders, setOrders] = useState([
-    { id: 1, name: "Order 1", deliveryTime: "" },
-    { id: 2, name: "Order 2", deliveryTime: "" },
-    { id: 3, name: "Order 3", deliveryTime: "" },
+  const [services] = useState([
+    {
+      id: 1,
+      type: "Diamond Assessment",
+      price: "$100",
+      timeline: "3 days",
+      details:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam tincidunt justo ut imperdiet.",
+    },
+    {
+      id: 2,
+      type: "Gemstone Assessment",
+      price: "$80",
+      timeline: "2 days",
+      details:
+        "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+    },
+    {
+      id: 3,
+      type: "Jewelry Assessment",
+      price: "$120",
+      timeline: "4 days",
+      details:
+        "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.",
+    },
   ]);
 
-  const handleTimeChange = (id, time) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === id ? { ...order, deliveryTime: time } : order
-      )
-    );
-  };
-
-  const handleSave = () => {
-    // Logic to save orders and their delivery times
-    console.log("Orders:", orders);
+  const viewDetails = (id) => {
+    const service = services.find((service) => service.id === id);
+    if (service) {
+      alert(`Details for ${service.type}: ${service.details}`);
+    }
   };
 
   return (
-    <div>
-      <h1>Manage Order Timelines</h1>
+    <div className="container">
+      <h2 className="title">Manage Assessment Services</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Order Name</th>
-            <th>Delivery Time</th>
+            <th>ID</th>
+            <th>Service Type</th>
+            <th>Price</th>
+            <th>Timeline</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.name}</td>
+          {services.map((service) => (
+            <tr key={service.id}>
+              <td>{service.id}</td>
+              <td>{service.type}</td>
+              <td>{service.price}</td>
+              <td>{service.timeline}</td>
               <td>
-                <input
-                  type="datetime-local"
-                  className="form-control"
-                  value={order.deliveryTime}
-                  onChange={(e) => handleTimeChange(order.id, e.target.value)}
-                />
+                <button
+                  className="details-button"
+                  onClick={() => viewDetails(service.id)}
+                >
+                  View Details
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary" onClick={handleSave}>
-        Save
-      </button>
     </div>
   );
 };
