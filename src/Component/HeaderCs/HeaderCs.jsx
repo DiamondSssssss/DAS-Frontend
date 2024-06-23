@@ -4,7 +4,7 @@ import exitIcon from '../../assets/exit.png';
 
 function HeaderCs() {
   return (
-    <header className="bg-black shadow p-4 flex justify-between items-center">
+    <header className="bg-black shadow p-4 flex justify-between items-center w-full">
       <div className="flex items-center"> 
         <img src={logo} alt="DAS Logo" className="h-12 mr-4" /> 
         <h1 className="text-xl font-bold text-white">Consulting Staff</h1>

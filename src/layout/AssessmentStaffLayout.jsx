@@ -5,16 +5,18 @@ import SideBarAs from "../Component/SideBarAs/SideBarAs";
 function AssessmentStaffLayout() {
   return (
     <div className="flex flex-col min-h-screen w-full">
+    <header className="header">
       <HeaderAs />
-      <div className="flex flex-grow w-full">
-        <div className="w-50 text-white min-h-full">
-          <SideBarAs />
-        </div>
-        <div className="flex-grow bg-gray-100 p-4 overflow-auto">
-          <Outlet />
-        </div>
-      </div>
+    </header>
+    <div className="flex flex-grow w-full">
+      <aside className="sidebar text-white">
+        <SideBarAs />
+      </aside>
+      <main className="main-content flex-grow bg-gray-100 p-4 overflow-auto">
+        <Outlet />
+      </main>
     </div>
+  </div>
   );
 }
 

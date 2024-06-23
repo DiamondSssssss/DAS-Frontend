@@ -6,14 +6,16 @@ import { Outlet } from 'react-router-dom';
 const ConsultingStaffLayout = () => {
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <HeaderCs />
+      <header className="header">
+        <HeaderCs />
+      </header>
       <div className="flex flex-grow w-full">
-        <div className=" text-white min-h-full">
+        <aside className="sidebar text-white">
           <SideBarCs />
-        </div>
-        <div className="flex-grow bg-gray-100 p-4 overflow-auto">
+        </aside>
+        <main className="main-content flex-grow bg-gray-100 p-4 overflow-auto">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );
