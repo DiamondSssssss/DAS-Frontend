@@ -1,67 +1,46 @@
 import React, { useState } from "react";
-import "../ManagerLayout/SealingRecords.css";
+// import "../ManagerLayout/SealingRecords.css";
+
 const SealingRecords = () => {
-  const [orders, setOrders] = useState([
-    { id: 1, name: "Order 1", sealed: false },
-    { id: 2, name: "Order 2", sealed: false },
-    { id: 3, name: "Order 3", sealed: false },
+  const [diamonds, setDiamonds] = useState([
+    { id: 1, name: "Diamond 1", sealed: false },
+    { id: 2, name: "Diamond 2", sealed: false },
+    { id: 3, name: "Diamond 3", sealed: false },
   ]);
 
   const toggleSeal = (id) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === id ? { ...order, sealed: !order.sealed } : order
+    setDiamonds((prevDiamonds) =>
+      prevDiamonds.map((diamond) =>
+        diamond.id === id ? { ...diamond, sealed: !diamond.sealed } : diamond
       )
     );
   };
 
-  const handleSave = () => {
-    // Logic to save sealing records
-    console.log("Orders:", orders);
-  };
-
   return (
     <div>
-      <h1>Sealing Records</h1>
+      <h2>Create Sealing Records</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Order Name</th>
-            <th>Actions</th>
+            <th>Diamond Name</th>
+            <th>Seal Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.name}</td>
+          {diamonds.map((diamond) => (
+            <tr key={diamond.id}>
+              <td>{diamond.name}</td>
+              <td>{diamond.sealed ? "Sealed" : "Unsealed"}</td>
               <td>
-                <button
-                  className="btn btn-success"
-                  onClick={() => toggleSeal(order.id)}
-                  disabled={order.sealed}
-                  style={{
-                    marginRight: "10px",
-                    opacity: order.sealed ? 0.5 : 1,
-                  }}
-                >
-                  Seal
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => toggleSeal(order.id)}
-                  disabled={!order.sealed}
-                  style={{ opacity: !order.sealed ? 0.5 : 1 }}
-                >
-                  Unseal
+                <button onClick={() => toggleSeal(diamond.id)}>
+                  {diamond.sealed ? "Unseal" : "Seal"}
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary" onClick={handleSave}>
-        Save
-      </button>
     </div>
   );
 };
