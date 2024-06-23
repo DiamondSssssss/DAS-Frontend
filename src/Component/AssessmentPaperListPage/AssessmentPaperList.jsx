@@ -31,7 +31,7 @@ function AssessmentPaperList() {
         <h4 className="text-lg font-semibold text-gray-800 mb-4">Danh Sách Đơn</h4>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-            <thead className="bg-blue-600 text-white">
+            <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-4 px-4 text-left align-middle">Mã giấy giám định</th>
                 <th className="py-4 px-4 text-left align-middle">Người Tạo</th>
