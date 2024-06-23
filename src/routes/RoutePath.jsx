@@ -34,6 +34,7 @@ import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
+import ProductSearch from "../Component/SearchProductPage/SearchProduct.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -46,13 +47,14 @@ const RoutePath = () => {
           <Route path="about" element={<InfoPage />} />
           <Route path="makerequest" element={<AssessmentRequestCustomer />} />
           <Route path="success" element={<SuccessPage />} />
+          <Route path="/lookup" element={<ProductSearch />} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
-          <Route path="assessmentrequest" element={<AssessmentRequestConsulting />}/>
-          <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />}/>
+          <Route path="assessmentrequest" element={<AssessmentRequestConsulting />} />
+          <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />} />
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
-          <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
+          <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />} />
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
         </Route>
 
