@@ -34,6 +34,7 @@ import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimeli
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
+import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -73,6 +74,7 @@ const RoutePath = () => {
           <Route path="/manager/sealing-records" element={<SealingRecords />} />
           <Route path="/manager/commitment-paper" element={<Commitpaper />} />
           <Route path="/manager/assignwork" element={<AssignWork />} />
+          <Route path="/manager/assignpaper" element={<AsPaperManager />} />
         </Route>
         <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         <Route path="/login" element={<GoogleLoginComponent />} />
