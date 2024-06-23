@@ -1,10 +1,10 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import "../AssessmentRequestPage/AssessmentRequestConsulting.css";
+import "./AssessmentRequestConsulting.css";
+
 function AssessmentRequestConsulting() {
   const navigate = useNavigate();
-
   const [bookings, setBookings] = useState([]);
 
   const getStatusClass = (status) => {
@@ -94,37 +94,37 @@ function AssessmentRequestConsulting() {
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
             <thead className="bg-blue-600 text-white">
               <tr>
-                <th className="py-4 px-4 text-left align-middle">Mã yêu cầu</th>
-                <th className="py-4 px-4 text-left align-middle">Dịch vụ</th>
-                <th className="py-4 px-4 text-left align-middle">
+                <th className="py-4 px-4 text-center">Mã yêu cầu</th>
+                <th className="py-4 px-4 text-center">Dịch vụ</th>
+                <th className="py-4 px-4 text-center">
                   Số Lượng Kim Cương
                 </th>
-                <th className="py-4 px-4 text-left align-middle">Ngày tạo</th>
-                <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
-                <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
+                <th className="py-4 px-4 text-center">Ngày tạo</th>
+                <th className="py-4 px-4 text-center">Trạng Thái</th>
+                <th className="py-4 px-4 text-center">Chi Tiết</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
               {bookings.map((booking) => (
                 <tr key={booking.bookingId} className="hover:bg-gray-100">
-                  <td className="py-4 px-4 align-middle">{`#${booking.bookingId}`}</td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center">{`#${booking.bookingId}`}</td>
+                  <td className="py-4 px-4 text-center">
                     {getServiceText(booking.serviceId)}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center">
                     {booking.quantities}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center">
                     {booking.dateCreated}
                   </td>
                   <td
-                    className={`py-4 px-4 align-middle ${getStatusClass(
+                    className={`py-4 px-4 text-center ${getStatusClass(
                       booking.status
                     )}`}
                   >
                     {getStatusText(booking.status)}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center">
                     <div className="flex items-center justify-center">
                       <button
                         onClick={() =>

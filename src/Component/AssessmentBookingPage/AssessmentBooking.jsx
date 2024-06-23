@@ -8,7 +8,6 @@ function AssessmentBooking() {
   const navigate = useNavigate();
   const [samples, setSamples] = useState([]);
 
-
   useEffect(() => {
     // Fetch data from the backend API
     const fetchData = async () => {
@@ -22,6 +21,7 @@ function AssessmentBooking() {
 
     fetchData();
   }, []); // Empty dependency array to run effect only once on component mount
+
   const getStatusClass = (status) => {
     switch (status) {
       case 'Pending':
@@ -34,58 +34,48 @@ function AssessmentBooking() {
         return 'text-gray-500';
     }
   };
-//  const [bookings] = useState([
-//     { bookingId: 1, serviceId: 1, quantity: 3, dateCreated: '2023-06-15', status: 'Pending' },
-//     { bookingId: 2, serviceId: 2, quantity: 1, dateCreated: '2023-06-14', status: 'Completed' },
-//     { bookingId: 3, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 4, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 5, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 6, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 7, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 8, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 9, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-//     { bookingId: 10, serviceId: 3, quantity: 5, dateCreated: '2023-06-13', status: 'Cancelled' },
-    
-//   ]);
+
   return (
     <div className="w-full">
-    <div className="max-w-full mx-auto p-4">
-      <h4 className="text-lg font-semibold text-gray-800 mb-4">Danh Sách Đặt Hẹn</h4>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-          <thead className="bg-gray-800 text-white">
-            <tr>
-              <th className="py-4 px-4 text-left align-middle">Mã đơn hàng</th>
-              <th className="py-4 px-4 text-left align-middle">Tên mẫu</th>
-              <th className="py-4 px-4 text-left align-middle">Kích cỡ</th>
-              <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
-              <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-700">
-            {samples.map((sample) => (
-              <tr key={sample.sampleId}>
-                <td className="py-4 px-4 align-middle">{`#${sample.bookingId}`}</td>
-                <td className="py-4 px-4 align-middle">{`${sample.name}`}</td>
-                <td className="py-4 px-4 align-middle">{sample.size}</td>
-                <td className={`py-4 px-4 align-middle`}>{getSampleStatusMeaning(sample.status)}</td>
-                <td className="py-4 px-4 align-middle">
-                  <div className="flex items-center justify-center">
-                    <button
-                      onClick={() => navigate(`/assessmentstaff/assessmentbooking/${sample.sampleId}/selection`)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    >
-                      Xem chi tiết
-                    </button>
-                  </div>
-                </td>
+      <div className="max-w-full mx-auto p-4">
+        <h4 className="text-lg font-semibold text-gray-800 mb-4">Danh Sách Đặt Hẹn</h4>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
+            <thead className="bg-gray-800 text-white">
+              <tr>
+                <th className="py-4 px-4 text-center">Mã đơn hàng</th>
+                <th className="py-4 px-4 text-center">Tên mẫu</th>
+                <th className="py-4 px-4 text-center">Kích cỡ</th>
+                <th className="py-4 px-4 text-center">Trạng Thái</th>
+                <th className="py-4 px-4 text-center">Chi Tiết</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-gray-700">
+              {samples.map((sample) => (
+                <tr key={sample.sampleId}>
+                  <td className="py-4 px-4 text-center">{`#${sample.bookingId}`}</td>
+                  <td className="py-4 px-4 text-center">{`${sample.name}`}</td>
+                  <td className="py-4 px-4 text-center">{sample.size}</td>
+                  <td className={`py-4 px-4 text-center ${getStatusClass(sample.status)}`}>
+                    {getSampleStatusMeaning(sample.status)}
+                  </td>
+                  <td className="py-4 px-4 text-center">
+                    <div className="flex items-center justify-center">
+                      <button
+                        onClick={() => navigate(`/assessmentstaff/assessmentbooking/${sample.sampleId}/selection`)}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      >
+                        Xem chi tiết
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
   );
 }
 
