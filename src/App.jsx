@@ -1,10 +1,12 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
   return (
-    <Outlet/>
-  )
+    <div className="app-container">
+      <Outlet />
+    </div>
+  );
 }
 
-export default App
+export default App;
