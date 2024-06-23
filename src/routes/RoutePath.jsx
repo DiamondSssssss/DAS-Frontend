@@ -49,54 +49,27 @@ const RoutePath = () => {
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
-          <Route
-            path="assessmentrequest"
-            element={<AssessmentRequestConsulting />}
-          />
-          <Route
-            path="assessmentrequest/:id"
-            element={<AssessmentRequestDetail />}
-          />
+          <Route path="assessmentrequest" element={<AssessmentRequestConsulting />}/>
+          <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />}/>
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
-          <Route
-            path="assessmentrequest/:id/inputdiamonds"
-            element={<AssessmentBookingDiamondInput />}
-          />
-          <Route
-            path="assessmentrequest/:id/inputdiamonds/summary"
-            element={<AssetsmentList />}
-          />
+          <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
+          <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />}/>
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path="assessmentbooking" element={<AssessmentBooking />} />
           {/* <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} /> */}
-          <Route
-            path="assessmentbooking/:id/selection"
-            element={<SelectionForm />}
-          />
-          <Route
-            path="assessmentbooking/:id/selection/info"
-            element={<InfoForm />}
-          />
+          <Route path="assessmentbooking/:id/selection" element={<SelectionForm />}/>
+          <Route path="assessmentbooking/:id/selection/info" element={<InfoForm />}/>
           {/* <Route path="assessmentbooking/:id/selection/info/cut" element={<CutForm/>} /> */}
-          <Route
-            path="assessmentbooking/:id/selection/info/summary"
-            element={<AssetsmentPaper />}
-          />
+          <Route path="assessmentbooking/:id/selection/info/summary" element={<AssetsmentPaper />}/>
           <Route path="assessmentpaperlist" element={<AssessmentPaperList />} />
-          <Route
-            path="assessmentpaperlist/:id"
-            element={<AssessmentPaperDetail />}
-          />
+          <Route path="assessmentpaperlist/:id" element={<AssessmentPaperDetail />} />
         </Route>
         <Route path="/manager" element={<ManagerLayout />}>
           <Route index element={<Dashboard />} />
-          <Route
-            path="/manager/manage-pricing-timelines"
-            element={<ManageOrderTimelines />}
-          />
+          <Route path="/manager/manage-pricing-timelines" element={<ManageOrderTimelines />} />
           <Route path="/manager/sealing-records" element={<SealingRecords />} />
           <Route path="/manager/commitment-paper" element={<Commitpaper />} />
           <Route path="/manager/assignwork" element={<AssignWork />} />
