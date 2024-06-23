@@ -71,9 +71,9 @@ const RoutePath = () => {
         
         <Route path="/manager" element={<ManagerLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="/manager/manage-pricing-timelines" element={<ManageOrderTimelines />} />
-          <Route path="/manager/sealing-records" element={<SealingRecords />} />
-          <Route path="/manager/commitment-paper" element={<Commitpaper />} />
+          <Route path="manage-pricing-timelines" element={<ManageOrderTimelines />} />
+          <Route path="sealing-records" element={<SealingRecords />} />
+          <Route path="commitment-paper" element={<Commitpaper />} />
         </Route>
 
         <Route path="/login" element={<GoogleLoginComponent />} />
