@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
 import { handleSession, clearSession, checkSession } from '../../utils/sessionUtils';
+import { Dropdown } from 'react-bootstrap';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -127,12 +131,9 @@ const Header = () => {
             </Dropdown>
           </div>
         ) : (
-          <div
-            className="cursor-pointer hidden md:block"
-            onClick={() => navigate("/login")}
-          >
-            <AccountCircle style={{ color: "white", fontSize: 30 }} />
-          </div>
+          <Button variant="primary" onClick={() => navigate("/login")}>
+            Đăng Nhập / Đăng Ký
+          </Button>
         )}
       </div>
     </header>
