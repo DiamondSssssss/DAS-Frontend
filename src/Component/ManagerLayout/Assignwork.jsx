@@ -78,70 +78,59 @@ function AssignWork() {
     // Add more actions if needed
   };
 
+  const handleCancel = async (bookingId) => {
+    try {
+      await axios.put(`http://localhost:8080/api/assessment-bookings/${bookingId}/cancel`);
+      setBookings(bookings.map((booking) =>
+        booking.bookingId === bookingId ? { ...booking, status: 3 } : booking
+      ));
+    } catch (error) {
+      console.error("Error cancelling the booking:", error);
+    }
+  };
+
   return (
     <div className="w-full">
       <div className="max-w-full mx-auto p-4">
         <h4 className="text-lg font-semibold text-gray-800 mb-4">
           Danh Sách Đặt Hẹn
         </h4>
-        <div className="radio-group">
-          <input type="radio" id="status1" name="status" defaultValue="tatca" />
-          <label htmlFor="status1">Tất Cả</label>
-          <input
-            type="radio"
-            id="status2"
-            name="status"
-            defaultValue="dangcho"
-          />
-          <label htmlFor="status2">Đang Chờ</label>
-          <input type="radio" id="status3" name="status" defaultValue="datao" />
-          <label htmlFor="status3"> Đã Tạo </label>
-          <input
-            type="radio"
-            id="status4"
-            name="status"
-            defaultValue="dahoantat"
-          />
-          <label htmlFor="status4">Đã Hoàn Tất</label>
-          <input type="radio" id="status5" name="status" defaultValue="dahuy" />
-          <label htmlFor="status5"> Đã Huỷ</label>
-        </div>
-
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
             <thead className="bg-blue-600 text-white">
               <tr>
-                <th className="py-4 px-4 text-left align-middle">Mã yêu cầu</th>
-                <th className="py-4 px-4 text-left align-middle">Dịch vụ</th>
-                <th className="py-4 px-4 text-left align-middle">
+                <th className="py-4 px-4 text-center align-middle">Mã yêu cầu</th>
+                <th className="py-4 px-4 text-center align-middle">Dịch vụ</th>
+                <th className="py-4 px-4 text-center align-middle">
                   Số Lượng Kim Cương
                 </th>
-                <th className="py-4 px-4 text-left align-middle">Ngày tạo</th>
-                <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
-                <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
+                <th className="py-4 px-4 text-center align-middle">Ngày tạo</th>
+                <th className="py-4 px-4 text-center align-middle">Trạng Thái</th>
+                <th className="py-4 px-4 text-center align-middle">Chi Tiết</th>
+                <th className="py-4 px-4 text-center align-middle">Hủy</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
               {bookings.map((booking) => (
                 <tr key={booking.bookingId} className="hover:bg-gray-100">
-                  <td className="py-4 px-4 align-middle">{`#${booking.bookingId}`}</td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center align-middle">{`#${booking.bookingId}`}</td>
+                  <td className="py-4 px-4 text-center align-middle">
                     {getServiceText(booking.serviceId)}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center align-middle">
                     {booking.quantities}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center align-middle">
                     {booking.dateCreated}
                   </td>
                   <td
-                    className={`py-4 px-4 align-middle ${getStatusClass(
+                    className={`py-4 px-4 text-center align-middle ${getStatusClass(
                       booking.status
                     )}`}
                   >
                     {getStatusText(booking.status)}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center align-middle">
                     <div className="flex items-center justify-center">
                       <select
                         onChange={(e) => handleSelectChange(e, booking.bookingId)}
@@ -159,6 +148,14 @@ function AssignWork() {
                         Submit
                       </button>
                     </div>
+                  </td>
+                  <td className="py-4 px-4 text-center align-middle">
+                    <button
+                      onClick={() => handleCancel(booking.bookingId)}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                      Hủy
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -59,23 +59,23 @@ function AsPaperManager() {
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="py-4 px-4 text-left align-middle">Mã đơn hàng</th>
-                <th className="py-4 px-4 text-left align-middle">Tên mẫu</th>
-                <th className="py-4 px-4 text-left align-middle">Kích cỡ</th>
-                <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
-                <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
+                <th className="py-4 px-4 text-center align-middle">Mã đơn hàng</th>
+                <th className="py-4 px-4 text-center align-middle">Tên mẫu</th>
+                <th className="py-4 px-4 text-center align-middle">Kích cỡ</th>
+                <th className="py-4 px-4 text-center align-middle">Trạng Thái</th>
+                <th className="py-4 px-4 text-center align-middle">Chi Tiết</th>
               </tr>
             </thead>
             <tbody className="text-gray-700">
               {samples.map((sample) => (
                 <tr key={sample.sampleId}>
-                  <td className="py-4 px-4 align-middle">{`#${sample.bookingId}`}</td>
-                  <td className="py-4 px-4 align-middle">{`${sample.name}`}</td>
-                  <td className="py-4 px-4 align-middle">{sample.size}</td>
-                  <td className={`py-4 px-4 align-middle ${getStatusClass(sample.status)}`}>
+                  <td className="py-4 px-4 text-center align-middle">{`#${sample.bookingId}`}</td>
+                  <td className="py-4 px-4 text-center align-middle">{`${sample.name}`}</td>
+                  <td className="py-4 px-4 text-center align-middle">{sample.size}</td>
+                  <td className={`py-4 px-4 text-center align-middle ${getStatusClass(sample.status)}`}>
                     {getSampleStatusMeaning(sample.status)}
                   </td>
-                  <td className="py-4 px-4 align-middle">
+                  <td className="py-4 px-4 text-center align-middle">
                     <div className="flex items-center justify-center">
                       <select
                         onChange={(e) => handleSelectChange(e, sample.sampleId)}
