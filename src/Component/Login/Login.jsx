@@ -1,4 +1,3 @@
-// src/Component/Login/Login.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
@@ -10,14 +9,14 @@ const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
   const navigate = useNavigate();
   const [loginMethod, setLoginMethod] = useState("google");
 
   const handleLoginSuccess = async (userInfo) => {
     setUser(userInfo);
     localStorage.setItem("user", JSON.stringify(userInfo));
-    // navigate("/");
-    switch(userInfo.role){
+    switch (userInfo.role) {
       case 1:
         navigate("/");
         break;
@@ -31,30 +30,38 @@ const GoogleLoginComponent = () => {
         navigate("manager");
         break;
       default:
-        
     }
   };
 
   const handleLoginFailure = (error) => {
     console.error("Login Failed", error);
+    setLoading(false); // Reset loading state on failure
   };
 
   const loginWithGoogle = async () => {
+    if (loading) return; // Prevent multiple clicks
+    setLoading(true);
     try {
       const userInfo = await signInWithGoogle();
       handleLoginSuccess(userInfo);
     } catch (error) {
       handleLoginFailure(error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
   const loginWithPhoneNumber = async (e) => {
     e.preventDefault();
+    if (loading) return; // Prevent multiple clicks
+    setLoading(true);
     try {
       const userInfo = await signInWithPhoneNumber(phoneNumber, password);
       handleLoginSuccess(userInfo);
     } catch (error) {
       handleLoginFailure(error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -113,10 +120,13 @@ const GoogleLoginComponent = () => {
               </div>
               {loginMethod === "google" ? (
                 <button
-                  className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
+                  className={`${
+                    loading ? "bg-blue-300" : "bg-blue-500 hover:bg-blue-700"
+                  } text-white py-3 px-6 rounded transition w-full text-xl`}
                   onClick={loginWithGoogle}
+                  disabled={loading}
                 >
-                  Dùng tài khoản Google
+                  {loading ? "Loading..." : "Dùng tài khoản Google"}
                 </button>
               ) : (
                 <form onSubmit={loginWithPhoneNumber} className="mb-4">
@@ -138,9 +148,12 @@ const GoogleLoginComponent = () => {
                   />
                   <button
                     type="submit"
-                    className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl mb-4"
+                    className={`${
+                      loading ? "bg-blue-300" : "bg-blue-500 hover:bg-blue-700"
+                    } text-white py-3 px-6 rounded transition w-full text-xl mb-4`}
+                    disabled={loading}
                   >
-                    Đăng nhập
+                    {loading ? "Loading..." : "Đăng nhập"}
                   </button>
                 </form>
               )}
