@@ -35,6 +35,7 @@ import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
 import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
+import AssessmentReceipt from "../Component/AssessmentReceipt/AssessmentReceipt.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -55,6 +56,7 @@ const RoutePath = () => {
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
           <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />}/>
+          <Route path="receipt" element={<AssessmentReceipt />}/>
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
