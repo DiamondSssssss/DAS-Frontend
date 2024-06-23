@@ -16,7 +16,23 @@ const GoogleLoginComponent = () => {
   const handleLoginSuccess = async (userInfo) => {
     setUser(userInfo);
     localStorage.setItem("user", JSON.stringify(userInfo));
-    navigate("/");
+    // navigate("/");
+    switch(userInfo.role){
+      case 1:
+        navigate("/");
+        break;
+      case 2:
+        navigate("/consultingstaff");
+        break;
+      case 3:
+        navigate("/assessmentstaff");
+        break;
+      case 4:
+        navigate("manager");
+        break;
+      default:
+        
+    }
   };
 
   const handleLoginFailure = (error) => {
