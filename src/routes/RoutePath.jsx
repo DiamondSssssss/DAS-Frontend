@@ -38,6 +38,8 @@ import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
 import AssessmentReceipt from "../Component/AssessmentReceipt/AssessmentReceipt.jsx";
 import ManagePricingTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
+import AssessmentPaperListCs from "../Component/AssessmentPaperListPage/AssessmentPaperListCs.jsx";
+import ReceiptDetail from "../Component/AssessmentReceiptDetailPage/AssessmentReceiptDetail.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -58,7 +60,10 @@ const RoutePath = () => {
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
           <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />}/>
+          <Route path="assessmentpaperlist" element={<AssessmentPaperListCs />} />
+          <Route path="assessmentpaperlist/:id" element={<AssessmentPaperDetail />} />
           <Route path="receipt" element={<AssessmentReceipt />}/>
+          <Route path="receipt/:bookingId" element={<ReceiptDetail />} />
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>

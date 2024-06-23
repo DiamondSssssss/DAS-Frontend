@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-header">
-          <Link to="/" className="navbar-brand">
+          <Link to="/manager" className="navbar-brand">
             Manager Portal
           </Link>
           <button
@@ -58,7 +58,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className={`navbar-menu ${isOpen ? "open" : ""}`}>
-          <Link to="/" className="navbar-link" onClick={toggleMenu}>
+          <Link to="/manager" className="navbar-link" onClick={toggleMenu}>
             Dashboard
           </Link>
           <Link
