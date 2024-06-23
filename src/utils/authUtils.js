@@ -39,4 +39,14 @@ const signInWithGoogle = async () => {
   }
 };
 
+export const signInWithPhoneNumber = async (phoneNumber, password) => {
+  // Implement your phone number and password sign-in logic here
+  // This is just a placeholder. Replace it with your actual implementation.
+  if (phoneNumber === "1234567890" && password === "password") {
+    return { name: "John Doe", email: "john@example.com", picture: "path/to/picture" };
+  } else {
+    throw new Error("Invalid credentials");
+  }
+};
+
 export { signInWithGoogle };

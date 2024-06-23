@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../ManagerLayout/Commitpaper.css";
-
 const Commitpaper = () => {
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../ManagerLayout/ManagePricingTimeline.css";
-
 const ManageOrderTimelines = () => {
   const [services] = useState([
     {
