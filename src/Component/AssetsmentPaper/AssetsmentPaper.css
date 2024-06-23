@@ -57,10 +57,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100%; /* or a fixed width */
     height: 200px; /* Set a fixed height for the image container */
     overflow: hidden;
-  }
+}
   
   .uploaded-image {
     max-width: 100%;
@@ -68,3 +68,8 @@
     object-fit: contain; /* This ensures the image maintains its aspect ratio and fits within the container */
   }
   
+  .gold-outline{
+    border: 10px double #f0b070;
+    margin: 2px;
+    padding: 5px;
+  }

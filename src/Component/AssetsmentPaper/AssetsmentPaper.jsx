@@ -64,104 +64,106 @@ const AssessmentPaper = () => {
   return (
     <Container className="mt-5 report-container">
       <div ref={reportRef}>
-        <div className="text-center mb-4">
-          <h1 className="report-title">DAS REPORT #{id}</h1>
-          <h2 className="report-id"></h2>
+        <div className="gold-outline">
+          <div className="text-center mb-4">
+            <h1 className="report-title">DAS REPORT #{id}</h1>
+            <h2 className="report-id"></h2>
+          </div>
+          <Row>
+            <Col md={4}>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">DAS Natural Grading Report</h3>
+                  <p>May 12th, 2024</p>
+                  <p>DAS report number: 1234</p>
+                  <p>Shape and cutting style: Round Brilliant</p>
+                  <p>Measurement: 7.72-7.74x4.54mm</p>
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">GRADING RESULT</h3>
+                  <p>Carat Weight: {carat} carat</p>
+                  <p>Color Grade: {colorGrade}</p>
+                  <p>Clarity Grade: {clarityGrade}</p>
+                  <p>Cut Grade: {cutGrade}</p>
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">ADDITIONAL GRADING INFORMATION</h3>
+                  <p>Polish: Excellent</p>
+                  <p>Symmetry: Excellent</p>
+                  <p>Fluorescence: None</p>
+                </Col>
+              </Row>
+            </Col>
+            <Col md={4}>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">PROPORTION</h3>
+                  <Form.Group className="mt-3">
+                    <Form.Control
+                      type="file"
+                      label="Upload Image"
+                      accept="image/*"
+                      onChange={handleProportionImageUpload}
+                    />
+                  </Form.Group>
+                  {uploadedProportionImage && (
+                    <div className="image-container">
+                      <img
+                        src={uploadedProportionImage}
+                        alt="Proportion"
+                        className="uploaded-image"
+                      />
+                    </div>
+                  )}
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">CLARITY CHARACTERISTICS</h3>
+                  <Form.Group className="mt-3">
+                    <Form.Control
+                      type="file"
+                      label="Upload Image"
+                      accept="image/*"
+                      onChange={handleClarityImageUpload}
+                    />
+                  </Form.Group>
+                  {uploadedClarityImage && (
+                    <div className="image-container">
+                      <img
+                        src={uploadedClarityImage}
+                        alt="Clarity"
+                        className="uploaded-image"
+                      />
+                    </div>
+                  )}
+                </Col>
+              </Row>
+            </Col>
+            <Col md={4}>
+              <Row className="mb-4">
+                <Col>
+                  <h3 className="section-title">GRADING SCALE</h3>
+                  <img
+                    src={"/src/assets/All-Scales.jpg"}
+                    alt="Grading Scale"
+                    className="img-fluid"
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </div>
-        <Row>
-          <Col md={4}>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">DAS Natural Grading Report</h3>
-                <p>May 12th, 2024</p>
-                <p>DAS report number: 1234</p>
-                <p>Shape and cutting style: Round Brilliant</p>
-                <p>Measurement: 7.72-7.74x4.54mm</p>
-              </Col>
-            </Row>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">GRADING RESULT</h3>
-                <p>Carat Weight: {carat} carat</p>
-                <p>Color Grade: {colorGrade}</p>
-                <p>Clarity Grade: {clarityGrade}</p>
-                <p>Cut Grade: {cutGrade}</p>
-              </Col>
-            </Row>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">ADDITIONAL GRADING INFORMATION</h3>
-                <p>Polish: Excellent</p>
-                <p>Symmetry: Excellent</p>
-                <p>Fluorescence: None</p>
-              </Col>
-            </Row>
-          </Col>
-          <Col md={4}>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">PROPORTION</h3>
-                <Form.Group className="mt-3">
-                  <Form.Control
-                    type="file"
-                    label="Upload Image"
-                    accept="image/*"
-                    onChange={handleProportionImageUpload}
-                  />
-                </Form.Group>
-                {uploadedProportionImage && (
-                  <div className="image-container">
-                    <img
-                      src={uploadedProportionImage}
-                      alt="Proportion"
-                      className="uploaded-image"
-                    />
-                  </div>
-                )}
-              </Col>
-            </Row>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">CLARITY CHARACTERISTICS</h3>
-                <Form.Group className="mt-3">
-                  <Form.Control
-                    type="file"
-                    label="Upload Image"
-                    accept="image/*"
-                    onChange={handleClarityImageUpload}
-                  />
-                </Form.Group>
-                {uploadedClarityImage && (
-                  <div className="image-container">
-                    <img
-                      src={uploadedClarityImage}
-                      alt="Clarity"
-                      className="uploaded-image"
-                    />
-                  </div>
-                )}
-              </Col>
-            </Row>
-          </Col>
-          <Col md={4}>
-            <Row className="mb-4">
-              <Col>
-                <h3 className="section-title">GRADING SCALE</h3>
-                <img
-                  src={"/src/assets/All-Scales.jpg"}
-                  alt="Grading Scale"
-                  className="img-fluid"
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
       </div>
       {/* Preview button section */}
       <Row className="mb-4">
         <Col>
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             onClick={handlePreview}
             disabled={!uploadedProportionImage || !uploadedClarityImage} // Disable button if images are not uploaded
           >
