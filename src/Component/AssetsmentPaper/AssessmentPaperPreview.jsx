@@ -1,63 +1,76 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useRef } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import Axios for HTTP requests
+import html2canvas from 'html2canvas';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../AssetsmentPaper/AssetsmentPaper.css";
-import { handleSession } from "../../utils/sessionUtils";
 
-const AssessmentPaper = () => {
+const AssessmentPaperPreview = () => {
   const location = useLocation();
-  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size } = location.state || {};
-  const { id } = useParams();
-  const [uploadedProportionImage, setUploadedProportionImage] = useState(null);
-  const [uploadedClarityImage, setUploadedClarityImage] = useState(null);
   const navigate = useNavigate();
-  const reportRef = useRef(null); // Create a ref for the report
+  const {
+    id, loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
+    uploadedProportionImage, uploadedClarityImage, loggedAccount
+  } = location.state || {};
+  const reportRef = useRef(null);
 
-  const [loggedAccount, setLoggedAccount] = useState({});
-
-  useEffect(() => {
-    const account = handleSession(navigate);
-    if (account) {
-      setLoggedAccount(account);
-    }
-  }, [navigate]);
-
-  // Function to handle proportion image upload
-  const handleProportionImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUploadedProportionImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // Function to handle clarity image upload
-  const handleClarityImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUploadedClarityImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // Function to navigate to the preview page
-  const handlePreview = () => {
-    if (uploadedProportionImage && uploadedClarityImage) {
-      navigate('/assessmentstaff/assessmentbooking/:id/selection/info/summary/preview', {
-        state: {
-          id, loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
-          uploadedProportionImage, uploadedClarityImage, loggedAccount
-        }
+  const handleDownload = async () => {
+    try {
+      const canvas = await html2canvas(reportRef.current, {
+        scrollX: 0,
+        scrollY: 0,
+        scale: 1,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: document.documentElement.offsetHeight,
       });
-    } else {
-      alert("Please upload both the Proportion and Clarity images before proceeding.");
+      const paperImage = canvas.toDataURL("image/png");
+      const link = document.createElement('a');
+      link.href = paperImage;
+      link.download = `Assessment_Paper_${id}.png`;
+      link.click();
+    } catch (error) {
+      console.error('Error generating image:', error);
+    }
+  };
+
+  // Function to convert report to image and handle form submission
+  const handleSubmit = async () => {
+    try {
+      // Convert the report to an image
+      const canvas = await html2canvas(reportRef.current, {
+        scrollX: 0,
+        scrollY: 0,
+        scale: 1,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: document.documentElement.offsetHeight,
+      });
+      const paperImage = canvas.toDataURL("image/png");
+  
+      // Prepare data object based on AssessmentPaperDto structure
+      const assessmentData = {
+        sampleId: parseInt(id), // Assuming id is from useParams()
+        type: loai,
+        size: parseFloat(size),
+        shape: "Round Brilliant", // Hardcoded for example
+        color: colorGrade,
+        clarity: clarityGrade,
+        polish: 'Excellent', // Hardcoded for example
+        symmetry: 'Excellent', // Hardcoded for example
+        fluorescence: 'None', // Hardcoded for example
+        weight: parseFloat(carat),
+        dateCreated: new Date().toISOString(), // Current date
+        paperImage, // Base64 image
+        accountId: loggedAccount.accountId, // Example account ID
+      };
+  
+      // Make POST request to backend
+      const response = await axios.post('http://localhost:8080/api/assessment-papers', assessmentData);
+  
+      console.log('Submission successful:', response.data);
+      // Optionally, navigate to another page or display a success message
+    } catch (error) {
+      console.error('Error submitting data:', error);
     }
   };
 
@@ -101,14 +114,6 @@ const AssessmentPaper = () => {
             <Row className="mb-4">
               <Col>
                 <h3 className="section-title">PROPORTION</h3>
-                <Form.Group className="mt-3">
-                  <Form.Control
-                    type="file"
-                    label="Upload Image"
-                    accept="image/*"
-                    onChange={handleProportionImageUpload}
-                  />
-                </Form.Group>
                 {uploadedProportionImage && (
                   <div className="image-container">
                     <img
@@ -123,14 +128,6 @@ const AssessmentPaper = () => {
             <Row className="mb-4">
               <Col>
                 <h3 className="section-title">CLARITY CHARACTERISTICS</h3>
-                <Form.Group className="mt-3">
-                  <Form.Control
-                    type="file"
-                    label="Upload Image"
-                    accept="image/*"
-                    onChange={handleClarityImageUpload}
-                  />
-                </Form.Group>
                 {uploadedClarityImage && (
                   <div className="image-container">
                     <img
@@ -157,15 +154,14 @@ const AssessmentPaper = () => {
           </Col>
         </Row>
       </div>
-      {/* Preview button section */}
+      {/* Buttons section */}
       <Row className="mb-4">
         <Col>
-          <Button 
-            variant="primary" 
-            onClick={handlePreview}
-            disabled={!uploadedProportionImage || !uploadedClarityImage} // Disable button if images are not uploaded
-          >
-            Preview
+          <Button variant="primary" onClick={handleDownload}>
+            Download
+          </Button>
+          <Button variant="success" onClick={handleSubmit} className="ml-3">
+            Submit
           </Button>
         </Col>
       </Row>
@@ -173,4 +169,4 @@ const AssessmentPaper = () => {
   );
 };
 
-export default AssessmentPaper;
+export default AssessmentPaperPreview;

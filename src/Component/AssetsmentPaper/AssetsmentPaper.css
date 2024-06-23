@@ -1,8 +1,4 @@
-body {
-    background-color: #faf7f4;
-    font-family: Arial, sans-serif;
-  }
-  
+
   .report-container {
     background-color: #eeb983;
     padding: 20px;
@@ -15,12 +11,7 @@ body {
     font-weight: bold;
   }
   
-  .report-id {
-    color: #c0392b;
-    font-weight: bold;
-    margin-top: -10px;
-  }
-  
+
   .section-title {
     color: #fefefe;
     font-weight: bold;
@@ -36,7 +27,7 @@ body {
     margin-bottom: 1.5rem !important;
   }
   .mb-4 p{
-    color: #fefefe;
+    color: black;
     padding-left: 5px;
   }
   .card-text div {
