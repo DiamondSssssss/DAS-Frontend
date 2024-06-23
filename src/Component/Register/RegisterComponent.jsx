@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../Login/Login.css";
 import illustration from "../../assets/loginbackground.png";
+import { AccountCircle, Phone, Lock } from "@mui/icons-material"; // Import icons from Material-UI
 
 const RegisterComponent = () => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
@@ -23,12 +24,12 @@ const RegisterComponent = () => {
       password,
     };
 
-    // Gửi userInfo đến backend để đăng ký
+    // Send userInfo to backend for registration
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
+      const response = await fetch("/api/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userInfo),
       });
@@ -73,38 +74,50 @@ const RegisterComponent = () => {
               </h2>
             </div>
             <form onSubmit={handleRegister} className="w-full">
-              <input
-                type="text"
-                placeholder="Email hoặc Số điện thoại"
-                value={emailOrPhone}
-                onChange={(e) => setEmailOrPhone(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Họ và Tên"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Mật khẩu"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Xác nhận mật khẩu"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="border border-gray-300 p-2 mb-4 w-full rounded"
-                required
-              />
+              <div className="mb-4 flex items-center">
+                <AccountCircle className="text-gray-400 mr-3" />
+                <input
+                  type="text"
+                  placeholder="Họ và Tên"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="border border-gray-300 p-2 w-full rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4 flex items-center">
+                <Phone className="text-gray-400 mr-3" />
+                <input
+                  type="text"
+                  placeholder="Email hoặc Số điện thoại"
+                  value={emailOrPhone}
+                  onChange={(e) => setEmailOrPhone(e.target.value)}
+                  className="border border-gray-300 p-2 w-full rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4 flex items-center">
+                <Lock className="text-gray-400 mr-3" />
+                <input
+                  type="password"
+                  placeholder="Mật khẩu"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="border border-gray-300 p-2 w-full rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4 flex items-center">
+                <Lock className="text-gray-400 mr-3" />
+                <input
+                  type="password"
+                  placeholder="Xác nhận mật khẩu"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="border border-gray-300 p-2 w-full rounded"
+                  required
+                />
+              </div>
               <button
                 type="submit"
                 className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
@@ -114,7 +127,7 @@ const RegisterComponent = () => {
             </form>
             <div className="mt-4">
               <Link to="/login" className="text-blue-500 hover:underline">
-               Đăng nhập
+                Đăng nhập
               </Link>
             </div>
           </div>
