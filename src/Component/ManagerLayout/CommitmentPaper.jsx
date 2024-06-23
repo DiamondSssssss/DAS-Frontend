@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-
-const CommitmentPaper = () => {
-  const [paper, setPaper] = useState("");
-
-  const handleSave = () => {
-    // Logic to save commitment paper
-    console.log("Commitment Paper:", paper);
+const Commitpaper = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Placeholder logic to create commitment paper
+    console.log("Creating commitment paper...");
   };
 
   return (
     <div>
-      <h1>Commitment Paper</h1>
-      <div className="mb-3">
-        <label className="form-label">Commitment Paper Details</label>
-        <input
-          type="text"
-          className="form-control"
-          value={paper}
-          onChange={(e) => setPaper(e.target.value)}
-        />
-      </div>
-      <button className="btn btn-primary" onClick={handleSave}>
-        Save
-      </button>
+      <h2>Create Commitment Paper</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Customer Name:
+          <input type="text" />
+        </label>
+        <br />
+        <label>
+          Inspection Sample ID:
+          <input type="text" />
+        </label>
+        <br />
+        <button type="submit">Create Paper</button>
+      </form>
     </div>
   );
 };
 
-export default CommitmentPaper;
+export default Commitpaper;

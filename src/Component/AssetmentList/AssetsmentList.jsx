@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./AssetsmentList.css";
+import "../AssetmentList/AssetsmentList.css";
 import getAccountFromId from "../../utils/getAccountFromId";
 import { parse, addHours, format } from "date-fns";
 import axios from "axios";
@@ -19,7 +19,6 @@ function AssetsmentList() {
   const [loggedAccount, setLoggedAccount] = useState({});
 
   useEffect(() => {
-
     const account = handleSession(navigate);
     if (account) {
       setLoggedAccount(account);
@@ -44,7 +43,11 @@ function AssetsmentList() {
       fetchAccount();
     }
 
-    const createdDate = parse(bookingData.dateCreated, "yyyy-MM-dd", new Date());
+    const createdDate = parse(
+      bookingData.dateCreated,
+      "yyyy-MM-dd",
+      new Date()
+    );
     const completedDate = addHours(createdDate, serviceData.serviceTime);
     setCompletionDate(format(completedDate, "yyyy-MM-dd"));
   }, [diamonds, bookingData, serviceData, navigate]);
@@ -57,19 +60,20 @@ function AssetsmentList() {
       sampleReturnDate: completionDate,
       paymentStatus: 2,
       totalPrice: totalPrice,
-      dateReceived: format(new Date(), "yyyy-MM-dd")
+      dateReceived: format(new Date(), "yyyy-MM-dd"),
     };
 
     try {
-      const response = await axios.put(`http://localhost:8080/api/assessment-bookings/proceed/${bookingData.bookingId}`, data);
+      const response = await axios.put(
+        `http://localhost:8080/api/assessment-bookings/proceed/${bookingData.bookingId}`,
+        data
+      );
       console.log("Response:", response.data);
       await createBookingSamples();
-      navigate('/consultingstaff');
+      navigate("/consultingstaff");
     } catch (error) {
       console.error("Error submitting assessment booking:", error);
     }
-
-    
   };
   const createBookingSamples = async () => {
     try {
@@ -79,10 +83,13 @@ function AssetsmentList() {
         name: diamond.name,
         size: diamond.size,
         price: diamond.price,
-        bookingId: bookingData.bookingId
+        bookingId: bookingData.bookingId,
       }));
 
-      const response = await axios.post("http://localhost:8080/api/booking-samples/samples", samplesData);
+      const response = await axios.post(
+        "http://localhost:8080/api/booking-samples/samples",
+        samplesData
+      );
       console.log("Booking Samples created:", response.data);
     } catch (error) {
       console.error("Error creating booking samples:", error);
@@ -107,7 +114,9 @@ function AssetsmentList() {
                       <h2>
                         Hóa Đơn
                         <br />
-                        <span className="small">Đơn hàng #{bookingData.bookingId}</span>
+                        <span className="small">
+                          Đơn hàng #{bookingData.bookingId}
+                        </span>
                       </h2>
                     </div>
                   </div>
@@ -117,7 +126,7 @@ function AssetsmentList() {
                   <div className="col-xs-6">
                     <address>
                       <strong>Khách Hàng: {account.displayName}</strong>
-                      {account.phone ? `Số điện thoại: ${account.phone}` : ''}
+                      {account.phone ? `Số điện thoại: ${account.phone}` : ""}
                       <br />
                     </address>
                   </div>

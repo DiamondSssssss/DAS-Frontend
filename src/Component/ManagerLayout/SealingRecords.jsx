@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "../ManagerLayout/SealingRecords.css";
+import "./SealingRecords.css";
 
 const SealingRecords = () => {
   const [diamonds, setDiamonds] = useState([
@@ -17,9 +17,9 @@ const SealingRecords = () => {
   };
 
   return (
-    <div>
-      <h2>Create Sealing Records</h2>
-      <table className="table">
+    <div className="sealing-container">
+      <h2 className="sealing-title">Create Sealing Records</h2>
+      <table className="sealing-table">
         <thead>
           <tr>
             <th>Diamond Name</th>
@@ -33,7 +33,12 @@ const SealingRecords = () => {
               <td>{diamond.name}</td>
               <td>{diamond.sealed ? "Sealed" : "Unsealed"}</td>
               <td>
-                <button onClick={() => toggleSeal(diamond.id)}>
+                <button
+                  className={`sealing-button ${
+                    diamond.sealed ? "unseal" : "seal"
+                  }`}
+                  onClick={() => toggleSeal(diamond.id)}
+                >
                   {diamond.sealed ? "Unseal" : "Seal"}
                 </button>
               </td>

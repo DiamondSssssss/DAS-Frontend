@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../ManagerLayout/ManagePricingTimeline.css";
 const ManageOrderTimelines = () => {
   const [services] = useState([
     {
@@ -29,7 +29,6 @@ const ManageOrderTimelines = () => {
   ]);
 
   const viewDetails = (id) => {
-    // Placeholder function to handle viewing details
     const service = services.find((service) => service.id === id);
     if (service) {
       alert(`Details for ${service.type}: ${service.details}`);
@@ -37,8 +36,8 @@ const ManageOrderTimelines = () => {
   };
 
   return (
-    <div>
-      <h2>Manage Assessment Services</h2>
+    <div className="container">
+      <h2 className="title">Manage Assessment Services</h2>
       <table className="table">
         <thead>
           <tr>
@@ -57,7 +56,10 @@ const ManageOrderTimelines = () => {
               <td>{service.price}</td>
               <td>{service.timeline}</td>
               <td>
-                <button onClick={() => viewDetails(service.id)}>
+                <button
+                  className="details-button"
+                  onClick={() => viewDetails(service.id)}
+                >
                   View Details
                 </button>
               </td>

@@ -1,3 +1,4 @@
+
 // src/RoutePath.js
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -32,7 +33,6 @@ import Dashboard from "../Component/ManagerLayout/Dashboard";
 import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
-// src/routes/RoutePath.jsx
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 
 const RoutePath = () => {
@@ -47,7 +47,6 @@ const RoutePath = () => {
           <Route path="makerequest" element={<AssessmentRequestCustomer />} />
           <Route path="success" element={<SuccessPage />} />
         </Route>
-
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
           <Route path="assessmentrequest" element={<AssessmentRequestConsulting />}/>
@@ -68,14 +67,13 @@ const RoutePath = () => {
           <Route path="assessmentpaperlist" element={<AssessmentPaperList />} />
           <Route path="assessmentpaperlist/:id" element={<AssessmentPaperDetail />} />
         </Route>
-        
         <Route path="/manager" element={<ManagerLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="manage-pricing-timelines" element={<ManageOrderTimelines />} />
           <Route path="sealing-records" element={<SealingRecords />} />
           <Route path="commitment-paper" element={<Commitpaper />} />
         </Route>
-
+        <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         <Route path="/login" element={<GoogleLoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
         <Route path="*" element={<ErrorPage />} />
