@@ -1,4 +1,3 @@
-
 // src/RoutePath.js
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -34,6 +33,7 @@ import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
+import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
 import ProductSearch from "../Component/SearchProductPage/SearchProduct.jsx";
 import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
 
@@ -55,8 +55,8 @@ const RoutePath = () => {
           <Route path="assessmentrequest" element={<AssessmentRequestConsulting />} />
           <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />} />
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
-          <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />} />
-          <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />} />
+          <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
+          <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />}/>
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
@@ -71,9 +71,10 @@ const RoutePath = () => {
         </Route>
         <Route path="/manager" element={<ManagerLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="manage-pricing-timelines" element={<ManageOrderTimelines />} />
-          <Route path="sealing-records" element={<SealingRecords />} />
-          <Route path="commitment-paper" element={<Commitpaper />} />
+          <Route path="/manager/manage-pricing-timelines" element={<ManageOrderTimelines />} />
+          <Route path="/manager/sealing-records" element={<SealingRecords />} />
+          <Route path="/manager/commitment-paper" element={<Commitpaper />} />
+          <Route path="/manager/assignwork" element={<AssignWork />} />
         </Route>
         <Route path="/login" element={<GoogleLoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />

@@ -82,6 +82,13 @@ const Navbar = () => {
           >
             Commitment Paper
           </Link>
+          <Link
+            to="/manager/assignwork"
+            className="navbar-link"
+            onClick={toggleMenu}
+          >
+            Assign Work
+          </Link>
         </div>
       </div>
       {isOpen && (
@@ -109,6 +116,13 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             Commitment Paper
+          </Link>
+          <Link
+            to="/manager/assignwork"
+            className="navbar-dropdown-link"
+            onClick={toggleMenu}
+          >
+            Assign Work
           </Link>
         </div>
       )}

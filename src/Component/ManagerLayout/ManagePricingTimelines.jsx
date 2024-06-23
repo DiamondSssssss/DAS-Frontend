@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../ManagerLayout/ManagePricingTimeline.css";
+
 const ManageOrderTimelines = () => {
   const [services] = useState([
     {
@@ -51,11 +52,11 @@ const ManageOrderTimelines = () => {
         <tbody>
           {services.map((service) => (
             <tr key={service.id}>
-              <td>{service.id}</td>
-              <td>{service.type}</td>
-              <td>{service.price}</td>
-              <td>{service.timeline}</td>
-              <td>
+              <td className="id">{service.id}</td>
+              <td className="type">{service.type}</td>
+              <td className="price">{service.price}</td>
+              <td className="timeline">{service.timeline}</td>
+              <td className="details">
                 <button
                   className="details-button"
                   onClick={() => viewDetails(service.id)}
