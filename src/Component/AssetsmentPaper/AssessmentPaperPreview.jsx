@@ -11,6 +11,7 @@ const AssessmentPaperPreview = () => {
     const navigate = useNavigate();
     const {
         id, loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
+        shape, cuttingStyle, polish, symmetry, fluorescence,
         uploadedProportionImage, uploadedClarityImage, loggedAccount
     } = location.state || {};
     const reportRef = useRef(null);
@@ -52,12 +53,13 @@ const AssessmentPaperPreview = () => {
                 sampleId: parseInt(id), // Assuming id is from useParams()
                 type: loai,
                 size: parseFloat(size),
-                shape: "Round Brilliant", // Hardcoded for example
+                shape,
+                cuttingStyle,
                 color: colorGrade,
                 clarity: clarityGrade,
-                polish: 'Excellent', // Hardcoded for example
-                symmetry: 'Excellent', // Hardcoded for example
-                fluorescence: 'None', // Hardcoded for example
+                polish,
+                symmetry,
+                fluorescence,
                 weight: parseFloat(carat),
                 dateCreated: new Date().toISOString(), // Current date
                 paperImage, // Base64 image
@@ -89,7 +91,7 @@ const AssessmentPaperPreview = () => {
                                     <h3 className="section-title">DAS Natural Grading Report</h3>
                                     <p>May 12th, 2024</p>
                                     <p>DAS report number: 1234</p>
-                                    <p>Shape and cutting style: Round Brilliant</p>
+                                    <p>Shape and cutting style: {shape} {cuttingStyle}</p>
                                     <p>Measurement: 7.72-7.74x4.54mm</p>
                                 </Col>
                             </Row>
@@ -105,9 +107,9 @@ const AssessmentPaperPreview = () => {
                             <Row className="mb-4">
                                 <Col>
                                     <h3 className="section-title">ADDITIONAL GRADING INFORMATION</h3>
-                                    <p>Polish: Excellent</p>
-                                    <p>Symmetry: Excellent</p>
-                                    <p>Fluorescence: None</p>
+                                    <p>Polish: {polish}</p>
+                                    <p>Symmetry: {symmetry}</p>
+                                    <p>Fluorescence: {fluorescence}</p>
                                 </Col>
                             </Row>
                         </Col>
