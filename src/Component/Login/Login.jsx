@@ -1,17 +1,21 @@
+// src/Component/Login/Login.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
-import { signInWithGoogle } from "../../utils/authUtils";
+import { signInWithGoogle, signInWithPhoneNumber } from "../../utils/authUtils";
 import "../Login/Login.css";
 import illustration from "../../assets/loginbackground.png";
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loginMethod, setLoginMethod] = useState("google");
 
   const handleLoginSuccess = async (userInfo) => {
     setUser(userInfo);
-    localStorage.setItem('user', JSON.stringify(userInfo));
+    localStorage.setItem("user", JSON.stringify(userInfo));
     navigate("/");
   };
 
@@ -19,9 +23,19 @@ const GoogleLoginComponent = () => {
     console.error("Login Failed", error);
   };
 
-  const login = async () => {
+  const loginWithGoogle = async () => {
     try {
       const userInfo = await signInWithGoogle();
+      handleLoginSuccess(userInfo);
+    } catch (error) {
+      handleLoginFailure(error);
+    }
+  };
+
+  const loginWithPhoneNumber = async (e) => {
+    e.preventDefault();
+    try {
+      const userInfo = await signInWithPhoneNumber(phoneNumber, password);
       handleLoginSuccess(userInfo);
     } catch (error) {
       handleLoginFailure(error);
@@ -58,12 +72,71 @@ const GoogleLoginComponent = () => {
               <p className="text-xl text-gray-700">Email: {user.email}</p>
             </div>
           ) : (
-            <button
-              className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
-              onClick={login}
-            >
-              Dùng tài khoản Google
-            </button>
+            <>
+              <div className="mb-4 flex justify-around">
+                <button
+                  className={`${
+                    loginMethod === "google"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-gray-800"
+                  } py-2 px-4 rounded w-full mx-2`}
+                  onClick={() => setLoginMethod("google")}
+                >
+                  Đăng nhập Google
+                </button>
+                <button
+                  className={`${
+                    loginMethod === "phone"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-gray-800"
+                  } py-2 px-4 rounded w-full mx-2`}
+                  onClick={() => setLoginMethod("phone")}
+                >
+                  Đăng nhập SĐT
+                </button>
+              </div>
+              {loginMethod === "google" ? (
+                <button
+                  className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
+                  onClick={loginWithGoogle}
+                >
+                  Dùng tài khoản Google
+                </button>
+              ) : (
+                <form onSubmit={loginWithPhoneNumber} className="mb-4">
+                  <input
+                    type="text"
+                    placeholder="Số điện thoại"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="border border-gray-300 p-2 mb-4 w-full rounded"
+                    required
+                  />
+                  <input
+                    type="password"
+                    placeholder="Mật khẩu"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="border border-gray-300 p-2 mb-4 w-full rounded"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl mb-4"
+                  >
+                    Đăng nhập
+                  </button>
+                </form>
+              )}
+              <div className="text-center">
+                <p className="text-gray-700">
+                  Chưa có tài khoản?{" "}
+                  <Link to="/register" className="text-blue-500 hover:underline">
+                    Đăng ký
+                  </Link>
+                </p>
+              </div>
+            </>
           )}
         </div>
       </div>

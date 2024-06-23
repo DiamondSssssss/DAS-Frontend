@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-
+// src/RoutePath.js
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AssessmentStaffLayout from "../layout/AssessmentStaffLayout";
@@ -8,7 +7,7 @@ import AssessmentPaperList from "../Component/AssessmentPaperListPage/Assessment
 import AssessmentBookingSample from "../Component/AssessmentBookingSamplePage/AssessmentBookingSample";
 import CustomerLayout from "../layout/CustomerLayout";
 import HomePage from "../Component/HomePage/HomePage";
-import Login from "../Component/Login/Login";
+import GoogleLoginComponent from "../Component/Login/Login";
 import InfoForm from "../Component/ConsultingStaffPage/InfoForm";
 import CutForm from "../Component/ConsultingStaffPage/CutForm";
 // import SummaryPage from '../Component/ConsultingStaffPage/SummaryPage'
@@ -33,6 +32,9 @@ import Dashboard from "../Component/ManagerLayout/Dashboard";
 import AssetsmentList from "../Component/AssetmentList/AssetsmentList";
 import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
+// src/routes/RoutePath.jsx
+import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
+
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   return (
@@ -100,7 +102,8 @@ const RoutePath = () => {
           <Route path="/manager/commitment-paper" element={<Commitpaper />} />
         </Route>
 
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<GoogleLoginComponent />} />
+        <Route path="/register" element={<RegisterComponent />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
       </Routes>
