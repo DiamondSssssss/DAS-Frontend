@@ -1,69 +1,59 @@
-
-.sealing-container {
+.container {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
   }
   
-  .sealing-title {
+  .title {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
   }
   
-  .sealing-table {
+  .table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  .sealing-table th,
-  .sealing-table td {
+  .table th,
+  .table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
   }
   
-  .sealing-table th {
+  .table th {
     background-color: #f2f2f2;
     color: #333;
   }
-  
-  .sealing-table tr:nth-child(even) {
+  .table td {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  .table tr:nth-child(even) {
     background-color: #f9f9f9;
   }
   
-  .sealing-table tr:hover {
+  .table tr:hover {
     background-color: #f1f1f1;
   }
   
-  .sealing-button {
+  .details-button {
     padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 14px;
   }
   
-  .sealing-button.seal {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .sealing-button.seal:hover {
+  .details-button:hover {
     background-color: #0056b3;
   }
   
-  .sealing-button.unseal {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .sealing-button.unseal:hover {
-    background-color: #c82333;
-  }

@@ -1,43 +1,36 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import "../AdminLayout/SidebarAdmin.css";
 
-const SidebarAdmin = () => {
+const Sidebar = () => {
   return (
-    <aside>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/account" className="sidebarAdmin">
-              Account Management
-            </Link>
-          </li>
-          <li>
-            <Link to="/role" className="sidebarAdmin">
-              Role & Permission Management
-            </Link>
-          </li>
-          <li>
-            <Link to="/error" className="sidebarAdmin">
-              Error Reporting
-            </Link>
-          </li>
-          <li>
-            <Link to="/maintenance" className="sidebarAdmin">
-              System Maintenance
-            </Link>
-          </li>
-          <li>
-            <Link to="/update" className="sidebarAdmin">
-              System Update
-            </Link>
-          </li>
-          <li>
-            <Link to="/database" className="sidebarAdmin">
-              Database Management
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+    <div className="sidebar">
+      <h3>Admin Dashboard</h3>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/create-manage-users">Manage Users</Link>
+        </li>
+        <li>
+          <Link to="/delete-suspend-users">Delete/Suspend Users</Link>
+        </li>
+        <li>
+          <Link to="/assign-roles-permissions">Assign Roles</Link>
+        </li>
+        <li>
+          <Link to="/system-maintenance">System Maintenance</Link>
+        </li>
+        <li>
+          <Link to="/system-update">System Update</Link>
+        </li>
+        <li>
+          <Link to="/content-database">Content Database</Link>
+        </li>
+      </ul>
+    </div>
   );
 };
-export default SidebarAdmin;
+
+export default Sidebar;

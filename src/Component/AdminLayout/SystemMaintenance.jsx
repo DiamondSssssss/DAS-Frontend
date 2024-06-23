@@ -1,8 +1,12 @@
+import React from "react";
+import "./styles.css";
+
 const SystemMaintenance = () => {
   return (
-    <div>
-      <h2>System Maintenance</h2>
-      {/* Add your system maintenance functionality here */}
+    <div className="system-maintenance-container">
+      <h2>System Maintenance and Troubleshooting</h2>
+      <p>Perform system checks, backups, and troubleshoot issues.</p>
+      <button>Start Maintenance</button>
     </div>
   );
 };
