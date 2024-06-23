@@ -57,7 +57,7 @@ function AsPaperManager() {
         <h4 className="text-lg font-semibold text-gray-800 mb-4">Danh Sách Đặt Hẹn</h4>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-            <thead className="bg-blue-600 text-white">
+            <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-4 px-4 text-center align-middle">Mã đơn hàng</th>
                 <th className="py-4 px-4 text-center align-middle">Tên mẫu</th>
