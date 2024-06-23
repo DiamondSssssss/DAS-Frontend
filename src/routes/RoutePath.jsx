@@ -34,8 +34,8 @@ import ManageOrderTimelines from "../Component/ManagerLayout/ManagePricingTimeli
 import Commitpaper from "../Component/ManagerLayout/Commitpaper.jsx";
 import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
-import ProductSearch from "../Component/SearchProductPage/SearchProduct.jsx";
-import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
+import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
+import AssessmentReceipt from "../Component/AssessmentReceipt/AssessmentReceipt.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -48,24 +48,25 @@ const RoutePath = () => {
           <Route path="about" element={<InfoPage />} />
           <Route path="makerequest" element={<AssessmentRequestCustomer />} />
           <Route path="success" element={<SuccessPage />} />
-          <Route path="/lookup" element={<ProductSearch />} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
-          <Route path="assessmentrequest" element={<AssessmentRequestConsulting />} />
-          <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />} />
+          <Route path="assessmentrequest" element={<AssessmentRequestConsulting />}/>
+          <Route path="assessmentrequest/:id" element={<AssessmentRequestDetail />}/>
           {/* <Route path='assessmentrequest/:id/createbooking' element={<CreateAssessmentBooking />} /> */}
           <Route path="assessmentrequest/:id/inputdiamonds" element={<AssessmentBookingDiamondInput />}/>
           <Route path="assessmentrequest/:id/inputdiamonds/summary" element={<AssetsmentList />}/>
+          <Route path="receipt" element={<AssessmentReceipt />}/>
         </Route>
 
         <Route path="/assessmentstaff" element={<AssessmentStaffLayout />}>
           <Route index element={<AssessmentBooking />} />
           <Route path="assessmentbooking" element={<AssessmentBooking />} />
-          <Route path="assessmentbooking/:id/selection" element={<SelectionForm />} />
-          <Route path="assessmentbooking/:id/selection/info" element={<InfoForm />} />
-          <Route path="assessmentbooking/:id/selection/info/summary" element={<AssetsmentPaper />} />
-          <Route path="assessmentbooking/:id/selection/info/summary/preview" element={<AssessmentPaperPreview />} />
+          {/* <Route path='assessmentbooking/:id' element={<AssessmentBookingSample />} /> */}
+          <Route path="assessmentbooking/:id/selection" element={<SelectionForm />}/>
+          <Route path="assessmentbooking/:id/selection/info" element={<InfoForm />}/>
+          {/* <Route path="assessmentbooking/:id/selection/info/cut" element={<CutForm/>} /> */}
+          <Route path="assessmentbooking/:id/selection/info/summary" element={<AssetsmentPaper />}/>
           <Route path="assessmentpaperlist" element={<AssessmentPaperList />} />
           <Route path="assessmentpaperlist/:id" element={<AssessmentPaperDetail />} />
         </Route>
@@ -75,7 +76,9 @@ const RoutePath = () => {
           <Route path="/manager/sealing-records" element={<SealingRecords />} />
           <Route path="/manager/commitment-paper" element={<Commitpaper />} />
           <Route path="/manager/assignwork" element={<AssignWork />} />
+          <Route path="/manager/assignpaper" element={<AsPaperManager />} />
         </Route>
+        <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         <Route path="/login" element={<GoogleLoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
         <Route path="*" element={<ErrorPage />} />
