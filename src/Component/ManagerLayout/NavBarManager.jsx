@@ -87,7 +87,14 @@ const Navbar = () => {
             className="navbar-link"
             onClick={toggleMenu}
           >
-            Assign Work
+            Assign Booking
+          </Link>
+          <Link
+            to="/manager/assignpaper"
+            className="navbar-link"
+            onClick={toggleMenu}
+          >
+            Assign Assessment Paper
           </Link>
         </div>
       </div>
@@ -122,7 +129,14 @@ const Navbar = () => {
             className="navbar-dropdown-link"
             onClick={toggleMenu}
           >
-            Assign Work
+            Assign Booking
+          </Link>
+          <Link
+            to="/manager/assignpaper"
+            className="navbar-dropdown-link"
+            onClick={toggleMenu}
+          >
+            Assign Assessment Paper
           </Link>
         </div>
       )}

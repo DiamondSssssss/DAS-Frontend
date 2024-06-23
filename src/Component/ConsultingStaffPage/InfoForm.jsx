@@ -11,11 +11,6 @@ function InfoForm() {
   const [clarityGrade, setClarityGrade] = useState("");
   const [cutGrade, setCutGrade] = useState("");
   const [size, setSize] = useState(0);
-  const [shape, setShape] = useState("");
-  const [cuttingStyle, setCuttingStyle] = useState("");
-  const [polish, setPolish] = useState("");
-  const [symmetry, setSymmetry] = useState("");
-  const [fluorescence, setFluorescence] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -32,11 +27,6 @@ function InfoForm() {
       clarityGrade,
       cutGrade,
       size,
-      shape,
-      cuttingStyle,
-      polish,
-      symmetry,
-      fluorescence,
     };
 
     navigate(
@@ -146,116 +136,6 @@ function InfoForm() {
           )}
         >
           {["Excellent", "Very Good", "Good", "Fair", "Poor"].map((grade) => (
-            <Option key={grade} value={grade}>
-              {grade}
-            </Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Shape"
-        name="shape"
-        rules={[{ required: true, message: "Vui lòng chọn hình dạng!" }]}
-        className="text-xl"
-      >
-        <Select
-          value={shape}
-          onChange={(value) => setShape(value)}
-          className="w-full text-xl"
-          dropdownRender={(menu) => (
-            <div className="shadow-lg">{menu}</div>
-          )}
-        >
-          {["Round", "Princess", "Emerald", "Asscher", "Marquise", "Oval", "Radiant", "Pear", "Heart", "Cushion"].map((shape) => (
-            <Option key={shape} value={shape}>
-              {shape}
-            </Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Cutting Style"
-        name="cuttingStyle"
-        rules={[{ required: true, message: "Vui lòng chọn phong cách cắt!" }]}
-        className="text-xl"
-      >
-        <Select
-          value={cuttingStyle}
-          onChange={(value) => setCuttingStyle(value)}
-          className="w-full text-xl"
-          dropdownRender={(menu) => (
-            <div className="shadow-lg">{menu}</div>
-          )}
-        >
-          {["Brilliant", "Step", "Mixed"].map((style) => (
-            <Option key={style} value={style}>
-              {style}
-            </Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Polish"
-        name="polish"
-        rules={[{ required: true, message: "Vui lòng chọn độ bóng!" }]}
-        className="text-xl"
-      >
-        <Select
-          value={polish}
-          onChange={(value) => setPolish(value)}
-          className="w-full text-xl"
-          dropdownRender={(menu) => (
-            <div className="shadow-lg">{menu}</div>
-          )}
-        >
-          {["Excellent", "Very Good", "Good", "Fair", "Poor"].map((grade) => (
-            <Option key={grade} value={grade}>
-              {grade}
-            </Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Symmetry"
-        name="symmetry"
-        rules={[{ required: true, message: "Vui lòng chọn độ đối xứng!" }]}
-        className="text-xl"
-      >
-        <Select
-          value={symmetry}
-          onChange={(value) => setSymmetry(value)}
-          className="w-full text-xl"
-          dropdownRender={(menu) => (
-            <div className="shadow-lg">{menu}</div>
-          )}
-        >
-          {["Excellent", "Very Good", "Good", "Fair", "Poor"].map((grade) => (
-            <Option key={grade} value={grade}>
-              {grade}
-            </Option>
-          ))}
-        </Select>
-      </Form.Item>
-
-      <Form.Item
-        label="Fluorescence"
-        name="fluorescence"
-        rules={[{ required: true, message: "Vui lòng chọn huỳnh quang!" }]}
-        className="text-xl"
-      >
-        <Select
-          value={fluorescence}
-          onChange={(value) => setFluorescence(value)}
-          className="w-full text-xl"
-          dropdownRender={(menu) => (
-            <div className="shadow-lg">{menu}</div>
-          )}
-        >
-          {["None", "Faint", "Medium", "Strong", "Very Strong"].map((grade) => (
             <Option key={grade} value={grade}>
               {grade}
             </Option>

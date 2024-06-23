@@ -1,4 +1,8 @@
-
+body {
+    background-color: #faf7f4;
+    font-family: Arial, sans-serif;
+  }
+  
   .report-container {
     background-color: #eeb983;
     padding: 20px;
@@ -11,7 +15,12 @@
     font-weight: bold;
   }
   
-
+  .report-id {
+    color: #c0392b;
+    font-weight: bold;
+    margin-top: -10px;
+  }
+  
   .section-title {
     color: #fefefe;
     font-weight: bold;
@@ -27,7 +36,7 @@
     margin-bottom: 1.5rem !important;
   }
   .mb-4 p{
-    color: black;
+    color: #fefefe;
     padding-left: 5px;
   }
   .card-text div {
@@ -57,10 +66,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* or a fixed width */
+    width: 100%;
     height: 200px; /* Set a fixed height for the image container */
     overflow: hidden;
-}
+  }
   
   .uploaded-image {
     max-width: 100%;
@@ -68,8 +77,3 @@
     object-fit: contain; /* This ensures the image maintains its aspect ratio and fits within the container */
   }
   
-  .gold-outline{
-    border: 10px double #f0b070;
-    margin: 2px;
-    padding: 5px;
-  }
