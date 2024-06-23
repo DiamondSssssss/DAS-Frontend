@@ -92,7 +92,7 @@ function AssessmentRequestConsulting() {
 
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
-            <thead className="bg-blue-600 text-white">
+            <thead className="bg-gray-800 text-white">
               <tr>
                 <th className="py-4 px-4 text-left align-middle">Mã yêu cầu</th>
                 <th className="py-4 px-4 text-left align-middle">Dịch vụ</th>
