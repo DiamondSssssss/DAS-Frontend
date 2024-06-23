@@ -36,6 +36,8 @@ import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
 import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
 import AssessmentReceipt from "../Component/AssessmentReceipt/AssessmentReceipt.jsx";
+import ManagePricingTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
+import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -67,6 +69,7 @@ const RoutePath = () => {
           <Route path="assessmentbooking/:id/selection/info" element={<InfoForm />}/>
           {/* <Route path="assessmentbooking/:id/selection/info/cut" element={<CutForm/>} /> */}
           <Route path="assessmentbooking/:id/selection/info/summary" element={<AssetsmentPaper />}/>
+          <Route path="assessmentbooking/:id/selection/info/summary/preview" element={<AssessmentPaperPreview />}/>
           <Route path="assessmentpaperlist" element={<AssessmentPaperList />} />
           <Route path="assessmentpaperlist/:id" element={<AssessmentPaperDetail />} />
         </Route>
