@@ -7,12 +7,26 @@ import { handleSession } from "../../utils/sessionUtils";
 
 const AssessmentPaper = () => {
   const location = useLocation();
-  const { loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size } = location.state || {};
+  const {
+    loai,
+    trangThai,
+    xuatXu,
+    carat,
+    colorGrade,
+    clarityGrade,
+    cutGrade,
+    size,
+    shape,
+    cuttingStyle,
+    polish,
+    symmetry,
+    fluorescence,
+  } = location.state || {};
   const { id } = useParams();
   const [uploadedProportionImage, setUploadedProportionImage] = useState(null);
   const [uploadedClarityImage, setUploadedClarityImage] = useState(null);
   const navigate = useNavigate();
-  const reportRef = useRef(null); // Create a ref for the report
+  const reportRef = useRef(null);
 
   const [loggedAccount, setLoggedAccount] = useState({});
 
@@ -23,7 +37,6 @@ const AssessmentPaper = () => {
     }
   }, [navigate]);
 
-  // Function to handle proportion image upload
   const handleProportionImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -35,7 +48,6 @@ const AssessmentPaper = () => {
     }
   };
 
-  // Function to handle clarity image upload
   const handleClarityImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -47,12 +59,12 @@ const AssessmentPaper = () => {
     }
   };
 
-  // Function to navigate to the preview page
   const handlePreview = () => {
     if (uploadedProportionImage && uploadedClarityImage) {
       navigate('/assessmentstaff/assessmentbooking/:id/selection/info/summary/preview', {
         state: {
           id, loai, trangThai, xuatXu, carat, colorGrade, clarityGrade, cutGrade, size,
+          shape, cuttingStyle, polish, symmetry, fluorescence,
           uploadedProportionImage, uploadedClarityImage, loggedAccount
         }
       });
@@ -76,7 +88,7 @@ const AssessmentPaper = () => {
                   <h3 className="section-title">DAS Natural Grading Report</h3>
                   <p>May 12th, 2024</p>
                   <p>DAS report number: 1234</p>
-                  <p>Shape and cutting style: Round Brilliant</p>
+                  <p>Shape and cutting style: {shape} {cuttingStyle}</p>
                   <p>Measurement: 7.72-7.74x4.54mm</p>
                 </Col>
               </Row>
@@ -92,9 +104,9 @@ const AssessmentPaper = () => {
               <Row className="mb-4">
                 <Col>
                   <h3 className="section-title">ADDITIONAL GRADING INFORMATION</h3>
-                  <p>Polish: Excellent</p>
-                  <p>Symmetry: Excellent</p>
-                  <p>Fluorescence: None</p>
+                  <p>Polish: {polish}</p>
+                  <p>Symmetry: {symmetry}</p>
+                  <p>Fluorescence: {fluorescence}</p>
                 </Col>
               </Row>
             </Col>
@@ -159,13 +171,12 @@ const AssessmentPaper = () => {
           </Row>
         </div>
       </div>
-      {/* Preview button section */}
       <Row className="mb-4">
         <Col>
           <Button
             variant="primary"
             onClick={handlePreview}
-            disabled={!uploadedProportionImage || !uploadedClarityImage} // Disable button if images are not uploaded
+            disabled={!uploadedProportionImage || !uploadedClarityImage}
           >
             Preview
           </Button>
