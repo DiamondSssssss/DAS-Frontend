@@ -114,9 +114,18 @@ const Header = () => {
         </button>
         {userName ? (
           <div className="d-flex align-items-center">
-            {/* <AccountCircle style={{ color: "white", fontSize: 30 }} /> */}
             <Dropdown>
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="ml-2">
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                className="ml-2"
+                style={{
+                  backgroundColor: 'black',
+                  borderColor: 'white',
+                  color: 'white',
+                  fontWeight: 'bold'
+                }}
+              >
                 {userName}
               </Dropdown.Toggle>
               <Dropdown.Menu>
@@ -129,7 +138,16 @@ const Header = () => {
             </Dropdown>
           </div>
         ) : (
-          <Button variant="primary" onClick={() => navigate("/login")}>
+          <Button
+            variant="primary"
+            onClick={() => navigate("/login")}
+            style={{
+              backgroundColor: 'black',
+              borderColor: 'white',
+              color: 'white',
+              fontWeight: 'bold'
+            }}
+          >
             Đăng Nhập / Đăng Ký
           </Button>
         )}
