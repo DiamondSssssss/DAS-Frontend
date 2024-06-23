@@ -114,7 +114,7 @@ const RegisterComponent = () => {
             </form>
             <div className="mt-4">
               <Link to="/login" className="text-blue-500 hover:underline">
-                Đã có tài khoản? Đăng nhập
+               Đăng nhập
               </Link>
             </div>
           </div>

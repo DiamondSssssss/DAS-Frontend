@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
@@ -79,7 +78,7 @@ const GoogleLoginComponent = () => {
         </div>
         <div className="w-full md:w-1/2 p-12">
           <div className="flex justify-between items-center mb-8">
-            <Link to="/" className="text-blue-500 hover:underline">
+            <Link to="/" className="absolute top-4 left-4 text-blue-500 hover:underline bg-blue-500 text-white py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700">
               Trang chủ
             </Link>
             <div>
