@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
 import { handleSession, clearSession, checkSession } from '../../utils/sessionUtils';
+import { Dropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -112,10 +114,10 @@ const Header = () => {
         </button>
         {userName ? (
           <div className="d-flex align-items-center">
-            <AccountCircle style={{ color: "white", fontSize: 30 }} />
+            {/* <AccountCircle style={{ color: "white", fontSize: 30 }} /> */}
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic" className="ml-2">
-                Menu
+                {userName}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item href="#/lich-su-dat-hen">Lịch sử đặt hẹn</Dropdown.Item>
