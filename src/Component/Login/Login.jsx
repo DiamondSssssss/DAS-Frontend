@@ -1,3 +1,4 @@
+// src/components/Login.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
@@ -27,9 +28,10 @@ const GoogleLoginComponent = () => {
         navigate("/assessmentstaff");
         break;
       case 4:
-        navigate("manager");
+        navigate("/manager");
         break;
       default:
+        navigate("/");
     }
   };
 
@@ -76,10 +78,24 @@ const GoogleLoginComponent = () => {
           />
         </div>
         <div className="w-full md:w-1/2 p-12">
+          <div className="flex justify-between items-center mb-8">
+            <Link to="/" className="text-blue-500 hover:underline">
+              Trang chủ
+            </Link>
+            <div>
+              {user ? (
+                <Avatar
+                  src={user.picture}
+                  alt={user.name}
+                  className="w-10 h-10 mx-2"
+                />
+              ) : null}
+            </div>
+          </div>
           <div className="flex flex-col items-center mb-8">
             <h1 className="text-4xl font-bold mt-4 text-gray-900">DAS</h1>
             <h2 className="text-xl text-gray-800 mt-2">
-              We Valued Your Diamond!
+              We Value Your Diamond!
             </h2>
           </div>
           {user ? (
