@@ -53,7 +53,7 @@ const AssessmentPaperPreview = () => {
                 sampleId: parseInt(id), // Assuming id is from useParams()
                 type: loai,
                 size: parseFloat(size),
-                shape,
+                shape: `${shape} ${cuttingStyle}`,
                 cuttingStyle,
                 color: colorGrade,
                 clarity: clarityGrade,
