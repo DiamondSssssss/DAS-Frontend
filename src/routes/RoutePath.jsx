@@ -40,6 +40,7 @@ import ManagePricingTimelines from "../Component/ManagerLayout/ManagePricingTime
 import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
 import AssessmentPaperListCs from "../Component/AssessmentPaperListPage/AssessmentPaperListCs.jsx";
 import ReceiptDetail from "../Component/AssessmentReceiptDetailPage/AssessmentReceiptDetail.jsx";
+import ProductSearch from "../Component/SearchProductPage/SearchProduct";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -52,6 +53,7 @@ const RoutePath = () => {
           <Route path="about" element={<InfoPage />} />
           <Route path="makerequest" element={<AssessmentRequestCustomer />} />
           <Route path="success" element={<SuccessPage />} />
+          <Route path="lookup" element={<ProductSearch/>} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
