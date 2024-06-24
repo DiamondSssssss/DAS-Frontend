@@ -13,6 +13,12 @@ const RegisterComponent = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (!/^\d{10}$/.test(emailOrPhone)) {
+      alert("Phone number must be exactly 10 digits and contain only numbers.");
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -89,7 +95,7 @@ const RegisterComponent = () => {
                 <Phone className="text-gray-400 mr-3" />
                 <input
                   type="text"
-                  placeholder="Email hoặc Số điện thoại"
+                  placeholder="Số điện thoại"
                   value={emailOrPhone}
                   onChange={(e) => setEmailOrPhone(e.target.value)}
                   className="border border-gray-300 p-2 w-full rounded"
