@@ -68,7 +68,13 @@ const GoogleLoginComponent = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full">
+    <div className="relative flex items-center justify-center min-h-screen w-full">
+      <button
+        className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded-full hover:bg-red-700"
+        onClick={() => navigate("/")}
+      >
+        &#x2715;
+      </button>
       <div className="bg-white rounded-lg shadow-lg flex max-w-4xl w-full overflow-hidden">
         <div className="hidden md:flex w-1/2 bg-blue-800 items-center justify-center">
           <img
@@ -78,13 +84,7 @@ const GoogleLoginComponent = () => {
           />
         </div>
         <div className="w-full md:w-1/2 p-12">
-          <div className="flex justify-between items-center mb-8">
-            <Link
-              to="/"
-              className="absolute top-4 left-4 text-blue-500 hover:underline bg-blue-500 text-white py-2 px-4 rounded transition-all duration-300 hover:bg-blue-700"
-            >
-              Trang chủ
-            </Link>
+          <div className="flex justify-end mb-8">
             <div>
               {user ? (
                 <Avatar
