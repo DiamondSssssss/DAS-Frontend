@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../Login/Login.css";
+import "./RegisterComponent.css"; // Đường dẫn đã được sửa lại
 import illustration from "../../assets/loginbackground.png";
-import { AccountCircle, Phone, Lock } from "@mui/icons-material"; // Import icons from Material-UI
+import { AccountCircle, Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 
 const RegisterComponent = () => {
   const [phone, setPhone] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -30,7 +32,6 @@ const RegisterComponent = () => {
       password,
     };
 
-    // Send userInfo to backend for registration
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -83,7 +84,7 @@ const RegisterComponent = () => {
               <AccountCircle className="text-gray-400 mr-3" />
               <input
                 type="text"
-                placeholder="Họ và Tên*"
+                placeholder="Họ và Tên"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
@@ -101,27 +102,39 @@ const RegisterComponent = () => {
                 required
               />
             </div>
-            <div className="mb-4 flex items-center">
+            <div className="mb-4 flex items-center relative">
               <Lock className="text-gray-400 mr-3" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Mật khẩu"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 required
               />
+              <span
+                className="password-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </span>
             </div>
-            <div className="mb-4 flex items-center">
+            <div className="mb-4 flex items-center relative">
               <Lock className="text-gray-400 mr-3" />
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"}
                 placeholder="Xác nhận mật khẩu"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 required
               />
+              <span
+                className="password-icon"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+              </span>
             </div>
             <button
               type="submit"

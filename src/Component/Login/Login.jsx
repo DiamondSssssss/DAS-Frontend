@@ -4,13 +4,14 @@ import Avatar from "@mui/material/Avatar";
 import { signInWithGoogle, signInWithPhoneNumber } from "../../utils/authUtils";
 import "../Login/Login.css";
 import illustration from "../../assets/loginbackground.png";
-import { Phone, Lock } from "@mui/icons-material"; // Import icons from Material-UI
+import { Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material"; // Import icons from Material-UI
 
 const GoogleLoginComponent = () => {
   const [user, setUser] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
+  const [showPassword, setShowPassword] = useState(false); // Show/hide password state
   const navigate = useNavigate();
   const [loginMethod, setLoginMethod] = useState("google");
 
@@ -67,10 +68,14 @@ const GoogleLoginComponent = () => {
     }
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="relative flex items-center justify-center min-h-screen w-full">
       <button
-        className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded-full hover:bg-red-700"
+        className="home-button"
         onClick={() => navigate("/")}
       >
         &#x2715;
@@ -160,16 +165,22 @@ const GoogleLoginComponent = () => {
                       required
                     />
                   </div>
-                  <div className="mb-4 flex items-center">
+                  <div className="mb-4 flex items-center show-hide-password">
                     <Lock className="text-gray-400 mr-3" />
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Mật khẩu"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="border border-gray-300 p-2 w-full rounded"
                       required
                     />
+                    <div
+                      className="eye-icon"
+                      onClick={toggleShowPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </div>
                   </div>
                   <button
                     type="submit"
