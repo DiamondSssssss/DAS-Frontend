@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./AssessmentRequestConsulting.css";
+// import "./AssessmentRequestConsulting.css";
 
 function AssessmentReceipt() {
   const navigate = useNavigate();
@@ -73,9 +73,7 @@ function AssessmentReceipt() {
               <tr>
                 <th className="py-4 px-4 text-center">Mã yêu cầu</th>
                 <th className="py-4 px-4 text-center">Dịch vụ</th>
-                <th className="py-4 px-4 text-center">
-                  Số Lượng Kim Cương
-                </th>
+                <th className="py-4 px-4 text-center">Số Lượng Kim Cương</th>
                 <th className="py-4 px-4 text-center">Ngày tạo</th>
                 <th className="py-4 px-4 text-center">Trạng Thái</th>
                 <th className="py-4 px-4 text-center">Chi Tiết</th>
