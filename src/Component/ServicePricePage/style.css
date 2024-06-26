@@ -1,90 +1,49 @@
 .evaluate-service {
     padding: 20px;
-    background-color: #f5f5f5;
 }
 
-.div-2 {
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-.overlap,
-.overlap-2 {
-    position: relative;
+.section {
     margin-bottom: 20px;
-}
-
-.evaluation-service {
-    margin-bottom: 20px;
-}
-
-.p {
-    font-size: 24px;
-    font-weight: bold;
     text-align: center;
 }
 
-.rectangle {
+.header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.service-table {
     width: 100%;
-    height: 2px;
-    background-color: #000;
-}
-
-.frame-2,
-.frame-3,
-.frame-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.frame-content {
-    padding: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.frame-8,
-.frame-4,
-.frame-5,
-.frame-6,
-.frame-7,
-.frame-9,
-.frame-11,
-.frame-13,
-.frame-16,
-.frame-17,
-.frame-18,
-.frame-19,
-.frame-20,
-.frame-21,
-.frame-22,
-.frame-23,
-.frame-24,
-.frame-25 {
-    border: 1px solid #ccc;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0 auto;
     background-color: #fff;
 }
 
-.text-wrapper-2 {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
+.service-table th,
+.service-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
 }
 
-.rectangle-2 {
-    width: 100%;
-    height: 2px;
-    background-color: #000;
+.service-table th {
+    background-color: #f2f2f2;
 }
 
-.overlap-3 {
-    position: relative;
-    margin-top: 20px;
+.service-table ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
 }
 
-.frame-10 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.service-table li {
+    margin-bottom: 5px;
 }
