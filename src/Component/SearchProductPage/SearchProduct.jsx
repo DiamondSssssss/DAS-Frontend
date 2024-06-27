@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './SearchProduct.css'; // Import the custom CSS file
 
-const SearchProduct = () => {
+const ProductSearch = () => {
     const [diamondCode, setDiamondCode] = useState('');
     const [gemstoneCode, setGemstoneCode] = useState('');
     const [jadeCode, setJadeCode] = useState('');

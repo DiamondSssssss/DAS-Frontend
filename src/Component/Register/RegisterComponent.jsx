@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+import { AccountCircle, Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 import "./RegisterComponent.css"; // Đường dẫn đã được sửa lại
 import illustration from "../../assets/loginbackground.png";
-import { AccountCircle, Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 
 const RegisterComponent = () => {
   const [phone, setPhone] = useState("");
@@ -16,8 +18,8 @@ const RegisterComponent = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!/^\d{10}$/.test(phone)) {
-      alert("Phone number must be exactly 10 digits and contain only numbers.");
+    if (!phone || phone.length < 10) {
+      alert("Phone number must be valid and contain at least 10 digits.");
       return;
     }
 
@@ -27,8 +29,8 @@ const RegisterComponent = () => {
     }
 
     const userInfo = {
-      phone,
       fullName,
+      phoneNumber: phone,
       password,
     };
 
@@ -58,12 +60,13 @@ const RegisterComponent = () => {
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center">
-      <button
-        className="absolute top-4 right-4 bg-red-500 text-white p-2 rounded-full hover:bg-red-700"
-        onClick={handleGoBack}
-      >
-        &#x2715;
-      </button>
+<button
+  className="absolute top-4 right-4 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-700"
+  onClick={handleGoBack}
+>
+  &#x2715;
+</button>
+
       <div className="bg-white rounded-lg shadow-lg flex max-w-4xl w-full overflow-hidden">
         <div className="hidden md:flex w-1/2 bg-blue-800 items-center justify-center">
           <img
@@ -91,14 +94,15 @@ const RegisterComponent = () => {
                 required
               />
             </div>
-            <div className="mb-4 flex items-center">
-              <Phone className="text-gray-400 mr-3" />
-              <input
-                type="text"
-                placeholder="Số điện thoại"
+            <div className="mb-4 flex items-center relative phone-input-container">
+              <Phone className="text-gray-400 phone-icon" />
+              <PhoneInput
+                country={"us"}
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="border border-gray-300 p-2 w-full rounded"
+                onChange={(phone) => setPhone(phone)}
+                inputClass="w-full border border-gray-300 p-2 rounded"
+                containerClass="phone-input"
+                buttonClass="phone-input-button"
                 required
               />
             </div>

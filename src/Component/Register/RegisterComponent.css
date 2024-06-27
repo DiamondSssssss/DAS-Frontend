@@ -203,3 +203,37 @@ body {
   cursor: pointer;
   color: #cbd5e0;
 }
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.phone-icon {
+  margin-right: 10px; /* Tạo khoảng cách giữa biểu tượng và phần nhập số điện thoại */
+  color: #9e9e9e;
+}
+
+.react-tel-input {
+  width: 100%;
+}
+
+.react-tel-input .form-control {
+  width: calc(100% - 40px); /* Đảm bảo phần nhập số điện thoại chiếm không gian còn lại */
+  padding-left: 10px; /* Điều chỉnh khoảng cách phía bên trong của phần nhập số điện thoại */
+  margin-left: 38px;
+}
+
+.phone-input-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.react-tel-input .form-control {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding-left: 10px; /* Đảm bảo phần select Country không che phủ số điện thoại */
+}
+
+
