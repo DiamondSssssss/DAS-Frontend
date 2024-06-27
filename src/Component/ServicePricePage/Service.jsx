@@ -3,9 +3,9 @@ import "./style.css";
 
 export const EvaluateService = () => {
     return (
-        <div className="evaluate-service">
+        <div className="evaluate-service mt-20">
             <div className="section">
-                <p className="header">CÁC DỊCH VỤ GIÁM ĐỊNH KIM CƯƠNG HIỆN CÓ TẠI PNJLAB</p>
+                <p className="header">CÁC DỊCH VỤ GIÁM ĐỊNH KIM CƯƠNG HIỆN CÓ TẠI DAS</p>
                 <div className="table-container">
                     <table className="service-table">
                         <thead>
