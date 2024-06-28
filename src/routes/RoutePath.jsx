@@ -44,6 +44,7 @@ import ProductSearch from "../Component/SearchProductPage/SearchProduct";
 import { EvaluateService } from "../Component/ServicePricePage/Service.jsx";
 import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation.jsx";
 import AccountInfo from "../Component/AccountInfo/AccountInfo.jsx";
+import CustomerHistory from "../Component/CustomerHistory/CustomerHistory.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -60,6 +61,7 @@ const RoutePath = () => {
           <Route path="services" element={<EvaluateService />} />
           <Route path="diamonds" element={<DiamondInformation />} />
           <Route path="account" element={<AccountInfo />} />
+          <Route path="history" element={<CustomerHistory />} />
         </Route>
         <Route path="/consultingstaff" element={<ConsultingStaffLayout />}>
           <Route index element={<AssessmentRequestConsulting />} />
