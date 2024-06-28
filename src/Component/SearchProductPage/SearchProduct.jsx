@@ -136,4 +136,4 @@ const ProductSearch = () => {
     );
 };
 
-export default SearchProduct;
+export default ProductSearch;
