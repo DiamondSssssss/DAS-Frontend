@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function AssessmentPaperList() {
+function AssessmentPaperListCs() {
   const navigate = useNavigate();
 
   const [assessmentPapers, setAssessmentPapers] = useState([]);
@@ -43,7 +43,7 @@ function AssessmentPaperList() {
                   <td className="py-4 px-4 text-center">
                     <div className="flex items-center justify-center">
                       <button
-                        onClick={() => navigate(`/assessmentstaff/assessmentpaperlist/${paper.diamondId}`)}
+                        onClick={() => navigate(`/consultingstaff/assessmentpaperlist/${paper.diamondId}`)}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       >
                         Xem chi tiết
@@ -60,4 +60,4 @@ function AssessmentPaperList() {
   );
 }
 
-export default AssessmentPaperList;
+export default AssessmentPaperListCs;

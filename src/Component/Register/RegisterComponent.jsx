@@ -1,35 +1,44 @@
-// src/components/RegisterComponent.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../Login/Login.css";
+import { useNavigate, Link } from "react-router-dom";
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+import { AccountCircle, Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
+import "./RegisterComponent.css"; // Đường dẫn đã được sửa lại
 import illustration from "../../assets/loginbackground.png";
 
 const RegisterComponent = () => {
-  const [emailOrPhone, setEmailOrPhone] = useState("");
+  const [phone, setPhone] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (!phone || phone.length < 10) {
+      alert("Phone number must be valid and contain at least 10 digits.");
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
     const userInfo = {
-      emailOrPhone,
       fullName,
+      phoneNumber: phone,
       password,
     };
 
-    // Gửi userInfo đến backend để đăng ký
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
+      const response = await fetch("/api/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userInfo),
       });
@@ -45,8 +54,19 @@ const RegisterComponent = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen w-full">
+    <div className="relative min-h-screen w-full flex items-center justify-center">
+<button
+  className="absolute top-4 right-4 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-700"
+  onClick={handleGoBack}
+>
+  &#x2715;
+</button>
+
       <div className="bg-white rounded-lg shadow-lg flex max-w-4xl w-full overflow-hidden">
         <div className="hidden md:flex w-1/2 bg-blue-800 items-center justify-center">
           <img
@@ -63,38 +83,63 @@ const RegisterComponent = () => {
             </h2>
           </div>
           <form onSubmit={handleRegister} className="w-full">
-            <input
-              type="text"
-              placeholder="Email hoặc Số điện thoại"
-              value={emailOrPhone}
-              onChange={(e) => setEmailOrPhone(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded"
-              required
-            />
-            <input
-              type="text"
-              placeholder="Họ và Tên"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded"
-              required
-            />
-            <input
-              type="password"
-              placeholder="Mật khẩu"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded"
-              required
-            />
-            <input
-              type="password"
-              placeholder="Xác nhận mật khẩu"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="border border-gray-300 p-2 mb-4 w-full rounded"
-              required
-            />
+            <div className="mb-4 flex items-center">
+              <AccountCircle className="text-gray-400 mr-3" />
+              <input
+                type="text"
+                placeholder="Họ và Tên"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="border border-gray-300 p-2 w-full rounded"
+                required
+              />
+            </div>
+            <div className="mb-4 flex items-center relative phone-input-container">
+              <Phone className="text-gray-400 phone-icon" />
+              <PhoneInput
+                country={"us"}
+                value={phone}
+                onChange={(phone) => setPhone(phone)}
+                inputClass="w-full border border-gray-300 p-2 rounded"
+                containerClass="phone-input"
+                buttonClass="phone-input-button"
+                required
+              />
+            </div>
+            <div className="mb-4 flex items-center relative">
+              <Lock className="text-gray-400 mr-3" />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Mật khẩu"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="border border-gray-300 p-2 w-full rounded"
+                required
+              />
+              <span
+                className="password-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </span>
+            </div>
+            <div className="mb-4 flex items-center relative">
+              <Lock className="text-gray-400 mr-3" />
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Xác nhận mật khẩu"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="border border-gray-300 p-2 w-full rounded"
+                required
+              />
+              <span
+                className="password-icon"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+              </span>
+            </div>
             <button
               type="submit"
               className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-700 transition w-full text-xl"
@@ -102,6 +147,11 @@ const RegisterComponent = () => {
               Đăng ký
             </button>
           </form>
+          <div className="mt-4">
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Đăng nhập
+            </Link>
+          </div>
         </div>
       </div>
     </div>

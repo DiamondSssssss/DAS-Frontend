@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logodas.png";
 import { AccountCircle, Menu, Close } from "@mui/icons-material";
 import { handleSession, clearSession, checkSession } from '../../utils/sessionUtils';
-
+import { Dropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userName, setUserName] = useState(null);
@@ -26,11 +28,11 @@ const Header = () => {
     clearSession();
     setUserName(null);
     setRole(0);
-    navigate('/login');
+    navigate('/');
   };
 
   const getButtonProperties = () => {
-    switch(role) {
+    switch (role) {
       case 1:
         return { text: "Đặt Hẹn", path: "/makerequest" };
       case 2:
@@ -111,23 +113,43 @@ const Header = () => {
           {text}
         </button>
         {userName ? (
-          <div className="flex items-center space-x-2">
-            <span>Xin chào, {userName}!</span>
-            <AccountCircle style={{ color: "white", fontSize: 30 }} />
-            <button
-              onClick={handleLogout}
-              className="bg-transparent border border-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
-            >
-              Đăng xuất
-            </button>
+          <div className="d-flex align-items-center">
+            <Dropdown>
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                className="ml-2"
+                style={{
+                  backgroundColor: 'black',
+                  borderColor: 'white',
+                  color: 'white',
+                  fontWeight: 'bold'
+                }}
+              >
+                {userName}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/lich-su-dat-hen">Lịch sử đặt hẹn</Dropdown.Item>
+                <Dropdown.Item href="#/thong-tin-ca-nhan">Thông tin cá nhân</Dropdown.Item>
+                <Dropdown.Item href="#/do-giay-giam-dinh">Dò giấy giám định</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={handleLogout} className="text-danger">Đăng xuất</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         ) : (
-          <div
-            className="cursor-pointer hidden md:block"
+          <Button
+            variant="primary"
             onClick={() => navigate("/login")}
+            style={{
+              backgroundColor: 'black',
+              borderColor: 'white',
+              color: 'white',
+              fontWeight: 'bold'
+            }}
           >
-            <AccountCircle style={{ color: "white", fontSize: 30 }} />
-          </div>
+            Đăng Nhập / Đăng Ký
+          </Button>
         )}
       </div>
     </header>

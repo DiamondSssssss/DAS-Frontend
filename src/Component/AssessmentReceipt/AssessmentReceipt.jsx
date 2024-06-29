@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import "./AssessmentRequestConsulting.css";
+import "../AssessmentRequestPage/AssessmentRequestConsulting.css";
 
 function AssessmentReceipt() {
   const navigate = useNavigate();
@@ -52,7 +52,11 @@ function AssessmentReceipt() {
         const response = await axios.get(
           "http://localhost:8080/api/assessment-bookings"
         );
-        setBookings(response.data);
+        // Filter bookings where status is 2 or 3
+        const filteredBookings = response.data.filter(
+          (booking) => booking.status === 2 || booking.status === 3
+        );
+        setBookings(filteredBookings);
       } catch (error) {
         console.error("Error fetching the bookings:", error);
       }
@@ -104,12 +108,12 @@ function AssessmentReceipt() {
                       <button
                         onClick={() =>
                           navigate(
-                            `/consultingstaff/assessmentrequest/${booking.bookingId}`
+                            `/consultingstaff/receipt/${booking.bookingId}`
                           )
                         }
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       >
-                        Xem chi tiết
+                        Xem biên nhận
                       </button>
                     </div>
                   </td>
