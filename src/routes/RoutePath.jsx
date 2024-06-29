@@ -36,6 +36,7 @@ import RegisterComponent from "../Component/Register/RegisterComponent.jsx";
 import AssignWork from "../Component/ManagerLayout/Assignwork.jsx";
 import AsPaperManager from "../Component/ManagerLayout/AsPaperManager.jsx";
 import AssessmentReceipt from "../Component/AssessmentReceipt/AssessmentReceipt.jsx";
+import ManagerHistory from "../Component/ManagerLayout/ManagerHistory.jsx";
 import ManagePricingTimelines from "../Component/ManagerLayout/ManagePricingTimelines.jsx";
 import AssessmentPaperPreview from "../Component/AssetsmentPaper/AssessmentPaperPreview.jsx";
 import AssessmentPaperListCs from "../Component/AssessmentPaperListPage/AssessmentPaperListCs.jsx";
@@ -93,6 +94,7 @@ const RoutePath = () => {
           <Route path="/manager/commitment-paper" element={<Commitpaper />} />
           {/* <Route path="/manager/assignwork" element={<AssignWork />} /> */}
           <Route path="/manager/assignpaper" element={<AsPaperManager />} />
+          <Route path="/manager/managerhistory" element={<ManagerHistory />} />
         </Route>
         <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         <Route path="/login" element={<GoogleLoginComponent />} />

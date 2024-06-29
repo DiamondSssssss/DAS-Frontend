@@ -77,9 +77,7 @@ function AssessmentReceipt() {
               <tr>
                 <th className="py-4 px-4 text-center">Mã yêu cầu</th>
                 <th className="py-4 px-4 text-center">Dịch vụ</th>
-                <th className="py-4 px-4 text-center">
-                  Số Lượng Kim Cương
-                </th>
+                <th className="py-4 px-4 text-center">Số Lượng Kim Cương</th>
                 <th className="py-4 px-4 text-center">Ngày tạo</th>
                 <th className="py-4 px-4 text-center">Trạng Thái</th>
                 <th className="py-4 px-4 text-center">Chi Tiết</th>
