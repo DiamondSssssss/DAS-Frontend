@@ -32,7 +32,7 @@ tbody td {
   color: #00ff00;
   background-color: #76ff7b61;
   border-radius: 50px;
-  padding: 5px;
+  padding: 10px 5px 10px 5px;
 
 }
 
@@ -40,6 +40,22 @@ tbody td {
   color: #dc143c;
 }
 
+.status-canceled h3 {
+  color: #dc143c;
+  background-color: #ff999985 ;
+  border-radius: 50px;
+  padding: 10px 5px 10px 5px;
+
+}
+
 .status-assessing {
   color: #ff7f50;
+}
+
+.status-assessing h3 {
+  color: #ff7f50;
+  background-color: #ffc87c6c ;
+  border-radius: 50px;
+  padding: 10px 5px 10px 5px;
+
 }
