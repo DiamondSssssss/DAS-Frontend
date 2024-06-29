@@ -56,7 +56,7 @@ const CustomerHistory = () => {
                   <td className="py-4 px-4 align-middle">{sample.sampleName}</td>
                   <td className="py-4 px-4 align-middle">{sample.size}</td>
                   <td className="py-4 px-4 align-middle">{sample.date}</td>
-                  <td className={`py-4 px-4 align-middle ${getStatusClass(sample.status)}`}>{sample.status}</td>
+                  <td className={`py-4 px-4 align-middle ${getStatusClass(sample.status)}`}><h3>{sample.status}</h3></td>
                   <td className="py-4 px-4 align-middle">
                     <div className="flex items-center justify-center">
                       <button
