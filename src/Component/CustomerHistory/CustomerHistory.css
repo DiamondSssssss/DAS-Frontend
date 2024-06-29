@@ -25,11 +25,11 @@ tbody td {
 }
 
 .status-completed {
-  color: #00ff00;
+  color: #3cb371 ;
 }
 
 .status-completed h3 {
-  color: #00ff00;
+  color: #3cb371 ;
   background-color: #76ff7b61;
   border-radius: 50px;
   padding: 10px 5px 10px 5px;
