@@ -55,11 +55,11 @@ function AssessmentBooking() {
         <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th className="py-4 px-4 text-left align-middle">Mã đơn hàng</th>
-              <th className="py-4 px-4 text-left align-middle">Tên mẫu</th>
-              <th className="py-4 px-4 text-left align-middle">Kích cỡ</th>
-              <th className="py-4 px-4 text-left align-middle">Trạng Thái</th>
-              <th className="py-4 px-4 text-left align-middle">Chi Tiết</th>
+              <th className="py-4 px-4 text-center align-middle">Mã đơn hàng</th>
+              <th className="py-4 px-4 text-center align-middle">Tên mẫu</th>
+              <th className="py-4 px-4 text-center align-middle">Kích cỡ</th>
+              <th className="py-4 px-4 text-center align-middle">Trạng Thái</th>
+              <th className="py-4 px-4 text-center align-middle">Chi Tiết</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
