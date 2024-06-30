@@ -1,5 +1,5 @@
 import * as React from "react";
-import sampleImage from "../../assets/backgrounddas.png"; // Đảm bảo đường dẫn đến ảnh là chính xác
+import sampleImage from "../public/backgrounddas.png"; // Đảm bảo đường dẫn đến ảnh là chính xác
 
 function MyComponent() {
   return (
