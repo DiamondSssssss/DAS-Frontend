@@ -1,9 +1,9 @@
 import React from "react";
 import { FaCheckCircle, FaDollarSign, FaLeaf } from "react-icons/fa";
-import logo from "../../assets/logodas.png"; 
-import aboutImage from "../../assets/aboutus.png"; 
-import serviceImage1 from "../../assets/pic1.png"; 
-import serviceImage2 from "../../assets/pic2.png";
+import aboutImage from "../../public/aboutus.png";
+import serviceImage1 from "../../public/pic1.png";
+import serviceImage2 from "../../public/pic2.png";
+
 const InfoPage = () => {
   return (
     <div className="bg-white text-gray-900 mt-10 w-full">
@@ -71,43 +71,6 @@ const InfoPage = () => {
                 <li>Định giá và đầu tư kim cương.</li>
                 <li>Phân tích xu hướng thị trường kim cương.</li>
               </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="why-choose-das" className="mb-16">
-          <h2 className="text-3xl font-bold text-blue-700 mb-6">Tại Sao Chọn DAS?</h2>
-          <p className="text-xl text-center mb-8">Khám Phá Những Dịch Vụ Tốt Nhất và Chất Lượng</p>
-          <p className="text-center mb-12 text-gray-600">
-            DAS cung cấp các dịch vụ giám định kim cương và đá quý chuyên nghiệp, giúp bạn xác định giá trị thực sự của tài sản của mình. Dịch vụ đáng tin cậy và chất lượng cao đang chờ bạn khám phá.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="mb-6">
-                <FaCheckCircle className="w-16 h-16 text-yellow-200 mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Giám Định Dễ Dàng</h3>
-              <p className="text-gray-600">
-                Đưa kim cương của bạn đến DAS và dễ dàng nhận được kết quả giám định nhanh chóng và chính xác. Quy trình giám định đơn giản và hiệu quả.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="mb-6">
-                <FaDollarSign className="w-16 h-16 text-yellow-200 mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Tiết Kiệm Chi Phí</h3>
-              <p className="text-gray-600">
-                Nhận dịch vụ giám định với chi phí hợp lý mà không cần phải chi thêm tiền. Chuyển đổi giá trị những viên kim cương của bạn thành những thông tin hữu ích.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="mb-6">
-                <FaLeaf className="w-16 h-16 text-yellow-200 mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Lựa Chọn Bền Vững</h3>
-              <p className="text-gray-600">
-                Giảm thiểu lãng phí và thúc đẩy tính bền vững bằng cách sử dụng dịch vụ giám định của chúng tôi. Lựa chọn thân thiện với môi trường.
-              </p>
             </div>
           </div>
         </section>
