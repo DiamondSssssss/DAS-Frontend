@@ -1,8 +1,8 @@
 import React from "react";
 import { FaCheckCircle, FaDollarSign, FaLeaf } from "react-icons/fa";
-import aboutImage from "../public/aboutus.png";
-import serviceImage1 from "../public/pic1.png";
-import serviceImage2 from "../public/pic2.png";
+import aboutImage from "/aboutus.png";
+import serviceImage1 from "/pic1.png";
+import serviceImage2 from "/pic2.png";
 
 const InfoPage = () => {
   return (
