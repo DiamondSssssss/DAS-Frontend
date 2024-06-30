@@ -4,7 +4,7 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import { AccountCircle, Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material";
 import "./RegisterComponent.css"; // Đường dẫn đã được sửa lại
-import illustration from "../../assets/loginbackground.png";
+import illustration from "/loginbackground.png";
 
 const RegisterComponent = () => {
   const [phone, setPhone] = useState("");
