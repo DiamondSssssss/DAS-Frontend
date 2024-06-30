@@ -6,7 +6,7 @@ const signInWithGoogle = async () => {
     const user = result.user;
     const idToken = await user.getIdToken();
 
-    const response = await fetch('http://localhost:8080/api/login', {
+    const response = await fetch('https://das-backend.fly.dev/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

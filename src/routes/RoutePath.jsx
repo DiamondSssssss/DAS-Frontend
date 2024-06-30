@@ -46,6 +46,7 @@ import { EvaluateService } from "../Component/ServicePricePage/Service.jsx";
 import DiamondInformation from "../Component/DiamondInformationPage/DiamondInformation.jsx";
 import AccountInfo from "../Component/AccountInfo/AccountInfo.jsx";
 import CustomerHistory from "../Component/CustomerHistory/CustomerHistory.jsx";
+import CommitmentPaperPage from "../Component/CommitmentPaperPage/CommitmentPaper.jsx";
 
 const RoutePath = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -101,6 +102,7 @@ const RoutePath = () => {
         <Route path="assetsmentpaper" element={<AssetsmentPaper />} />
         <Route path="/login" element={<GoogleLoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
+        <Route path="/commit" element={<CommitmentPaperPage/>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
