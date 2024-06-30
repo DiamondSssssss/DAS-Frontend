@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from "../../assets/logodas.png";
-import exitIcon from '../../assets/exit.png';
+import logo from "/logodas.png";
+import exitIcon from '/exit.png';
 import { useNavigate } from 'react-router-dom';
 import { clearSession } from '../../utils/sessionUtils';
 function HeaderAs() {
