@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { signInWithGoogle, signInWithPhoneNumber } from "../../utils/authUtils";
 import "../Login/Login.css";
-import illustration from "../../assets/loginbackground.png";
+import illustration from "/loginbackground.png";
 import { Phone, Lock, Visibility, VisibilityOff } from "@mui/icons-material"; // Import icons from Material-UI
 
 const GoogleLoginComponent = () => {
