@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logodas.png"; // Ensure the path to the logo is correct
+import logo from "/logodas.png"; // Ensure the path to the logo is correct
 
 const Footer = () => {
   const navigate = useNavigate();
