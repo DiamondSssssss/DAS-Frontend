@@ -1,8 +1,8 @@
 import React from "react";
 import { FaCheckCircle, FaDollarSign, FaLeaf } from "react-icons/fa";
-import aboutImage from "../../public/aboutus.png";
-import serviceImage1 from "../../public/pic1.png";
-import serviceImage2 from "../../public/pic2.png";
+import aboutImage from "../public/aboutus.png";
+import serviceImage1 from "../public/pic1.png";
+import serviceImage2 from "../public/pic2.png";
 
 const InfoPage = () => {
   return (
@@ -41,7 +41,7 @@ const InfoPage = () => {
               className="w-60 h-60 object-cover rounded-lg mb-6 md:mb-0 md:mr-8"
             />
             <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-4">Dịch vụ giám định kim cương</h3>
+              <h3 className="text-2xl font-bold mb-4">Dịch vụ giám  định kim cương</h3>
               <p className="text-lg mb-6">
                 Công Ty Giám Định DAS cung cấp dịch vụ giám định kim cương chuyên nghiệp, với độ chính xác và độ tin cậy cao. Chúng tôi sử dụng các thiết bị hiện đại và công nghệ tiên tiến nhất để đảm bảo rằng mỗi viên kim cương được đánh giá đúng giá trị thực của nó.
               </p>
